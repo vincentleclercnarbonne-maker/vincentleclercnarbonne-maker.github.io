@@ -77,6 +77,8 @@
       height:100%;
       object-fit:contain;
       border-radius:50%;
+      background:#fff;
+      padding:4px;
     }
 
     .brand-text{
@@ -185,34 +187,23 @@
     }
 
     .logo-hero{
-      position:absolute;
-      width:320px;
-      opacity:.16;
-      z-index:1;
-      animation:floatSoft 6s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .logo-hero img{
-      width:100%;
-      filter:grayscale(100%) brightness(1.25) contrast(1.1);
-    }
-
-    .product-hero{
       position:relative;
+      width:340px;
       z-index:2;
-      width:290px;
+      animation:floatSoft 6s ease-in-out infinite;
       transform-style:preserve-3d;
       transition:transform .18s ease;
       will-change:transform;
     }
 
-    .product-hero img{
+    .logo-hero img{
       width:100%;
-      border-radius:28px;
-      box-shadow:0 35px 90px rgba(0,0,0,.42);
-      transition:transform .18s ease, filter .18s ease;
+      object-fit:contain;
       background:#fff;
+      border-radius:28px;
+      padding:16px;
+      filter:drop-shadow(0 30px 70px rgba(0,0,0,.35));
+      transition:transform .18s ease;
     }
 
     section{
@@ -474,11 +465,7 @@
       }
 
       .logo-hero{
-        width:230px;
-      }
-
-      .product-hero{
-        width:220px;
+        width:240px;
       }
 
       .nav-links{
@@ -513,9 +500,9 @@
         <div class="eyebrow">Consommables façade • peinture • dallage</div>
         <h1>TM Distrimat,<br>la société qu’il vous faut.</h1>
         <p>
-          Société sœur de Technimat, TM-DISTRI-MAT est spécialisée dans la vente de consommables pour façadiers,
-          peintres et dallagistes. Nous couvrons l’Occitanie avec une approche terrain, réactive et orientée
-          disponibilité produit.
+          TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
+          Nous sommes spécialisés dans la vente de consommables pour façadiers, peintres et dallagistes,
+          avec une couverture sur l’Occitanie et une approche terrain, réactive et orientée disponibilité produit.
         </p>
         <div class="hero-cta">
           <a class="btn primary" href="#produits">Découvrir nos produits</a>
@@ -528,10 +515,6 @@
 
         <div class="logo-hero">
           <img src="images/logotmdistrimat.png" alt="Logo TM Distri Mat">
-        </div>
-
-        <div class="product-hero">
-          <img src="images/st390.jpg" alt="ST390">
         </div>
       </div>
     </div>
@@ -650,7 +633,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="images/visjaquettes.png" alt="Vis et jaquettes">
+            <img src="images/visjaquette$.png" alt="Vis et jaquettes">
           </div>
           <div class="card-content">
             <span class="tag">Machines à projeter</span>
@@ -665,7 +648,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="images/jointdedilatation.png" alt="Joints de dilatation">
+            <img src="images/jointdedillatation.png" alt="Joints de dilatation">
           </div>
           <div class="card-content">
             <span class="tag">Façade & dallage</span>
@@ -714,17 +697,17 @@
     <div class="container">
       <h2 class="section-title reveal">Nous sommes là pour vous servir</h2>
       <p class="section-intro reveal">
-        Pour une demande de prix, une étude de besoin ou un rappel commercial, laisse tes coordonnées.
+        Pour une demande de prix, une étude de besoin ou un rappel commercial, laissez vos coordonnées.
       </p>
 
       <div class="contact-grid">
         <div class="contact-box">
           <h3>Contact</h3>
-          <p>TM-DISTRI-MAT, société sœur de Technimat.</p>
+          <p>TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.</p>
           <div class="contact-list">
             <div><strong>Téléphone :</strong> 04 68 40 39 86</div>
             <div><strong>E-mail :</strong> contact@technimat-outillage.fr</div>
-            <div><strong>Adresse :</strong> 2 rue Emile Levassor, 11100 Narbonne</div>
+            <div><strong>Adresse :</strong> 76 Chem. des Fours À Chaux</div>
           </div>
         </div>
 
@@ -799,9 +782,8 @@
       statsObserver.observe(statsSection);
     }
 
-    const heroProduct = document.querySelector('.product-hero');
-    const heroProductImg = heroProduct ? heroProduct.querySelector('img') : null;
     const heroLogo = document.querySelector('.logo-hero');
+    const heroLogoImg = heroLogo ? heroLogo.querySelector('img') : null;
 
     document.addEventListener('mousemove', (e)=>{
       const centerX = window.innerWidth / 2;
@@ -809,27 +791,19 @@
       const x = (e.clientX - centerX) / centerX;
       const y = (e.clientY - centerY) / centerY;
 
-      if(heroProduct){
-        heroProduct.style.transform = `
-          rotateY(${x * 14}deg)
-          rotateX(${y * -10}deg)
-          translateY(-6px)
-          scale(1.03)
-        `;
-      }
-
-      if(heroProductImg){
-        heroProductImg.style.transform = `
-          translateX(${x * 8}px)
-          translateY(${y * 6}px)
-        `;
-        heroProductImg.style.filter = 'brightness(1.04)';
-      }
-
       if(heroLogo){
         heroLogo.style.transform = `
+          rotateY(${x * 12}deg)
+          rotateX(${y * -8}deg)
+          translateY(-4px)
+          scale(1.02)
+        `;
+      }
+
+      if(heroLogoImg){
+        heroLogoImg.style.transform = `
+          translateX(${x * 6}px)
           translateY(${y * 4}px)
-          rotateY(${x * 5}deg)
         `;
       }
     });
