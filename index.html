@@ -119,6 +119,18 @@
     .btn:hover{transform:translateY(-2px)}
 
     .hero-visual{
+      .product-3d{
+  width:320px;
+  transform-style:preserve-3d;
+  transition:transform 0.2s ease;
+  will-change:transform;
+}
+
+.product-3d img{
+  width:100%;
+  filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6));
+  transition:transform 0.2s ease;
+}
       position:relative;
       min-height:520px;
       display:grid;place-items:center;
@@ -497,10 +509,13 @@
       </div>
 
       <div class="hero-visual">
-        <div class="orb"></div>
-        <div class="tape-3d" aria-hidden="true"></div>
-        <div class="side-band" aria-hidden="true"></div>
-      </div>
+  <div class="orb"></div>
+
+  <div class="product-3d">
+    <img src="images/st390.jpg" alt="ST390">
+  </div>
+
+</div>
     </div>
   </section>
 
