@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TM-DISTRI-MAT | Site vitrine</title>
+  <meta name="description" content="TM-DISTRI-MAT, spécialiste des consommables pour façadiers, peintres et dallagistes en Occitanie." />
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --bg2:#121212;
+      --card:#171717;
+      --line:#2b2b2b;
+      --text:#f5f5f5;
+      --muted:#b8b8b8;
+      --soft:#8f8f8f;
+      --accent:#ffffff;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:22px;
+      --max:1280px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.07), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,.04), transparent 25%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 40%, #111 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max), calc(100% - 32px));margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(14px);
+      background:rgba(10,10,10,.72);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:72px;
+    }
+
+    .logo{
+      font-weight:800;letter-spacing:.08em;
+      border:1px solid rgba(255,255,255,.18);
+      padding:12px 16px;border-radius:999px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .nav-links{
+      display:flex;gap:18px;flex-wrap:wrap;
+      color:var(--muted);font-size:14px;
+    }
+
+    .hero{
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      padding:72px 0 40px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      color:#d1d1d1;
+      border:1px solid rgba(255,255,255,.15);
+      padding:10px 14px;border-radius:999px;
+      font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+      margin-bottom:18px;
+      background:rgba(255,255,255,.03);
+    }
+
+    h1{
+      font-size:clamp(40px, 7vw, 88px);
+      line-height:.96;
+      letter-spacing:-.04em;
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:clamp(16px, 2vw, 20px);
+      line-height:1.6;
+      max-width:720px;
+    }
+
+    .hero-cta{
+      display:flex;gap:14px;flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .btn{
+      padding:14px 20px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      transition:.25s ease;
+      display:inline-flex;align-items:center;justify-content:center;
+    }
+
+    .btn.primary{
+      background:#fff;color:#000;font-weight:700;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-visual{
+      position:relative;
+      min-height:520px;
+      display:grid;place-items:center;
+      perspective:1200px;
+    }
+
+    .orb{
+      position:absolute;
+      width:360px;height:360px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #fff, #6e6e6e 35%, #1b1b1b 70%, #070707 100%);
+      filter:blur(2px);
+      opacity:.16;
+      animation:float 7s ease-in-out infinite;
+    }
+
+    .tape-3d{
+      width:270px;height:270px;border-radius:50%;
+      position:relative;
+      transform-style:preserve-3d;
+      animation:spin3d 12s linear infinite;
+    }
+
+    .tape-3d::before,
+    .tape-3d::after{
+      content:"";
+      position:absolute;inset:0;border-radius:50%;
+    }
+
+    .tape-3d::before{
+      background:
+        radial-gradient(circle, #111 0 22%, transparent 22% 32%, #ff7a00 32% 59%, #121212 59% 100%);
+      box-shadow:0 0 60px rgba(255,255,255,.08), inset 0 0 40px rgba(255,255,255,.12);
+      transform:translateZ(18px);
+    }
+
+    .tape-3d::after{
+      background:
+        radial-gradient(circle, #161616 0 22%, transparent 22% 32%, #d55f00 32% 59%, #0b0b0b 59% 100%);
+      transform:translateZ(-18px);
+      filter:brightness(.7);
+    }
+
+    .side-band{
+      position:absolute;
+      width:270px;height:270px;border-radius:50%;
+      border:22px solid rgba(255,122,0,.38);
+      transform:rotateX(78deg);
+      filter:blur(1px);
+    }
+
+    section{padding:88px 0}
+    .section-title{
+      font-size:clamp(28px,4vw,52px);
+      letter-spacing:-.03em;
+      margin-bottom:14px;
+    }
+    .section-intro{
+      color:var(--muted);
+      max-width:780px;
+      line-height:1.7;
+      margin-bottom:30px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .stat{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:var(--shadow);
+      transform:translateY(30px);
+      opacity:0;
+      transition:.8s ease;
+    }
+
+    .stat.visible,.reveal.visible,.contact-box.visible,.map-card.visible{
+      opacity:1;transform:none;
+    }
+
+    .stat-number{
+      font-size:clamp(34px, 5vw, 62px);
+      font-weight:800;
+      letter-spacing:-.04em;
+    }
+
+    .stat-label{
+      color:var(--muted);
+      margin-top:10px;
+      line-height:1.5;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      perspective:1400px;
+    }
+
+    .card{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+      transform:translateY(36px);
+      opacity:0;
+      transition:
+        transform .18s ease,
+        opacity .8s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+      transform-style:preserve-3d;
+      will-change:transform;
+    }
+
+    .card.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,0), rgba(255,255,255,.08));
+      opacity:0;
+      transition:opacity .25s ease;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .card:hover{
+      box-shadow:0 28px 90px rgba(0,0,0,.58);
+      border-color:rgba(255,255,255,.18);
+    }
+
+    .card:hover::before{
+      opacity:1;
+    }
+
+    .card-media{
+      position:relative;
+      aspect-ratio:16 / 10;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.14), transparent 32%),
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.01)),
+        #111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      transform:translateZ(26px);
+    }
+
+    .card-media::after{
+      content:"";
+      position:absolute;
+      inset:auto -20% -35% -20%;
+      height:120px;
+      background:radial-gradient(circle, rgba(255,255,255,.18), transparent 60%);
+      opacity:.45;
+      filter:blur(18px);
+      pointer-events:none;
+    }
+
+    .card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .25s ease, filter .25s ease;
+      will-change:transform;
+    }
+
+    .fallback-media{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:.08em;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 30%),
+        linear-gradient(135deg, #232323, #0d0d0d);
+    }
+
+    .card-content{
+      position:relative;
+      padding:26px;
+      transform:translateZ(18px);
+    }
+
+    .card h3{
+      font-size:28px;
+      margin-bottom:10px;
+      letter-spacing:-.03em;
+    }
+    .tag{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      color:#ddd;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      background:rgba(255,255,255,.03);
+    }
+    .card p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .map-card{
+      margin-top:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:28px;
+      padding:30px;
+      position:relative;
+      overflow:hidden;
+      transform:translateX(80px);
+      opacity:0;
+      transition:1s ease;
+      box-shadow:var(--shadow);
+    }
+
+    .map-wrap{
+      position:relative;
+      min-height:420px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.06), transparent 25%),
+        linear-gradient(135deg, #101010, #171717 60%, #0c0c0c);
+      overflow:hidden;
+    }
+
+    .occitanie-shape{
+      position:absolute;
+      left:50%;top:50%;
+      width:min(68vw,560px);
+      height:300px;
+      transform:translate(-50%,-50%);
+      background:linear-gradient(135deg, #f5f5f5, #7f7f7f);
+      clip-path:polygon(7% 53%, 18% 25%, 37% 18%, 54% 23%, 64% 12%, 84% 18%, 92% 37%, 88% 58%, 72% 77%, 49% 82%, 27% 75%, 12% 66%);
+      opacity:.18;
+      filter:drop-shadow(0 0 20px rgba(255,255,255,.12));
+    }
+
+    .city{
+      position:absolute;
+      transform:translate(-50%,-50%);
+      text-align:center;
+      color:#fff;
+      font-size:13px;
+      letter-spacing:.04em;
+    }
+
+    .city span{
+      display:block;
+      width:14px;height:14px;border-radius:50%;
+      background:#fff;
+      box-shadow:0 0 0 8px rgba(255,255,255,.08), 0 0 18px rgba(255,255,255,.55);
+      margin:0 auto 10px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .contact-box{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      transform:translateY(36px);
+      opacity:0;
+      transition:.8s ease;
+    }
+
+    .contact-box h3{font-size:28px;margin-bottom:16px}
+    .contact-box p{color:var(--muted);line-height:1.7;margin-bottom:12px}
+    .contact-list div{margin:12px 0;color:#f1f1f1}
+    form{display:grid;gap:14px}
+    input, textarea{
+      width:100%;padding:16px 18px;
+      background:#0e0e0e;
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:16px;
+      color:#fff;
+      outline:none;
+    }
+    textarea{min-height:140px;resize:vertical}
+    button{
+      cursor:pointer;
+      border:none;
+      padding:16px 20px;
+      border-radius:16px;
+      background:#fff;color:#000;font-weight:800;
+    }
+
+    footer{
+      padding:28px 0 40px;
+      color:var(--soft);
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:24px;
+    }
+
+    .reveal{
+      transform:translateY(32px);
+      opacity:0;
+      transition:.8s ease;
+    }
+
+    @keyframes spin3d{
+      from{transform:rotateY(0deg) rotateX(12deg)}
+      to{transform:rotateY(360deg) rotateX(12deg)}
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-18px)}
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,.contact-grid,.products-grid,.stats{grid-template-columns:1fr}
+      .hero{min-height:auto}
+      .hero-visual{min-height:360px}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">TM-DISTRI-MAT</div>
+      <nav class="nav-links">
+        <a href="#entreprise">Entreprise</a>
+        <a href="#produits">Produits</a>
+        <a href="#zone">Zone</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Consommables façade • peinture • dallage</div>
+        <h1>TM Distrimat,<br>la société qu’il vous faut.</h1>
+        <p>
+          Société sœur de Technimat, TM-DISTRI-MAT est spécialisée dans la vente de consommables pour façadiers,
+          peintres et dallagistes. Nous couvrons l’Occitanie avec une approche terrain, réactive et orientée
+          disponibilité produit.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#produits">Découvrir nos produits</a>
+          <a class="btn" href="#contact">Être rappelé</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orb"></div>
+        <div class="tape-3d" aria-hidden="true"></div>
+        <div class="side-band" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="entreprise">
+    <div class="container">
+      <h2 class="section-title reveal">Une structure pensée pour les pros</h2>
+      <p class="section-intro reveal">
+        TM-DISTRI-MAT met en avant une offre dédiée aux consommables chantier et façade.
+        Nous intervenons sur l’ensemble de l’Occitanie avec une logistique basée à Narbonne
+        et un service orienté réactivité, disponibilité et suivi client.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Clients réguliers déjà suivis</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="800">0</div>
+          <div class="stat-label">m² de centre logistique à Narbonne</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="6">0</div>
+          <div class="stat-label">Villes majeures couvertes en Occitanie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="produits">
+    <div class="container">
+      <h2 class="section-title reveal">Nos consommables à forte rotation</h2>
+      <p class="section-intro reveal">
+        Une sélection pensée pour les chantiers façade, peinture et dallage : adhésifs, trames, films polyéthylène,
+        vis et jaquettes, joints de dilatation et cornières façade.
+      </p>
+
+      <div class="products-grid">
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/st390.jpg" alt="Adhésif ST390" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>ST390</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Adhésif chantier</span>
+            <h3>ST390</h3>
+            <p>
+              Adhésif toilé professionnel destiné aux travaux de fixation, maintien et protection sur chantier.
+              Sa toile renforcée apporte une bonne résistance mécanique, tout en restant déchirable à la main.
+              Son adhérence est conçue pour tenir sur supports lisses ou rugueux. Sa couleur orange améliore
+              le repérage visuel sur zone de travail. C’est un ruban polyvalent pour les usages façade et peinture.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/st451.jpg" alt="Adhésif ST451" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>ST451</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Adhésif premium</span>
+            <h3>ST451</h3>
+            <p>
+              Version haut de gamme conçue pour les usages plus exigeants. Ce ruban toilé est adapté aux applications
+              intensives, au maintien, à la protection et aux supports plus difficiles. Sa tenue élevée et sa
+              résistance renforcée en font une solution fiable pour les professionnels recherchant un adhésif
+              chantier performant et durable.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/corniere.jpg" alt="Cornières façade" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>CORNIÈRES</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Façade</span>
+            <h3>Cornières façade</h3>
+            <p>
+              Les cornières façade participent à la finition des angles, à la régularité de pose et à la protection
+              des arrêtes exposées. Elles sont indispensables pour obtenir un rendu propre, durable et régulier
+              sur les chantiers d’enduit et d’isolation par l’extérieur. Ce bloc pourra être ajusté avec ta
+              référence exacte si tu veux une fiche plus précise.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/trame-cstb.jpg" alt="Trame façade CSTB" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>TRAME CSTB</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Armature façade</span>
+            <h3>Trame façade CSTB</h3>
+            <p>
+              Treillis en fibre de verre destiné aux systèmes de façade et d’ITE. Il contribue à la résistance
+              à la fissuration et à la tenue de l’enduit dans le temps. C’est un consommable incontournable
+              dans les systèmes d’armature façade pour sécuriser la finition et améliorer la durabilité de l’ouvrage.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/polyane.jpg" alt="Polyane et sous-dallage Sacherie de Pantin" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>POLYANE</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Films polyéthylène</span>
+            <h3>Polyane & sous-dallage</h3>
+            <p>
+              Nous proposons des films polyéthylène et sous-dallage adaptés aux besoins des professionnels du gros
+              œuvre et du dallage. Ils servent à la séparation, à la protection et à la gestion de l’humidité,
+              tout en apportant une bonne tenue sur chantier. Une gamme essentielle pour les applications sous dalle
+              et les travaux nécessitant un film bâtiment fiable.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="images/vis-jaquette.jpg" alt="Vis et jaquettes Lancy" onerror="this.outerHTML='<div class=&quot;fallback-media&quot;>LANCY</div>';">
+          </div>
+          <div class="card-content">
+            <span class="tag">Machines à projeter</span>
+            <h3>Vis & jaquettes Lancy</h3>
+            <p>
+              Les vis et jaquettes sont des pièces essentielles pour maintenir la performance des machines à projeter.
+              Elles influencent directement la régularité du débit, la qualité de projection et la continuité
+              du chantier. TM-DISTRI-MAT met en avant ces consommables pour répondre aux besoins des applicateurs
+              recherchant disponibilité et rapidité de fourniture.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <div class="fallback-media">JOINTS</div>
+          </div>
+          <div class="card-content">
+            <span class="tag">Façade & dallage</span>
+            <h3>Joints de dilatation</h3>
+            <p>
+              Nous proposons également des joints de dilatation adaptés aux contraintes de façade et aux besoins
+              de séparation des zones soumises aux mouvements de structure. Ils participent à la durabilité
+              de l’ouvrage, à la gestion des mouvements et à la finition technique du chantier.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="zone">
+    <div class="container">
+      <h2 class="section-title reveal">Zone de chalandise</h2>
+      <p class="section-intro reveal">
+        Narbonne constitue le point d’appui logistique, avec un rayonnement sur l’ensemble de l’Occitanie.
+      </p>
+
+      <div class="map-card">
+        <div class="map-wrap">
+          <div class="occitanie-shape"></div>
+
+          <div class="city" style="left:58%;top:43%;"><span></span>Narbonne</div>
+          <div class="city" style="left:67%;top:42%;"><span></span>Montpellier</div>
+          <div class="city" style="left:41%;top:40%;"><span></span>Toulouse</div>
+          <div class="city" style="left:51%;top:37%;"><span></span>Carcassonne</div>
+          <div class="city" style="left:76%;top:35%;"><span></span>Nîmes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Nous sommes là pour vous servir</h2>
+      <p class="section-intro reveal">
+        Pour une demande de prix, une étude de besoin ou un rappel commercial, laisse tes coordonnées.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h3>Contact</h3>
+          <p>TM-DISTRI-MAT, société sœur de Technimat.</p>
+          <div class="contact-list">
+            <div><strong>Téléphone :</strong> 04 68 40 39 86</div>
+            <div><strong>E-mail :</strong> contact@technimat-outillage.fr</div>
+            <div><strong>Adresse :</strong> 2 rue Emile Levassor, 11100 Narbonne</div>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <h3>Être rappelé</h3>
+          <form action="mailto:contact@technimat-outillage.fr" method="post" enctype="text/plain">
+            <input type="text" name="nom" placeholder="Nom / société" required>
+            <input type="tel" name="telephone" placeholder="Téléphone" required>
+            <input type="email" name="email" placeholder="E-mail">
+            <textarea name="message" placeholder="Votre besoin : adhésifs, trames, polyane, joints, vis/jaquettes..."></textarea>
+            <button type="submit">Envoyer la demande</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      TM-DISTRI-MAT • Spécialiste des consommables façade, peinture et dallage
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.stat, .card, .reveal, .contact-box, .map-card').forEach(el=>{
+      observer.observe(el);
+    });
+
+    const counters = document.querySelectorAll('[data-target]');
+    let countersStarted = false;
+
+    function animateCounters(){
+      if(countersStarted) return;
+      countersStarted = true;
+
+      counters.forEach(counter=>{
+        const target = +counter.getAttribute('data-target');
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 90));
+
+        const update = () => {
+          current += increment;
+          if(current >= target){
+            counter.textContent = target + (target >= 100 ? '+' : '');
+          } else {
+            counter.textContent = current;
+            requestAnimationFrame(update);
+          }
+        };
+        update();
+      });
+    }
+
+    const statsSection = document.querySelector('#entreprise');
+    const statsObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) animateCounters();
+      });
+    }, { threshold: .35 });
+
+    if(statsSection){
+      statsObserver.observe(statsSection);
+    }
+
+    const heroVisual = document.querySelector('.hero-visual');
+    const tape = document.querySelector('.tape-3d');
+
+    document.addEventListener('mousemove', (e)=>{
+      if(!heroVisual || !tape) return;
+      const rect = heroVisual.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      tape.style.transform = `rotateY(${x * 24}deg) rotateX(${12 - y * 18}deg)`;
+    });
+
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const media = card.querySelector('.card-media img');
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = -((y - centerY) / centerY) * 10;
+
+        card.style.transform = `
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+          translateY(-8px)
+          scale(1.015)
+        `;
+
+        if(media){
+          const moveX = ((x - centerX) / centerX) * 12;
+          const moveY = ((y - centerY) / centerY) * 12;
+
+          media.style.transform = `
+            scale(1.08)
+            translateX(${moveX}px)
+            translateY(${moveY}px)
+          `;
+          media.style.filter = 'brightness(1.05) contrast(1.05)';
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if(card.classList.contains('visible')){
+          card.style.transform = 'translateY(0)';
+        } else {
+          card.style.transform = 'translateY(36px)';
+        }
+
+        if(media){
+          media.style.transform = 'scale(1)';
+          media.style.filter = 'brightness(1) contrast(1)';
+        }
+      });
+    });
+
+    const productCards = document.querySelectorAll('#produits .card');
+
+    const scroll3DObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          entry.target.animate(
+            [
+              { transform: 'translateY(60px) scale(0.96) rotateX(10deg)', opacity: 0 },
+              { transform: 'translateY(0) scale(1) rotateX(0deg)', opacity: 1 }
+            ],
+            {
+              duration: 900,
+              easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+              fill: 'forwards'
+            }
+          );
+        }
+      });
+    }, { threshold: 0.2 });
+
+    productCards.forEach(card => scroll3DObserver.observe(card));
+  </script>
+</body>
+</html>
