@@ -39,14 +39,19 @@
         radial-gradient(circle at 80% 10%, rgba(255,255,255,.04), transparent 22%),
         linear-gradient(180deg, #060708 0%, #0b0d10 45%, #11151a 100%);
       overflow-x:hidden;
-
-      /* Si vous ajoutez l'image de curseur dans le dossier images sous le nom cursor-main.png */
-      cursor: url("images/cursor-main.png") 16 4, auto;
+      cursor:url("images/cursor-main.png") 8 4, auto;
     }
 
     a{
       text-decoration:none;
       color:inherit;
+      cursor:url("images/cursor-main.png") 8 4, pointer;
+    }
+
+    button,
+    input,
+    textarea{
+      cursor:url("images/cursor-main.png") 8 4, auto;
     }
 
     img{
@@ -84,25 +89,9 @@
       gap:14px;
     }
 
-    .brand-badge{
-      padding:10px 14px;
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:.08em;
-      background:rgba(255,255,255,.03);
-    }
-
-    .brand-right{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
     .brand-logo-fixed{
-      width:62px;
-      height:62px;
+      width:48px;
+      height:48px;
       display:grid;
       place-items:center;
       flex:0 0 auto;
@@ -112,10 +101,22 @@
       width:100%;
       height:100%;
       object-fit:contain;
-      background:#fff;
-      border-radius:18px;
-      padding:6px;
-      box-shadow:0 12px 30px rgba(0,0,0,.22);
+      background:transparent;
+      border-radius:0;
+      padding:0;
+      box-shadow:none;
+      filter:drop-shadow(0 8px 22px rgba(0,0,0,.22));
+    }
+
+    .brand-text{
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      background:rgba(255,255,255,.03);
+      white-space:nowrap;
     }
 
     .nav-links{
@@ -248,22 +249,23 @@
     .hero-logo-wrap img{
       width:100%;
       object-fit:contain;
-      background:#fff;
-      border-radius:30px;
-      padding:18px;
-      box-shadow:0 35px 90px rgba(0,0,0,.34);
+      background:transparent;
+      border-radius:0;
+      padding:0;
+      box-shadow:none;
+      filter:drop-shadow(0 35px 80px rgba(0,0,0,.35));
       transition:transform .18s ease, filter .18s ease;
       will-change:transform;
     }
 
     .hero-logo-shadow{
       position:absolute;
-      width:260px;
-      height:54px;
+      width:240px;
+      height:46px;
       border-radius:50%;
-      background:rgba(0,0,0,.34);
+      background:rgba(0,0,0,.30);
       filter:blur(18px);
-      bottom:90px;
+      bottom:120px;
       z-index:1;
       transition:transform .18s ease;
     }
@@ -517,6 +519,24 @@
       margin:10px 0;
     }
 
+    .mail-box{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .mail-box a{
+      font-weight:700;
+      color:#ffffff;
+      word-break:break-word;
+    }
+
     form{
       display:grid;
       gap:14px;
@@ -539,7 +559,6 @@
 
     button{
       border:none;
-      cursor:pointer;
       padding:16px 20px;
       border-radius:16px;
       background:#fff;
@@ -591,8 +610,8 @@
       }
 
       .brand-logo-fixed{
-        width:52px;
-        height:52px;
+        width:42px;
+        height:42px;
       }
     }
   </style>
@@ -602,21 +621,19 @@
   <header>
     <div class="container nav">
       <div class="brand-left">
-        <div class="brand-badge">TM-DISTRI-MAT</div>
-      </div>
-
-      <div class="brand-right">
-        <nav class="nav-links">
-          <a href="#entreprise">Entreprise</a>
-          <a href="#produits">Produits</a>
-          <a href="#zone">Zone</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
         <div class="brand-logo-fixed">
           <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat">
         </div>
+
+        <div class="brand-text">TM-DISTRI-MAT</div>
       </div>
+
+      <nav class="nav-links">
+        <a href="#entreprise">Entreprise</a>
+        <a href="#produits">Produits</a>
+        <a href="#zone">Zone</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -637,7 +654,7 @@
         </div>
       </div>
 
-      <div class="hero-visual">
+      <div class="hero-visual" id="heroVisual">
         <div class="hero-glow"></div>
         <div class="hero-rings"></div>
         <div class="hero-logo-shadow"></div>
@@ -869,12 +886,22 @@
 
         <div class="contact-box">
           <h3>Être rappelé</h3>
+          <p>
+            Le formulaire ci-dessous ouvre votre messagerie. Si vous préférez, vous pouvez aussi écrire directement à l’adresse indiquée.
+          </p>
+
+          <div class="mail-box">
+            <a href="mailto:contact@technimat-outillage.fr?subject=Demande%20de%20rappel%20TM%20DistriMat">
+              Envoyer un e-mail à contact@technimat-outillage.fr
+            </a>
+          </div>
+
           <form action="mailto:contact@technimat-outillage.fr" method="post" enctype="text/plain">
             <input type="text" name="nom" placeholder="Nom / société" required>
             <input type="tel" name="telephone" placeholder="Téléphone" required>
             <input type="email" name="email" placeholder="E-mail">
             <textarea name="message" placeholder="Votre besoin : adhésifs, trames, cornières, joints, polyane, vis et jaquettes, taloches..."></textarea>
-            <button type="submit">Envoyer la demande</button>
+            <button type="submit">Ouvrir votre messagerie</button>
           </form>
         </div>
       </div>
@@ -938,10 +965,10 @@
       statsObserver.observe(statsSection);
     }
 
+    const heroVisual = document.getElementById('heroVisual');
     const heroLogoWrap = document.getElementById('heroLogoWrap');
     const heroLogoImg = document.getElementById('heroLogoImg');
     const heroShadow = document.querySelector('.hero-logo-shadow');
-    const heroVisual = document.querySelector('.hero-visual');
 
     if(heroVisual && heroLogoWrap && heroLogoImg && heroShadow){
       heroVisual.addEventListener('mousemove', (e)=>{
