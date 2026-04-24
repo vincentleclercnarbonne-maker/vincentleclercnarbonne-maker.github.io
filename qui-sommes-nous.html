@@ -1,330 +1,245 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qui sommes-nous | TM DistriMat</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qui sommes-nous | TM DistriMat</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:#0a0c0f;
-      color:#f3f5f7;
-      opacity:0;
-      transition:opacity .35s ease;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0a0c0f;
+  color:#f3f5f7;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+body.loaded{opacity:1}
 
-    body.loaded{opacity:1}
+.container{
+  width:min(1100px, calc(100% - 32px));
+  margin:auto;
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+header{
+  padding:20px 0;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
 
-    .container{
-      width:min(1100px, calc(100% - 32px));
-      margin:auto;
-    }
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    header{
-      padding:24px 0;
-      border-bottom:1px solid rgba(255,255,255,.1);
-      background:rgba(8,10,12,.85);
-    }
+.logo{
+  font-weight:700;
+}
 
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-    }
+.hero{
+  padding:80px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
 
-    .logo{
-      font-weight:700;
-      letter-spacing:.08em;
-    }
+.tag{
+  font-size:12px;
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  display:inline-block;
+  margin-bottom:20px;
+}
 
-    .back{
-      color:#b5bcc4;
-      font-size:14px;
-    }
+h1{
+  font-size:50px;
+  margin-bottom:20px;
+}
 
-    .hero{
-      padding:80px 0 50px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-      align-items:center;
-    }
+.intro{
+  color:#b5bcc4;
+  line-height:1.7;
+}
 
-    .tag{
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      color:#dbe0e4;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:18px;
-    }
+.logo-box{
+  background:rgba(255,255,255,.05);
+  border-radius:25px;
+  padding:40px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    h1{
-      font-size:clamp(42px, 7vw, 78px);
-      line-height:.95;
-      margin:0 0 20px;
-    }
+.logo-box img{
+  width:100%;
+  max-width:300px;
+}
 
-    .intro{
-      color:#b5bcc4;
-      line-height:1.8;
-      font-size:18px;
-    }
+.section{
+  padding:60px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+}
 
-    .logo-box{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:28px;
-      padding:40px;
-      box-shadow:0 25px 80px rgba(0,0,0,.4);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:320px;
-    }
+.section h2{
+  margin-bottom:15px;
+}
 
-    .logo-box img{
-      width:100%;
-      max-width:360px;
-      object-fit:contain;
-      filter:drop-shadow(0 30px 70px rgba(0,0,0,.35));
-    }
+.section p{
+  color:#b5bcc4;
+  line-height:1.7;
+}
 
-    .section{
-      padding:55px 0;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:30px;
+}
 
-    .section h2{
-      font-size:34px;
-      margin-bottom:18px;
-    }
+.card{
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
 
-    .section p{
-      color:#b5bcc4;
-      line-height:1.8;
-      font-size:17px;
-      margin-bottom:18px;
-    }
+.video-box{
+  margin-top:30px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 25px 80px rgba(0,0,0,.4);
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:28px;
-    }
+video{
+  width:100%;
+  display:block;
+  background:#000;
+}
 
-    .card{
-      padding:24px;
-      border-radius:22px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-    }
+footer{
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#999;
+}
 
-    .card h3{
-      margin-bottom:10px;
-    }
-
-    .card p{
-      margin:0;
-      color:#b5bcc4;
-      line-height:1.7;
-    }
-
-    .video-box{
-      margin-top:26px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:28px;
-      padding:18px;
-      box-shadow:0 25px 80px rgba(0,0,0,.4);
-    }
-
-    video{
-      width:100%;
-      border-radius:20px;
-      display:block;
-      background:#000;
-    }
-
-    .cta{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-    }
-
-    .btn{
-      padding:14px 20px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      font-weight:700;
-    }
-
-    .btn.primary{
-      background:#fff;
-      color:#000;
-    }
-
-    footer{
-      padding:30px 0;
-      color:#8d96a0;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-
-    @media(max-width:900px){
-      .hero,
-      .grid{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+@media(max-width:900px){
+  .hero,.grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <div class="container nav">
-    <a href="index.html" class="logo">TM-DISTRI-MAT</a>
-    <a href="index.html" class="back">Retour à l’accueil</a>
+    <div class="logo">TM-DISTRI-MAT</div>
+    <a href="index.html">Retour accueil</a>
   </div>
 </header>
 
 <main>
 
-  <section class="container hero">
-    <div>
-      <span class="tag">Qui sommes-nous</span>
-      <h1>Une entité spécialisée au service des professionnels.</h1>
+<section class="container hero">
 
-      <p class="intro">
-        TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
-        Notre rôle est de proposer une offre spécialisée en consommables pour les professionnels de la façade, de la peinture
-        et du dallage, avec une approche orientée stock, réactivité et accompagnement terrain.
-      </p>
+  <div>
+    <span class="tag">Qui sommes-nous</span>
+
+    <h1>Une structure spécialisée pour les professionnels.</h1>
+
+    <p class="intro">
+      TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
+      Notre objectif est de proposer une offre claire, disponible et adaptée aux professionnels de la façade,
+      de la peinture et du dallage.
+    </p>
+  </div>
+
+  <div class="logo-box">
+    <img src="images/logotmdistrimat.png">
+  </div>
+
+</section>
+
+<section class="container section">
+
+  <h2>Notre positionnement</h2>
+
+  <p>
+    TM DistriMat se concentre sur les consommables à forte rotation :
+    adhésifs, trames, films polyane, joints de dilatation, vis, jaquettes
+    et outils de finition.
+  </p>
+
+  <p>
+    Notre approche repose sur la disponibilité produit, la réactivité
+    et une connaissance terrain des besoins professionnels.
+  </p>
+
+</section>
+
+<section class="container section">
+
+  <h2>Le lien avec TECHNIMAT</h2>
+
+  <p>
+    TECHNIMAT est une entreprise basée à Narbonne spécialisée dans la
+    distribution d’outillage, fournitures et équipements pour le bâtiment.
+  </p>
+
+  <p>
+    TM DistriMat s’inscrit dans cette continuité avec une spécialisation
+    sur les consommables chantier et une approche encore plus ciblée.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Expertise</h3>
+      <p>Une connaissance terrain des besoins chantier.</p>
     </div>
 
-    <div class="logo-box">
-      <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat">
+    <div class="card">
+      <h3>Stock</h3>
+      <p>Produits disponibles rapidement.</p>
     </div>
-  </section>
 
-  <section class="container section">
-    <h2>Notre positionnement</h2>
-
-    <p>
-      TM DistriMat s’adresse aux entreprises qui recherchent des consommables fiables, disponibles et adaptés aux contraintes
-      réelles du chantier. Notre offre couvre notamment les adhésifs, trames, cornières, films polyane, joints de dilatation,
-      vis et jaquettes, ainsi que certains outils de finition.
-    </p>
-
-    <p>
-      L’objectif est simple : permettre aux professionnels de gagner du temps, de sécuriser leurs approvisionnements
-      et de disposer rapidement des produits nécessaires à leurs interventions.
-    </p>
-  </section>
-
-  <section class="container section">
-    <h2>Le lien avec TECHNIMAT</h2>
-
-    <p>
-      TECHNIMAT est implantée à Narbonne et intervient dans le commerce de fournitures, équipements, outillages et matériels
-      pour les professionnels du bâtiment. Les informations publiques indiquent une création en 2004 et une activité orientée
-      vers les fournitures et équipements industriels divers, avec une adresse à Narbonne. Le site Technimat indique également
-      ses coordonnées : 2 rue Emile Levassor, 11100 Narbonne, 04 68 40 39 86 et contact@technimat-outillage.fr.
-    </p>
-
-    <p>
-      TM DistriMat s’inscrit dans cette continuité en se concentrant davantage sur les consommables à forte rotation
-      pour les métiers de la façade, de la peinture et du dallage.
-    </p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Expertise bâtiment</h3>
-        <p>Une connaissance des besoins terrain et des contraintes rencontrées par les professionnels.</p>
-      </div>
-
-      <div class="card">
-        <h3>Ressources communes</h3>
-        <p>Un environnement de travail partagé avec TECHNIMAT, permettant de s’appuyer sur une base solide.</p>
-      </div>
-
-      <div class="card">
-        <h3>Spécialisation consommables</h3>
-        <p>Une offre pensée pour les produits utilisés régulièrement sur les chantiers de façade, peinture et dallage.</p>
-      </div>
+    <div class="card">
+      <h3>Réactivité</h3>
+      <p>Réponses rapides aux demandes clients.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="container section">
-    <h2>Notre organisation</h2>
+</section>
 
-    <p>
-      TM DistriMat s’appuie sur un centre logistique de 800 m² à Narbonne et une zone de chalandise couvrant l’Occitanie.
-      Avec plus de 500 clients réguliers, notre démarche repose sur la disponibilité produit, la réactivité commerciale
-      et la proximité avec les professionnels.
-    </p>
+<section class="container section">
 
-    <div class="grid">
-      <div class="card">
-        <h3>Stock</h3>
-        <p>Une logique d’approvisionnement pensée pour limiter les ruptures sur les consommables essentiels.</p>
-      </div>
+  <h2>Vidéo de présentation</h2>
 
-      <div class="card">
-        <h3>Réactivité</h3>
-        <p>Une organisation destinée à répondre rapidement aux demandes de prix, de disponibilité et de livraison.</p>
-      </div>
+  <p>
+    Découvrez notre activité à travers cette présentation.
+  </p>
 
-      <div class="card">
-        <h3>Accompagnement</h3>
-        <p>Un service orienté conseil, suivi et compréhension des besoins des professionnels.</p>
-      </div>
-    </div>
-  </section>
+  <!-- VIDEO INTEGREE -->
+  <div class="video-box">
+    <video controls autoplay muted loop playsinline>
+      <source src="videos/prestm.mp4" type="video/mp4">
+    </video>
+  </div>
 
-  <section class="container section">
-    <h2>Vidéo de présentation</h2>
+</section>
 
-    <p>
-      Vous pouvez intégrer ici une vidéo interne, sans la publier sur YouTube. Il suffit d’ajouter le fichier vidéo
-      dans un dossier nommé <strong>videos</strong> sur GitHub, puis de l’appeler avec le nom indiqué dans le code.
-    </p>
+<section class="container section">
 
-    <div class="video-box">
-      <video controls preload="metadata" poster="images/logotmdistrimat.png">
-        <source src="videos/presentation-tm-distrimat.mp4" type="video/mp4">
-        Votre navigateur ne permet pas la lecture de cette vidéo.
-      </video>
-    </div>
-  </section>
+  <h2>Notre mission</h2>
 
-  <section class="container section">
-    <h2>Notre mission</h2>
+  <p>
+    Fournir aux professionnels les bons produits, au bon moment,
+    avec un service simple, rapide et efficace.
+  </p>
 
-    <p>
-      Fournir aux professionnels les bons consommables, au bon moment, avec une offre claire, une disponibilité maîtrisée
-      et un service réactif. TM DistriMat ne se positionne pas comme un simple distributeur de matériaux, mais comme
-      un partenaire spécialisé dans les consommables nécessaires au bon déroulement des chantiers.
-    </p>
-
-    <div class="cta">
-      <a class="btn primary" href="index.html#produits">Voir nos produits</a>
-      <a class="btn" href="mailto:contact@technimat-outillage.fr?subject=Contact%20TM%20DistriMat">Nous contacter</a>
-    </div>
-  </section>
+</section>
 
 </main>
 
@@ -335,9 +250,9 @@
 </footer>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.classList.add("loaded");
-  });
+document.addEventListener("DOMContentLoaded",()=>{
+  document.body.classList.add("loaded");
+});
 </script>
 
 </body>
