@@ -1,31 +1,271 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Taloche Mondelin | TM DistriMat</title>
-<style>
-body{margin:0;font-family:Arial;background:#0a0c0f;color:#fff}
-.container{max-width:1100px;margin:auto;padding:40px}
-img{width:100%;max-width:400px;background:#fff}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taloche Mondelin | TM DistriMat</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#0a0c0f;
+      color:#f3f5f7;
+      opacity:0;
+      transition:opacity .35s ease;
+    }
+
+    body.loaded{opacity:1}
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:auto;
+    }
+
+    header{
+      padding:24px 0;
+      border-bottom:1px solid rgba(255,255,255,.1);
+      background:rgba(8,10,12,.85);
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo{
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+
+    .back{
+      color:#b5bcc4;
+      font-size:14px;
+    }
+
+    .product{
+      padding:70px 0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .image-box{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 25px 80px rgba(0,0,0,.4);
+    }
+
+    .image-box img{
+      width:100%;
+      border-radius:20px;
+      background:#fff;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      color:#dbe0e4;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(42px, 7vw, 78px);
+      line-height:.95;
+      margin:0 0 20px;
+    }
+
+    .intro{
+      color:#b5bcc4;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:26px;
+    }
+
+    .details{
+      display:grid;
+      gap:12px;
+      margin:28px 0;
+    }
+
+    .detail{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dce1e6;
+    }
+
+    .section{
+      padding:50px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:24px;
+      border-radius:22px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .card h3{
+      margin-bottom:10px;
+    }
+
+    .card p,
+    li{
+      color:#b5bcc4;
+      line-height:1.7;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    .cta{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+
+    .btn{
+      padding:14px 20px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:700;
+    }
+
+    .btn.primary{
+      background:#fff;
+      color:#000;
+    }
+
+    footer{
+      padding:30px 0;
+      color:#8d96a0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    @media(max-width:900px){
+      .product,
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-<a href="index.html">Retour</a>
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">TM-DISTRI-MAT</a>
+    <a href="index.html" class="back">Retour à l’accueil</a>
+  </div>
+</header>
 
-<h1>Taloche Mondelin</h1>
+<main>
 
-<img src="images/talochemondelin.png">
+  <section class="container product">
+    <div class="image-box">
+      <img src="images/talochemondelin.png" alt="Taloche Mondelin">
+    </div>
 
-<p>
-Outil professionnel pour les travaux de finition.
-Permet une application propre et régulière.
-Adapté aux façadiers et applicateurs.
-</p>
+    <div>
+      <span class="tag">Outillage façade</span>
+      <h1>Taloche Mondelin</h1>
 
-</div>
+      <p class="intro">
+        La taloche Mondelin est un outil professionnel destiné aux travaux de finition, d’application et de préparation des surfaces. Elle s’adresse aux façadiers, applicateurs et professionnels du bâtiment qui recherchent un outil fiable, pratique et adapté aux usages réguliers sur chantier.
+      </p>
+
+      <div class="details">
+        <div class="detail">Usage : finition, application, lissage et préparation des surfaces</div>
+        <div class="detail">Cible : façadiers, peintres, applicateurs et entreprises de finition</div>
+        <div class="detail">Atout principal : outil pratique, fiable et adapté aux travaux professionnels</div>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="mailto:contact@technimat-outillage.fr?subject=Demande%20de%20prix%20Taloche%20Mondelin">Demander un prix</a>
+        <a class="btn" href="index.html#produits">Voir les autres produits</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2>Applications principales</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Finition façade</h3>
+        <p>
+          Permet d’obtenir une finition plus régulière lors des travaux d’enduit, de lissage ou de préparation des surfaces.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Application chantier</h3>
+        <p>
+          Adaptée aux usages quotidiens des professionnels qui travaillent sur des supports variés et recherchent un outil fiable.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Préparation des surfaces</h3>
+        <p>
+          Utile pour accompagner les travaux de préparation, d’application et de reprise sur les chantiers de façade ou de finition.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2>Points forts</h2>
+
+    <ul>
+      <li>Outil professionnel adapté aux travaux de façade et de finition.</li>
+      <li>Permet une application plus régulière selon les usages chantier.</li>
+      <li>Convient aux façadiers, applicateurs et entreprises de peinture.</li>
+      <li>Produit pratique pour les travaux de préparation et de lissage.</li>
+      <li>Disponible via TM DistriMat pour les professionnels en Occitanie.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    TM-DISTRI-MAT • 76 Chem. des Fours À Chaux • contact@technimat-outillage.fr
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("loaded");
+  });
+</script>
 
 </body>
 </html>
