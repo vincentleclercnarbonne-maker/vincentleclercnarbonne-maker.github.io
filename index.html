@@ -9,27 +9,18 @@
   <style>
     :root{
       --bg:#0a0c0f;
-      --bg2:#11151a;
       --card:#13181d;
       --line:rgba(255,255,255,.08);
       --text:#f3f5f7;
       --muted:#b5bcc4;
-      --soft:#8d96a0;
-      --white:#ffffff;
       --shadow:0 25px 80px rgba(0,0,0,.42);
       --radius:26px;
       --max:1280px;
     }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth}
 
     body{
       font-family:Arial, Helvetica, sans-serif;
@@ -39,8 +30,12 @@
         radial-gradient(circle at 80% 10%, rgba(255,255,255,.04), transparent 22%),
         linear-gradient(180deg, #060708 0%, #0b0d10 45%, #11151a 100%);
       overflow-x:hidden;
+      opacity:0;
+      transition:opacity .35s ease;
       cursor:url("images/cursor-main.png") 8 4, auto;
     }
+
+    body.loaded{opacity:1}
 
     a{
       text-decoration:none;
@@ -48,16 +43,7 @@
       cursor:url("images/cursor-main.png") 8 4, pointer;
     }
 
-    button,
-    input,
-    textarea{
-      cursor:url("images/cursor-main.png") 8 4, auto;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
+    img{display:block;max-width:100%}
 
     .container{
       width:min(var(--max), calc(100% - 32px));
@@ -132,7 +118,6 @@
       display:grid;
       place-items:center;
       padding:120px 0 50px;
-      position:relative;
     }
 
     .hero-grid{
@@ -193,9 +178,7 @@
       color:#000;
     }
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+    .btn:hover{transform:translateY(-2px)}
 
     .hero-visual{
       position:relative;
@@ -211,8 +194,7 @@
       width:470px;
       height:470px;
       border-radius:50%;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.16) 0%, rgba(255,255,255,.05) 34%, transparent 70%);
+      background:radial-gradient(circle, rgba(255,255,255,.16) 0%, rgba(255,255,255,.05) 34%, transparent 70%);
       filter:blur(26px);
       opacity:.62;
       z-index:0;
@@ -336,6 +318,9 @@
 
     .card{
       position:relative;
+      display:block;
+      color:inherit;
+      text-decoration:none;
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border:1px solid var(--line);
       border-radius:28px;
@@ -348,9 +333,7 @@
       will-change:transform;
     }
 
-    .card:hover{
-      box-shadow:0 32px 90px rgba(0,0,0,.54);
-    }
+    .card:hover{box-shadow:0 32px 90px rgba(0,0,0,.54)}
 
     .card-media{
       position:relative;
@@ -423,18 +406,6 @@
       overflow:hidden;
     }
 
-    .map-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px);
-      background-size:28px 28px;
-      pointer-events:none;
-      opacity:.35;
-    }
-
     .map-inner{
       position:relative;
       z-index:2;
@@ -468,13 +439,6 @@
       border:1px solid rgba(255,255,255,.08);
       border-radius:14px;
       background:rgba(255,255,255,.03);
-    }
-
-    .map-image{
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
     }
 
     .map-image img{
@@ -515,15 +479,9 @@
       line-height:1.75;
     }
 
-    .contact-list div{
-      margin:10px 0;
-    }
+    .contact-list div{margin:10px 0}
 
     .mail-box{
-      display:flex;
-      align-items:flex-start;
-      gap:14px;
-      flex-wrap:wrap;
       margin-top:14px;
       padding:18px;
       border:1px solid rgba(255,255,255,.10);
@@ -533,13 +491,14 @@
 
     .mail-box a{
       font-weight:700;
-      color:#ffffff;
+      color:#fff;
       word-break:break-word;
     }
 
     form{
       display:grid;
       gap:14px;
+      margin-top:14px;
     }
 
     input, textarea{
@@ -593,468 +552,454 @@
         grid-template-columns:1fr;
       }
 
-      .hero{
-        min-height:auto;
-      }
-
-      .hero-visual{
-        min-height:420px;
-      }
-
-      .hero-logo-wrap{
-        width:240px;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .brand-logo-fixed{
-        width:42px;
-        height:42px;
-      }
+      .hero{min-height:auto}
+      .hero-visual{min-height:420px}
+      .hero-logo-wrap{width:240px}
+      .nav-links{display:none}
+      .brand-logo-fixed{width:42px;height:42px}
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="container nav">
-      <div class="brand-left">
-        <div class="brand-logo-fixed">
-          <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat">
-        </div>
+<header>
+  <div class="container nav">
+    <div class="brand-left">
+      <div class="brand-logo-fixed">
+        <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat">
+      </div>
+      <div class="brand-text">TM-DISTRI-MAT</div>
+    </div>
 
-        <div class="brand-text">TM-DISTRI-MAT</div>
+    <nav class="nav-links">
+      <a href="qui-sommes-nous.html">Qui sommes-nous</a>
+      <a href="#produits">Produits</a>
+      <a href="livraison-services.html">Livraison & services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Consommables façade • peinture • dallage</div>
+      <h1>TM Distrimat,<br>la société qu’il vous faut.</h1>
+      <p>
+        TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
+        Nous sommes spécialisés dans la vente de consommables pour façadiers, peintres et dallagistes,
+        avec une couverture sur l’Occitanie et une approche terrain, réactive et orientée disponibilité produit.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="#produits">Découvrir nos produits</a>
+        <a class="btn" href="#contact">Être rappelé</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" id="heroVisual">
+      <div class="hero-glow"></div>
+      <div class="hero-rings"></div>
+      <div class="hero-logo-shadow"></div>
+
+      <div class="hero-logo-wrap" id="heroLogoWrap">
+        <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat" id="heroLogoImg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entreprise">
+  <div class="container">
+    <h2 class="section-title reveal">Une structure pensée pour les professionnels</h2>
+    <p class="section-intro reveal">
+      TM DistriMat met en avant une offre spécialisée en consommables pour façadiers, peintres et dallagistes.
+      Avec plus de 500 clients réguliers, un centre logistique de 800 m² à Narbonne et une zone de chalandise
+      sur l’ensemble de l’Occitanie, l’objectif est clair : réactivité, stock et service.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number" data-target="500">0</div>
+        <div class="stat-label">Clients réguliers</div>
       </div>
 
-      <nav class="nav-links">
-        <a href="#entreprise">Entreprise</a>
-        <a href="#produits">Produits</a>
-        <a href="#zone">Zone</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+      <div class="stat">
+        <div class="stat-number" data-target="800">0</div>
+        <div class="stat-label">m² de centre logistique à Narbonne</div>
+      </div>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Consommables façade • peinture • dallage</div>
-        <h1>TM Distrimat,<br>la société qu’il vous faut.</h1>
+      <div class="stat">
+        <div class="stat-number" data-target="6">0</div>
+        <div class="stat-label">Villes majeures couvertes en Occitanie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produits">
+  <div class="container">
+    <h2 class="section-title reveal">Nos consommables à forte rotation</h2>
+    <p class="section-intro reveal">
+      Une sélection pensée pour les professionnels de la façade, de la peinture et du dallage :
+      adhésifs, cornières, trames, films polyéthylène, joints, vis et jaquettes, ainsi que l’outillage de finition.
+    </p>
+
+    <div class="products-grid">
+
+      <a href="st390.html" class="card">
+        <div class="card-media">
+          <img src="images/st390.jpg" alt="ST390">
+        </div>
+        <div class="card-content">
+          <span class="tag">Adhésif chantier</span>
+          <h3>ST390</h3>
+          <p>
+            Adhésif toilé professionnel destiné aux travaux de fixation, de maintien et de protection sur chantier.
+          </p>
+        </div>
+      </a>
+
+      <a href="st451.html" class="card">
+        <div class="card-media">
+          <img src="images/st451.png" alt="ST451">
+        </div>
+        <div class="card-content">
+          <span class="tag">Adhésif premium</span>
+          <h3>ST451</h3>
+          <p>
+            Ruban renforcé destiné aux usages intensifs, aux chantiers exigeants et aux applications nécessitant une bonne tenue.
+          </p>
+        </div>
+      </a>
+
+      <a href="corniere.html" class="card">
+        <div class="card-media">
+          <img src="images/imagecorniere.png" alt="Cornières façade">
+        </div>
+        <div class="card-content">
+          <span class="tag">Finition façade</span>
+          <h3>Cornières façade</h3>
+          <p>
+            Cornières destinées à la régularité des angles, à la propreté des finitions et à la protection des arêtes.
+          </p>
+        </div>
+      </a>
+
+      <a href="trame.html" class="card">
+        <div class="card-media">
+          <img src="images/trame.png" alt="Trame façade">
+        </div>
+        <div class="card-content">
+          <span class="tag">Armature façade</span>
+          <h3>Trame façade</h3>
+          <p>
+            Trame utilisée dans les systèmes d’armature pour renforcer la tenue de l’enduit et limiter les fissurations.
+          </p>
+        </div>
+      </a>
+
+      <a href="polyane.html" class="card">
+        <div class="card-media">
+          <img src="images/polyanne.png" alt="Polyane et sous-dallage">
+        </div>
+        <div class="card-content">
+          <span class="tag">Films bâtiment</span>
+          <h3>Polyane et sous-dallage</h3>
+          <p>
+            Films polyéthylène destinés à la séparation, à la protection et aux usages sous dalle.
+          </p>
+        </div>
+      </a>
+
+      <a href="vis-jaquettes.html" class="card">
+        <div class="card-media">
+          <img src="images/visjaquette$.png" alt="Vis et jaquettes">
+        </div>
+        <div class="card-content">
+          <span class="tag">Machines à projeter</span>
+          <h3>Vis et jaquettes</h3>
+          <p>
+            Consommables essentiels au bon fonctionnement des machines à projeter et à la régularité du débit.
+          </p>
+        </div>
+      </a>
+
+      <a href="joints-dilatation.html" class="card">
+        <div class="card-media">
+          <img src="images/jointdedillatation.png" alt="Joints de dilatation">
+        </div>
+        <div class="card-content">
+          <span class="tag">Façade et dallage</span>
+          <h3>Joints de dilatation</h3>
+          <p>
+            Joints destinés à la gestion des mouvements de structure et à la durabilité des ouvrages.
+          </p>
+        </div>
+      </a>
+
+      <a href="taloche-mondelin.html" class="card">
+        <div class="card-media">
+          <img src="images/talochemondelin.png" alt="Taloche Mondelin">
+        </div>
+        <div class="card-content">
+          <span class="tag">Outillage façade</span>
+          <h3>Taloche Mondelin</h3>
+          <p>
+            Outillage professionnel destiné aux travaux de finition, d’application et de préparation des surfaces.
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="zone">
+  <div class="container">
+    <h2 class="section-title reveal">Zone de chalandise</h2>
+    <p class="section-intro reveal">
+      Le point d’appui logistique se situe à Narbonne, avec un rayonnement sur toute l’Occitanie.
+    </p>
+
+    <div class="map-card">
+      <div class="map-inner">
+        <div class="map-text">
+          <h3>Une couverture régionale claire</h3>
+          <p>
+            TM DistriMat s’appuie sur une implantation stratégique à Narbonne pour répondre rapidement
+            aux besoins des professionnels sur l’ensemble de l’Occitanie.
+          </p>
+
+          <div class="map-points">
+            <div>Narbonne</div>
+            <div>Montpellier</div>
+            <div>Toulouse</div>
+            <div>Carcassonne</div>
+            <div>Nîmes</div>
+          </div>
+        </div>
+
+        <div class="map-image">
+          <img src="images/carteoccitanie.png" alt="Carte Occitanie">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title reveal">Nous sommes là pour vous servir</h2>
+    <p class="section-intro reveal">
+      Pour une demande de prix, une étude de besoin ou un rappel commercial, laissez vos coordonnées.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-box">
+        <h3>Contact</h3>
         <p>
           TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
-          Nous sommes spécialisés dans la vente de consommables pour façadiers, peintres et dallagistes,
-          avec une couverture sur l’Occitanie et une approche terrain, réactive et orientée disponibilité produit.
         </p>
 
-        <div class="hero-cta">
-          <a class="btn primary" href="#produits">Découvrir nos produits</a>
-          <a class="btn" href="#contact">Être rappelé</a>
+        <div class="contact-list">
+          <div><strong>Téléphone :</strong> 04 68 40 39 86</div>
+          <div><strong>E-mail :</strong> contact@technimat-outillage.fr</div>
+          <div><strong>Adresse :</strong> 76 Chem. des Fours À Chaux</div>
         </div>
       </div>
 
-      <div class="hero-visual" id="heroVisual">
-        <div class="hero-glow"></div>
-        <div class="hero-rings"></div>
-        <div class="hero-logo-shadow"></div>
+      <div class="contact-box">
+        <h3>Être rappelé</h3>
+        <p>
+          Le formulaire ci-dessous ouvre votre messagerie. Vous pouvez aussi écrire directement à l’adresse indiquée.
+        </p>
 
-        <div class="hero-logo-wrap" id="heroLogoWrap">
-          <img src="images/logotmdistrimat.png" alt="Logo TM DistriMat" id="heroLogoImg">
+        <div class="mail-box">
+          <a href="mailto:contact@technimat-outillage.fr?subject=Demande%20de%20rappel%20TM%20DistriMat">
+            Envoyer un e-mail à contact@technimat-outillage.fr
+          </a>
         </div>
+
+        <form action="mailto:contact@technimat-outillage.fr" method="post" enctype="text/plain">
+          <input type="text" name="nom" placeholder="Nom / société" required>
+          <input type="tel" name="telephone" placeholder="Téléphone" required>
+          <input type="email" name="email" placeholder="E-mail">
+          <textarea name="message" placeholder="Votre besoin : adhésifs, trames, cornières, joints, polyane, vis et jaquettes, taloches..."></textarea>
+          <button type="submit">Ouvrir votre messagerie</button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="entreprise">
-    <div class="container">
-      <h2 class="section-title reveal">Une structure pensée pour les professionnels</h2>
-      <p class="section-intro reveal">
-        TM DistriMat met en avant une offre spécialisée en consommables pour façadiers, peintres et dallagistes.
-        Avec plus de 500 clients réguliers, un centre logistique de 800 m² à Narbonne et une zone de chalandise
-        sur l’ensemble de l’Occitanie, l’objectif est clair : réactivité, stock et service.
-      </p>
+<footer>
+  <div class="container">
+    TM-DISTRI-MAT • Spécialiste des consommables façade, peinture et dallage
+  </div>
+</footer>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">Clients réguliers</div>
-        </div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("loaded");
 
-        <div class="stat">
-          <div class="stat-number" data-target="800">0</div>
-          <div class="stat-label">m² de centre logistique à Narbonne</div>
-        </div>
+    const savedPosition = sessionStorage.getItem("tmScrollPosition");
+    if (savedPosition) {
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition));
+        sessionStorage.removeItem("tmScrollPosition");
+      }, 100);
+    }
+  });
 
-        <div class="stat">
-          <div class="stat-number" data-target="6">0</div>
-          <div class="stat-label">Villes majeures couvertes en Occitanie</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener("click", () => {
+      sessionStorage.setItem("tmScrollPosition", window.scrollY);
+    });
+  });
 
-  <section id="produits">
-    <div class="container">
-      <h2 class="section-title reveal">Nos consommables à forte rotation</h2>
-      <p class="section-intro reveal">
-        Une sélection pensée pour les professionnels de la façade, de la peinture et du dallage :
-        adhésifs, cornières, trames, films polyéthylène, joints, vis et jaquettes, ainsi que l’outillage de finition.
-      </p>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold:0.18});
 
-      <div class="products-grid">
+  document.querySelectorAll('.stat, .card, .map-card, .contact-box, .reveal').forEach(el=>{
+    observer.observe(el);
+  });
 
-        <a href="st390.html" class="card">
-          <div class="card-media">
-            <img src="images/st390.jpg" alt="ST390">
-          </div>
-          <div class="card-content">
-            <span class="tag">Adhésif chantier</span>
-            <h3>ST390</h3>
-            <p>
-              Adhésif toilé professionnel destiné aux travaux de fixation, de maintien et de protection sur chantier.
-              Sa toile renforcée apporte une bonne résistance mécanique et une utilisation adaptée aux besoins courants
-              en façade, peinture et protection de zone.
-            </p>
-          </div>
-        </a>
+  const counters = document.querySelectorAll('[data-target]');
+  let countersStarted = false;
 
-        <article class="card">
-          <div class="card-media">
-            <img src="images/st451.png" alt="ST451">
-          </div>
-          <div class="card-content">
-            <span class="tag">Adhésif premium</span>
-            <h3>ST451</h3>
-            <p>
-              Version plus exigeante pour les usages intensifs. Ce ruban apporte une tenue renforcée,
-              une bonne résistance et une utilisation adaptée aux chantiers où la fiabilité du collage
-              et la robustesse sont des critères essentiels.
-            </p>
-          </div>
-        </article>
+  function animateCounters(){
+    if(countersStarted) return;
+    countersStarted = true;
 
-        <article class="card">
-          <div class="card-media">
-            <img src="images/imagecorniere.png" alt="Cornières façade">
-          </div>
-          <div class="card-content">
-            <span class="tag">Finition façade</span>
-            <h3>Cornières façade</h3>
-            <p>
-              Les cornières façade participent à la régularité des angles, à la propreté de la finition
-              et à la protection des arêtes. Elles constituent un consommable essentiel pour obtenir
-              un rendu net, durable et techniquement propre sur chantier.
-            </p>
-          </div>
-        </article>
+    counters.forEach(counter=>{
+      const target = +counter.getAttribute('data-target');
+      let current = 0;
+      const increment = Math.max(1, Math.ceil(target / 90));
 
-        <article class="card">
-          <div class="card-media">
-            <img src="images/trame.png" alt="Trame façade">
-          </div>
-          <div class="card-content">
-            <span class="tag">Armature façade</span>
-            <h3>Trame façade</h3>
-            <p>
-              La trame façade est utilisée dans les systèmes d’armature pour améliorer la tenue de l’enduit,
-              limiter les risques de fissuration et renforcer la durabilité de l’ouvrage.
-              Elle s’adresse aux professionnels recherchant une base fiable pour leurs systèmes façade.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="images/polyanne.png" alt="Polyane et sous-dallage">
-          </div>
-          <div class="card-content">
-            <span class="tag">Films bâtiment</span>
-            <h3>Polyane et sous-dallage</h3>
-            <p>
-              Films polyéthylène destinés aux applications de séparation, de protection et de gestion de l’humidité.
-              Ils répondent aux besoins des professionnels du dallage et du gros œuvre qui recherchent
-              des références fiables pour les usages sous dalle et chantier.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="images/visjaquette$.png" alt="Vis et jaquettes">
-          </div>
-          <div class="card-content">
-            <span class="tag">Machines à projeter</span>
-            <h3>Vis et jaquettes</h3>
-            <p>
-              Les vis et jaquettes sont indispensables au bon fonctionnement des machines à projeter.
-              Elles influencent la régularité du débit, la qualité de projection et la continuité du chantier.
-              Une gamme importante pour les applicateurs et professionnels de façade.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="images/jointdedillatation.png" alt="Joints de dilatation">
-          </div>
-          <div class="card-content">
-            <span class="tag">Façade et dallage</span>
-            <h3>Joints de dilatation</h3>
-            <p>
-              Les joints de dilatation participent à la gestion des mouvements de structure et à la durabilité
-              des ouvrages. Ils sont essentiels pour les applications façade et dallage nécessitant
-              une séparation technique propre et durable.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="images/talochemondelin.png" alt="Taloche Mondelin">
-          </div>
-          <div class="card-content">
-            <span class="tag">Outillage façade</span>
-            <h3>Taloche Mondelin</h3>
-            <p>
-              La taloche Mondelin complète l’offre avec un outillage reconnu sur chantier.
-              Elle s’adresse aux professionnels recherchant un outil fiable, pratique et adapté
-              aux travaux de finition, d’application et de préparation des surfaces.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="zone">
-    <div class="container">
-      <h2 class="section-title reveal">Zone de chalandise</h2>
-      <p class="section-intro reveal">
-        Le point d’appui logistique se situe à Narbonne, avec un rayonnement sur toute l’Occitanie.
-      </p>
-
-      <div class="map-card">
-        <div class="map-inner">
-          <div class="map-text">
-            <h3>Une couverture régionale claire</h3>
-            <p>
-              TM DistriMat s’appuie sur une implantation stratégique à Narbonne pour répondre rapidement
-              aux besoins des professionnels sur l’ensemble de l’Occitanie. La proximité logistique,
-              la disponibilité produit et la réactivité commerciale permettent de couvrir efficacement
-              les principaux secteurs d’activité de la région.
-            </p>
-
-            <div class="map-points">
-              <div>Narbonne</div>
-              <div>Montpellier</div>
-              <div>Toulouse</div>
-              <div>Carcassonne</div>
-              <div>Nîmes</div>
-            </div>
-          </div>
-
-          <div class="map-image">
-            <img src="images/carteoccitanie.png" alt="Carte Occitanie">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title reveal">Nous sommes là pour vous servir</h2>
-      <p class="section-intro reveal">
-        Pour une demande de prix, une étude de besoin ou un rappel commercial, laissez vos coordonnées.
-      </p>
-
-      <div class="contact-grid">
-        <div class="contact-box">
-          <h3>Contact</h3>
-          <p>
-            TM DistriMat est une entité du même groupe que TECHNIMAT, partageant une expertise et des ressources communes.
-          </p>
-
-          <div class="contact-list">
-            <div><strong>Téléphone :</strong> 04 68 40 39 86</div>
-            <div><strong>E-mail :</strong> contact@technimat-outillage.fr</div>
-            <div><strong>Adresse :</strong> 76 Chem. des Fours À Chaux</div>
-          </div>
-        </div>
-
-        <div class="contact-box">
-          <h3>Être rappelé</h3>
-          <p>
-            Le formulaire ci-dessous ouvre votre messagerie. Si vous préférez, vous pouvez aussi écrire directement à l’adresse indiquée.
-          </p>
-
-          <div class="mail-box">
-            <a href="mailto:contact@technimat-outillage.fr?subject=Demande%20de%20rappel%20TM%20DistriMat">
-              Envoyer un e-mail à contact@technimat-outillage.fr
-            </a>
-          </div>
-
-          <form action="mailto:contact@technimat-outillage.fr" method="post" enctype="text/plain">
-            <input type="text" name="nom" placeholder="Nom / société" required>
-            <input type="tel" name="telephone" placeholder="Téléphone" required>
-            <input type="email" name="email" placeholder="E-mail">
-            <textarea name="message" placeholder="Votre besoin : adhésifs, trames, cornières, joints, polyane, vis et jaquettes, taloches..."></textarea>
-            <button type="submit">Ouvrir votre messagerie</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      TM-DISTRI-MAT • Spécialiste des consommables façade, peinture et dallage
-    </div>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
+      const update = () => {
+        current += increment;
+        if(current >= target){
+          counter.textContent = target + (target >= 100 ? '+' : '');
+        } else {
+          counter.textContent = current;
+          requestAnimationFrame(update);
         }
-      });
-    }, {threshold:0.18});
+      };
+      update();
+    });
+  }
 
-    document.querySelectorAll('.stat, .card, .map-card, .contact-box, .reveal').forEach(el=>{
-      observer.observe(el);
+  const statsSection = document.querySelector('#entreprise');
+  const statsObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        animateCounters();
+      }
+    });
+  }, {threshold:0.35});
+
+  if(statsSection){
+    statsObserver.observe(statsSection);
+  }
+
+  const heroVisual = document.getElementById('heroVisual');
+  const heroLogoWrap = document.getElementById('heroLogoWrap');
+  const heroLogoImg = document.getElementById('heroLogoImg');
+  const heroShadow = document.querySelector('.hero-logo-shadow');
+
+  if(heroVisual && heroLogoWrap && heroLogoImg && heroShadow){
+    heroVisual.addEventListener('mousemove', (e)=>{
+      const rect = heroVisual.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateY = ((x - centerX) / centerX) * 14;
+      const rotateX = -((y - centerY) / centerY) * 10;
+      const moveX = ((x - centerX) / centerX) * 10;
+      const moveY = ((y - centerY) / centerY) * 8;
+
+      heroLogoWrap.style.transform = `
+        rotateY(${rotateY}deg)
+        rotateX(${rotateX}deg)
+        translateY(-8px)
+        scale(1.03)
+      `;
+
+      heroLogoImg.style.transform = `
+        translateX(${moveX}px)
+        translateY(${moveY}px)
+      `;
+
+      heroShadow.style.transform = `
+        translateX(${moveX * 1.6}px)
+        scale(${1 + Math.abs(moveX) / 120})
+      `;
     });
 
-    const counters = document.querySelectorAll('[data-target]');
-    let countersStarted = false;
+    heroVisual.addEventListener('mouseleave', ()=>{
+      heroLogoWrap.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0) scale(1)';
+      heroLogoImg.style.transform = 'translateX(0) translateY(0)';
+      heroShadow.style.transform = 'translateX(0) scale(1)';
+    });
+  }
 
-    function animateCounters(){
-      if(countersStarted) return;
-      countersStarted = true;
+  const cards = document.querySelectorAll('.card');
 
-      counters.forEach(counter=>{
-        const target = +counter.getAttribute('data-target');
-        let current = 0;
-        const increment = Math.max(1, Math.ceil(target / 90));
+  cards.forEach(card=>{
+    const media = card.querySelector('.card-media img');
 
-        const update = () => {
-          current += increment;
-          if(current >= target){
-            counter.textContent = target + (target >= 100 ? '+' : '');
-          } else {
-            counter.textContent = current;
-            requestAnimationFrame(update);
-          }
-        };
-        update();
-      });
-    }
+    card.addEventListener('mousemove', (e)=>{
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-    const statsSection = document.querySelector('#entreprise');
-    const statsObserver = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          animateCounters();
-        }
-      });
-    }, {threshold:0.35});
+      const rotateY = ((x - centerX) / centerX) * 8;
+      const rotateX = -((y - centerY) / centerY) * 8;
 
-    if(statsSection){
-      statsObserver.observe(statsSection);
-    }
+      card.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateY(-8px)
+        scale(1.01)
+      `;
 
-    const heroVisual = document.getElementById('heroVisual');
-    const heroLogoWrap = document.getElementById('heroLogoWrap');
-    const heroLogoImg = document.getElementById('heroLogoImg');
-    const heroShadow = document.querySelector('.hero-logo-shadow');
-
-    if(heroVisual && heroLogoWrap && heroLogoImg && heroShadow){
-      heroVisual.addEventListener('mousemove', (e)=>{
-        const rect = heroVisual.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = ((x - centerX) / centerX) * 14;
-        const rotateX = -((y - centerY) / centerY) * 10;
+      if(media){
         const moveX = ((x - centerX) / centerX) * 10;
-        const moveY = ((y - centerY) / centerY) * 8;
-
-        heroLogoWrap.style.transform = `
-          rotateY(${rotateY}deg)
-          rotateX(${rotateX}deg)
-          translateY(-8px)
+        const moveY = ((y - centerY) / centerY) * 10;
+        media.style.transform = `
           scale(1.03)
-        `;
-
-        heroLogoImg.style.transform = `
           translateX(${moveX}px)
           translateY(${moveY}px)
         `;
-
-        heroShadow.style.transform = `
-          translateX(${moveX * 1.6}px)
-          scale(${1 + Math.abs(moveX) / 120})
-        `;
-      });
-
-      heroVisual.addEventListener('mouseleave', ()=>{
-        heroLogoWrap.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0) scale(1)';
-        heroLogoImg.style.transform = 'translateX(0) translateY(0)';
-        heroShadow.style.transform = 'translateX(0) scale(1)';
-      });
-    }
-
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card=>{
-      const media = card.querySelector('.card-media img');
-
-      card.addEventListener('mousemove', (e)=>{
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = ((x - centerX) / centerX) * 8;
-        const rotateX = -((y - centerY) / centerY) * 8;
-
-        card.style.transform = `
-          rotateX(${rotateX}deg)
-          rotateY(${rotateY}deg)
-          translateY(-8px)
-          scale(1.01)
-        `;
-
-        if(media){
-          const moveX = ((x - centerX) / centerX) * 10;
-          const moveY = ((y - centerY) / centerY) * 10;
-          media.style.transform = `
-            scale(1.03)
-            translateX(${moveX}px)
-            translateY(${moveY}px)
-          `;
-          media.style.filter = 'brightness(1.04)';
-        }
-      });
-
-      card.addEventListener('mouseleave', ()=>{
-        if(card.classList.contains('visible')){
-          card.style.transform = 'translateY(0)';
-        } else {
-          card.style.transform = 'translateY(34px)';
-        }
-
-        if(media){
-          media.style.transform = 'scale(1)';
-          media.style.filter = 'brightness(1)';
-        }
-      });
+        media.style.filter = 'brightness(1.04)';
+      }
     });
-  </script>
+
+    card.addEventListener('mouseleave', ()=>{
+      if(card.classList.contains('visible')){
+        card.style.transform = 'translateY(0)';
+      } else {
+        card.style.transform = 'translateY(34px)';
+      }
+
+      if(media){
+        media.style.transform = 'scale(1)';
+        media.style.filter = 'brightness(1)';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
