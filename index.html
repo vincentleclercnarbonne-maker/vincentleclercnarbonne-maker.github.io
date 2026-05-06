@@ -1,1258 +1,1705 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TM DISTRI-MAT | Consommables bâtiment</title>
-  <meta name="description" content="TM DISTRI-MAT fournit les professionnels du bâtiment en consommables façade, peinture et dallage : stock, livraison palette et tarifs dégressifs." />
+  <title>TM DISTRI-MAT</title>
+  <meta name="description" content="TM DISTRI-MAT - Consommables bâtiment, façade, peinture et dallage. Livraison à la palette, tarifs dégressifs et centre logistique en Occitanie." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --black: #060606;
-      --dark: #101010;
-      --dark-2: #171717;
-      --white: #ffffff;
-      --text: #f5f5f5;
-      --muted: #b8b8b8;
-      --orange: #ff6a00;
-      --orange-soft: rgba(255, 106, 0, 0.16);
-      --line: rgba(255, 255, 255, 0.14);
-      --cream: #f4f1eb;
-      --max: 1240px;
+    :root{
+      --bg:#05070a;
+      --bg2:#0a0f15;
+      --card:rgba(255,255,255,0.05);
+      --card-2:rgba(255,255,255,0.03);
+      --line:rgba(255,255,255,0.10);
+      --text:#f4f4f4;
+      --muted:#b7bcc5;
+      --accent:#ff8a1d;
+      --accent-2:#ff6a00;
+      --shadow:0 25px 80px rgba(0,0,0,.45);
+      --radius:28px;
+      --max:1300px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: "Inter", Arial, sans-serif;
-      background: var(--black);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 56px));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 130px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 44px;
-      height: 1px;
-      background: var(--orange);
-    }
-
-    .section-title {
-      font-size: clamp(40px, 6vw, 82px);
-      line-height: 1.03;
-      letter-spacing: -0.045em;
-      font-weight: 900;
-    }
-
-    .section-lead {
-      max-width: 700px;
-      color: rgba(255,255,255,0.72);
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.55;
-      font-weight: 500;
-    }
-
-    .orange {
-      color: var(--orange);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.20);
-      color: var(--white);
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(12px);
-      font-weight: 800;
-      transition: transform .22s ease, background .22s ease, border-color .22s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.13);
-      border-color: rgba(255,255,255,0.38);
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: #111;
-    }
-
-    .btn-primary:hover {
-      background: #ff7e22;
-      border-color: #ff7e22;
-    }
-
-    /* NAVIGATION */
-    .nav {
-      position: fixed;
-      z-index: 1000;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1180px, calc(100% - 34px));
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 10px 12px 10px 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 999px;
-      background: rgba(12,12,12,0.38);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
-      transition: background .25s ease, border-color .25s ease;
-    }
-
-    .nav.is-scrolled {
-      background: rgba(10,10,10,0.88);
-      border-color: rgba(255,255,255,0.24);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: -0.035em;
-      white-space: nowrap;
-    }
-
-    .brand img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: #fff;
-      padding: 3px;
-    }
-
-    .brand span {
-      font-size: 15px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .nav-links a {
-      padding: 11px 13px;
-      border-radius: 999px;
-      color: rgba(255,255,255,0.78);
-      font-size: 13px;
-      font-weight: 750;
-      transition: background .22s ease, color .22s ease;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.10);
-    }
-
-    .nav-links .nav-cta {
-      color: #111;
-      background: rgba(255,255,255,0.92);
-    }
-
-    /* HERO PROPRE */
-    .hero {
-      min-height: 100vh;
-      padding: 150px 0 90px;
-      display: flex;
-      align-items: center;
+    body{
+      font-family:"Inter", sans-serif;
       background:
-        radial-gradient(circle at 72% 40%, rgba(255,106,0,0.17), transparent 28%),
-        radial-gradient(circle at 35% 20%, rgba(255,255,255,0.07), transparent 26%),
-        linear-gradient(180deg, #080808 0%, #0c0c0c 100%);
+        radial-gradient(circle at 80% 10%, rgba(255,106,0,.18), transparent 20%),
+        radial-gradient(circle at 20% 30%, rgba(255,138,29,.09), transparent 20%),
+        linear-gradient(180deg, #040506 0%, #090d12 35%, #05070a 100%);
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    .section{
+      position:relative;
+      padding:120px 0;
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:.16em;
+      font-weight:800;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:40px;
+      height:1px;
+      background:var(--accent);
+      display:block;
+    }
+
+    .title{
+      font-size:clamp(38px, 5vw, 76px);
+      line-height:.95;
+      letter-spacing:-0.06em;
+      font-weight:900;
+    }
+
+    .lead{
+      color:rgba(255,255,255,.72);
+      font-size:18px;
+      line-height:1.7;
+      max-width:760px;
+      margin-top:24px;
+    }
+
+    .grid-bg{
+      position:absolute;
+      inset:0;
+      opacity:.12;
+      pointer-events:none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 76px 76px;
-      opacity: .38;
-      mask-image: radial-gradient(circle at 62% 42%, #000, transparent 70%);
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:70px 70px;
+      mask-image:radial-gradient(circle at center, black 25%, transparent 85%);
     }
 
-    .hero-layout {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      align-items: center;
-      gap: 72px;
-    }
-
-    .hero-copy {
-      max-width: 650px;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: 1.01;
-      letter-spacing: -0.052em;
-      font-weight: 900;
-      margin-bottom: 28px;
-    }
-
-    .hero-copy p {
-      color: rgba(255,255,255,0.74);
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.55;
-      font-weight: 500;
-      max-width: 590px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    .hero-product-card {
-      min-height: min(660px, 72vh);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 42px;
+    .mesh-lines{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.35;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,106,0,0.20), transparent 42%),
-        rgba(255,255,255,0.045);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 40px 120px rgba(0,0,0,0.48);
-      overflow: hidden;
+        radial-gradient(circle at 20% 20%, rgba(255,138,29,.35), transparent 10%),
+        radial-gradient(circle at 75% 35%, rgba(255,138,29,.2), transparent 12%);
     }
 
-    .hero-product-card::after {
-      content: "";
-      position: absolute;
-      inset: 28px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 30px;
-      pointer-events: none;
+    /* NAV */
+    .nav{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:1000;
+      width:min(1260px, calc(100% - 24px));
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(8,10,14,.42);
+      backdrop-filter:blur(16px);
+      border-radius:24px;
+      box-shadow:0 20px 70px rgba(0,0,0,.25);
+      transition:.3s ease;
     }
 
-    .hero-product-card img {
-      width: min(82%, 620px);
-      max-height: 620px;
-      object-fit: contain;
-      filter: drop-shadow(0 40px 90px rgba(0,0,0,0.66));
-      transform-origin: center;
+    .nav.scrolled{
+      background:rgba(8,10,14,.82);
+      border-color:rgba(255,255,255,.14);
     }
 
-    .product-note {
-      position: absolute;
-      right: 26px;
-      bottom: 26px;
-      max-width: 260px;
-      padding: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.46);
-      backdrop-filter: blur(14px);
+    .nav-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:0 18px;
     }
 
-    .product-note strong {
-      display: block;
-      color: #fff;
-      font-size: 14px;
-      line-height: 1.35;
-      margin-bottom: 7px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:-0.04em;
+      white-space:nowrap;
     }
 
-    .product-note span {
-      color: rgba(255,255,255,0.67);
-      font-size: 13px;
-      line-height: 1.45;
+    .brand-badge{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#111;
+      font-weight:900;
+      font-size:18px;
+      padding:8px 12px;
+      border-radius:10px;
+      line-height:1;
     }
 
-    /* POURQUOI */
-    .purpose {
-      background: #0d0d0d;
+    .brand-text{
+      font-size:18px;
     }
 
-    .purpose-box {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 70px;
-      align-items: center;
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .purpose h2 {
-      font-size: clamp(42px, 6vw, 88px);
-      line-height: 1.04;
-      letter-spacing: -0.047em;
-      font-weight: 900;
+    .nav-links a{
+      color:rgba(255,255,255,.86);
+      padding:11px 14px;
+      border-radius:14px;
+      font-size:14px;
+      font-weight:600;
+      transition:.2s ease;
     }
 
-    .purpose p {
-      margin-top: 28px;
-      color: rgba(255,255,255,0.74);
-      font-size: clamp(18px, 2vw, 24px);
-      line-height: 1.6;
-      font-weight: 500;
+    .nav-links a:hover{
+      background:rgba(255,255,255,.06);
     }
 
-    .product-chips {
-      display: grid;
-      gap: 16px;
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.04);
     }
 
-    .chip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      min-height: 76px;
-      padding: 18px 22px;
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 24px;
-      background: rgba(255,255,255,0.045);
-      color: rgba(255,255,255,0.78);
-      font-weight: 800;
+    .btn-accent{
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#111 !important;
+      font-weight:800 !important;
     }
 
-    .chip span:first-child {
-      color: #fff;
-      font-size: 18px;
+    /* HERO */
+    .hero{
+      min-height:220vh;
+      padding:0;
     }
 
-    .chip span:last-child {
-      color: var(--orange);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+    .hero-sticky{
+      position:sticky;
+      top:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
     }
 
-    /* CHIFFRES */
-    .stats {
-      background: #090909;
-    }
-
-    .stats-header {
-      display: grid;
-      grid-template-columns: 1fr 0.85fr;
-      gap: 70px;
-      align-items: end;
-      margin-bottom: 70px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .stat-card {
-      min-height: 260px;
-      padding: 34px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 30px;
-      background: rgba(255,255,255,0.045);
-    }
-
-    .stat-value {
-      color: var(--orange);
-      font-size: clamp(62px, 8vw, 112px);
-      line-height: 0.9;
-      letter-spacing: -0.055em;
-      font-weight: 900;
-    }
-
-    .stat-card p {
-      max-width: 260px;
-      color: rgba(255,255,255,0.72);
-      font-size: 18px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    /* PRODUITS */
-    .products {
-      background: #0f0f0f;
-    }
-
-    .products-layout {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 70px;
-      align-items: start;
-    }
-
-    .product-display {
-      position: sticky;
-      top: 120px;
-      min-height: 620px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 36px;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
       background:
-        radial-gradient(circle at 50% 42%, rgba(255,106,0,0.16), transparent 42%),
-        rgba(255,255,255,0.04);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 46px;
+        radial-gradient(circle at 70% 45%, rgba(255,138,29,.18), transparent 18%),
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,.05), transparent 16%);
+      pointer-events:none;
+      z-index:0;
     }
 
-    .product-display::after {
-      content: "";
-      position: absolute;
-      inset: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 26px;
-      pointer-events: none;
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(1320px, calc(100% - 48px));
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:30px;
+      align-items:center;
+      min-height:100vh;
+      padding-top:110px;
+      padding-bottom:60px;
     }
 
-    .product-display img {
-      position: absolute;
-      width: min(72%, 440px);
-      max-height: 70%;
-      object-fit: contain;
-      opacity: 0;
-      transform: translateY(36px) scale(.92);
-      transition: opacity .45s ease, transform .55s ease;
-      filter: drop-shadow(0 36px 80px rgba(0,0,0,0.55));
-      background: rgba(255,255,255,0.02);
-      border-radius: 24px;
+    .hero-left{
+      position:relative;
+      z-index:2;
     }
 
-    .product-display img.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+    .hero-topline{
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.6);
+      margin-bottom:18px;
+      font-weight:700;
     }
 
-    .product-list {
-      display: grid;
-      gap: 28px;
+    .hero-title{
+      font-size:clamp(54px, 7vw, 110px);
+      line-height:.90;
+      letter-spacing:-0.08em;
+      font-weight:900;
+      max-width:760px;
     }
 
-    .product-item {
-      min-height: 320px;
-      padding: 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 34px;
-      background: rgba(255,255,255,0.045);
-      opacity: .45;
-      transition: opacity .25s ease, background .25s ease, transform .25s ease;
+    .hero-title .accent{
+      color:var(--accent);
     }
 
-    .product-item.active {
-      opacity: 1;
-      background: rgba(255,255,255,0.075);
-      transform: translateX(-8px);
+    .hero-sub{
+      margin-top:22px;
+      font-size:clamp(16px, 1.8vw, 22px);
+      line-height:1.7;
+      color:rgba(255,255,255,.72);
+      max-width:620px;
     }
 
-    .product-num {
-      color: var(--orange);
-      font-size: 18px;
-      line-height: 1;
-      font-weight: 900;
-      margin-bottom: 18px;
+    .hero-brand{
+      margin-top:40px;
+      font-size:clamp(42px, 6vw, 88px);
+      line-height:.95;
+      letter-spacing:-0.08em;
+      font-weight:900;
     }
 
-    .product-item h3 {
-      font-size: clamp(34px, 4vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.042em;
-      font-weight: 900;
-      margin-bottom: 20px;
+    .hero-brand .accent{
+      color:var(--accent);
     }
 
-    .product-item p {
-      color: rgba(255,255,255,0.72);
-      font-size: 19px;
-      line-height: 1.58;
-      max-width: 640px;
-      font-weight: 500;
+    .hero-brand-sub{
+      margin-top:12px;
+      font-size:clamp(18px, 2vw, 30px);
+      color:rgba(255,255,255,.76);
     }
 
-    /* TM FORMATION */
-    .identity {
-      background: #080808;
-      text-align: center;
+    .hero-features{
+      display:flex;
+      gap:24px;
+      flex-wrap:wrap;
+      margin-top:34px;
     }
 
-    .identity-words {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 50px 0;
+    .hero-feature{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding-right:18px;
+      border-right:1px solid rgba(255,255,255,.10);
     }
 
-    .identity-word {
-      padding: 22px 18px;
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.045);
-      color: rgba(255,255,255,0.82);
-      font-size: clamp(18px, 2.2vw, 30px);
-      line-height: 1.1;
-      font-weight: 900;
-      letter-spacing: -0.035em;
+    .hero-feature:last-child{
+      border-right:none;
+      padding-right:0;
     }
 
-    .identity-result {
-      color: #fff;
-      font-size: clamp(58px, 9vw, 140px);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-      font-weight: 900;
+    .hero-feature-icon{
+      width:42px;
+      height:42px;
+      border:1px solid rgba(255,138,29,.35);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:var(--accent);
+      font-size:16px;
+      flex-shrink:0;
+      background:rgba(255,138,29,.08);
     }
 
-    /* ZOOM PRODUIT */
-    .zoom-product {
-      background: #0d0d0d;
+    .hero-feature-text{
+      font-size:15px;
+      line-height:1.5;
+      color:rgba(255,255,255,.8);
+      font-weight:600;
     }
 
-    .zoom-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
+    .hero-right{
+      position:relative;
+      min-height:720px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .zoom-visual {
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 36px;
+    .hero-orbit{
+      position:absolute;
+      inset:auto;
+      width:720px;
+      height:720px;
+      border-radius:50%;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,106,0,0.16), transparent 42%),
-        rgba(255,255,255,0.04);
-      overflow: hidden;
+        radial-gradient(circle at center, rgba(255,138,29,.12), transparent 45%);
+      filter:blur(12px);
+      z-index:0;
     }
 
-    .zoom-visual img {
-      width: min(72%, 470px);
-      max-height: 420px;
-      object-fit: contain;
-      filter: drop-shadow(0 34px 80px rgba(0,0,0,0.60));
-      border-radius: 22px;
+    .corner-main{
+      position:relative;
+      width:min(720px, 90%);
+      filter:drop-shadow(0 40px 90px rgba(0,0,0,.65));
+      transform:translateY(0) scale(1);
+      transition:1s ease;
+      z-index:2;
+      animation:floatCorner 6s ease-in-out infinite;
     }
 
-    .zoom-detail {
-      margin-top: 26px;
-      padding: 22px;
-      border-left: 3px solid var(--orange);
-      color: rgba(255,255,255,0.72);
-      font-size: 18px;
-      line-height: 1.6;
-      background: rgba(255,255,255,0.04);
-      border-radius: 0 22px 22px 0;
+    @keyframes floatCorner{
+      0%,100%{ transform:translateY(0) rotate(-1deg); }
+      50%{ transform:translateY(-16px) rotate(1deg); }
     }
 
-    /* TARIFS */
-    .pricing {
-      background: var(--cream);
-      color: #111;
+    .hero-product{
+      position:absolute;
+      filter:drop-shadow(0 30px 70px rgba(0,0,0,.55));
+      z-index:3;
     }
 
-    .pricing .eyebrow {
-      color: #666;
+    .hero-tape-top{
+      width:180px;
+      top:30px;
+      left:90px;
+      animation:floatSmall 5.5s ease-in-out infinite;
     }
 
-    .pricing .section-lead {
-      color: #4f4f4f;
+    .hero-tape-bottom{
+      width:210px;
+      bottom:20px;
+      right:20px;
+      animation:floatSmall 6.5s ease-in-out infinite reverse;
     }
 
-    .pricing-layout {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 70px;
-      align-items: center;
+    .hero-taloche{
+      width:250px;
+      left:20px;
+      bottom:30px;
+      animation:floatSmall 6s ease-in-out infinite;
     }
 
-    .volume-box {
-      padding: 34px;
-      border-radius: 34px;
-      background: #111;
-      color: #fff;
+    @keyframes floatSmall{
+      0%,100%{ transform:translateY(0) rotate(0deg); }
+      50%{ transform:translateY(-14px) rotate(2deg); }
     }
 
-    .volume-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.74);
-      font-size: 17px;
-      line-height: 1.4;
-      font-weight: 700;
+    .corner-callout{
+      position:absolute;
+      right:30px;
+      top:170px;
+      width:230px;
+      height:230px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:50%;
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(8px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      z-index:4;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
     }
 
-    .volume-row:last-child {
-      border-bottom: 0;
+    .corner-callout img{
+      width:78%;
+      object-fit:contain;
     }
 
-    .volume-row strong {
-      color: #fff;
-      white-space: nowrap;
+    .corner-callout-text{
+      position:absolute;
+      right:0;
+      bottom:92px;
+      transform:translateX(62%);
+      max-width:240px;
+      font-size:15px;
+      line-height:1.6;
+      color:rgba(255,255,255,.82);
+      z-index:5;
     }
 
-    /* PARTENAIRES */
-    .partners {
-      background: #fff;
-      color: #111;
+    .scroll-indicator{
+      position:absolute;
+      bottom:26px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:5;
+      text-align:center;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:800;
     }
 
-    .partners .eyebrow {
-      color: #666;
+    .scroll-indicator::before{
+      content:"";
+      display:block;
+      width:24px;
+      height:42px;
+      border-radius:20px;
+      border:1px solid rgba(255,138,29,.5);
+      margin:0 auto 10px;
+      position:relative;
     }
 
-    .partner-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin-top: 48px;
+    .scroll-indicator::after{
+      content:"";
+      position:absolute;
+      top:9px;
+      left:50%;
+      transform:translateX(-50%);
+      width:4px;
+      height:8px;
+      border-radius:4px;
+      background:var(--accent);
+      animation:scrollMouse 1.7s infinite;
     }
 
-    .partner-card {
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      border: 1px solid #e8e8e8;
-      border-radius: 28px;
-      background: #fafafa;
+    @keyframes scrollMouse{
+      0%{ transform:translate(-50%,0); opacity:1; }
+      100%{ transform:translate(-50%,14px); opacity:0; }
     }
 
-    .partner-card img {
-      max-width: 150px;
-      max-height: 74px;
-      object-fit: contain;
+    /* WHY */
+    .why{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
     }
 
-    .partner-fallback {
-      display: none;
-      color: #111;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: -0.025em;
+    .why-inner{
+      position:relative;
+      z-index:2;
+      text-align:center;
+      max-width:1060px;
+      margin:0 auto;
     }
 
-    /* CITATION */
-    .quote {
-      min-height: 90vh;
-      display: flex;
-      align-items: flex-end;
+    .why-title{
+      font-size:clamp(42px, 6vw, 90px);
+      line-height:.94;
+      letter-spacing:-0.07em;
+      font-weight:900;
+    }
+
+    .why-title span{
+      color:rgba(255,255,255,.42);
+    }
+
+    .why-text{
+      font-size:clamp(18px, 2vw, 25px);
+      line-height:1.7;
+      color:rgba(255,255,255,.76);
+      max-width:860px;
+      margin:28px auto 0;
+    }
+
+    .floating-items img{
+      position:absolute;
+      filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));
+      opacity:.92;
+    }
+
+    .float-1{ width:180px; left:4%; top:18%; transform:rotate(-16deg); }
+    .float-2{ width:160px; right:7%; top:12%; transform:rotate(18deg); }
+    .float-3{ width:190px; left:10%; bottom:8%; transform:rotate(10deg); }
+    .float-4{ width:170px; right:10%; bottom:10%; transform:rotate(-10deg); }
+
+    /* STATS */
+    .stats-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      backdrop-filter:blur(8px);
+      margin-top:50px;
+    }
+
+    .stat{
+      padding:46px 34px;
+      border-right:1px solid rgba(255,255,255,.08);
+      min-height:260px;
+      position:relative;
+    }
+
+    .stat:last-child{
+      border-right:none;
+    }
+
+    .stat-number{
+      font-size:clamp(64px, 7vw, 110px);
+      line-height:.85;
+      letter-spacing:-0.08em;
+      font-weight:900;
+      color:var(--accent);
+    }
+
+    .stat-label{
+      font-size:18px;
+      line-height:1.4;
+      font-weight:700;
+      color:var(--text);
+      margin-top:14px;
+    }
+
+    .stat-small{
+      margin-top:18px;
+      color:rgba(255,255,255,.62);
+      font-size:16px;
+      line-height:1.7;
+      max-width:280px;
+    }
+
+    .network-bar{
+      margin-top:38px;
+      height:180px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.88)),
-        url("images/chantier-facade.jpg") center / cover no-repeat,
-        linear-gradient(135deg, #313131, #080808);
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        radial-gradient(circle at 20% 50%, rgba(255,138,29,.18), transparent 18%),
+        radial-gradient(circle at 70% 50%, rgba(255,138,29,.10), transparent 18%);
+      position:relative;
+      overflow:hidden;
     }
 
-    .quote-text {
-      max-width: 980px;
-      font-size: clamp(38px, 5.6vw, 86px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-      font-weight: 900;
-    }
-
-    .quote-author {
-      margin-top: 30px;
-      color: rgba(255,255,255,0.76);
-      font-size: 17px;
-      line-height: 1.5;
-      font-weight: 800;
-    }
-
-    /* RECONNAISSANCE */
-    .trust {
-      text-align: center;
+    .network-line{
+      position:absolute;
+      inset:0;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,106,0,.14), transparent 42%),
-        #090909;
+        linear-gradient(transparent 70%, rgba(255,255,255,.03)),
+        radial-gradient(circle at 10% 60%, rgba(255,138,29,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 26% 50%, rgba(255,138,29,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 42% 57%, rgba(255,138,29,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 58% 48%, rgba(255,138,29,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 53%, rgba(255,138,29,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 87% 46%, rgba(255,138,29,.6) 0 2px, transparent 3px);
     }
 
-    .trust .section-lead {
-      margin: 26px auto 0;
+    .cities{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      font-size:13px;
+      letter-spacing:.12em;
+      color:rgba(255,255,255,.78);
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    /* PRODUCT PANEL */
+    .product-panel{
+      margin-top:80px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:30px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+    }
+
+    .product-panel-main{
+      display:grid;
+      grid-template-columns:.9fr 1fr .8fr;
+      gap:24px;
+      align-items:center;
+      padding:34px;
+    }
+
+    .product-left h3{
+      font-size:clamp(30px, 4vw, 56px);
+      line-height:1.02;
+      letter-spacing:-0.06em;
+      font-weight:900;
+      max-width:420px;
+    }
+
+    .product-left h3 .accent{
+      color:var(--accent);
+    }
+
+    .benefit-list{
+      margin-top:34px;
+      display:grid;
+      gap:18px;
+    }
+
+    .benefit-item{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding-bottom:14px;
+    }
+
+    .benefit-item strong{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .benefit-item span{
+      color:rgba(255,255,255,.62);
+      font-size:15px;
+      text-align:right;
+    }
+
+    .save-line{
+      margin-top:20px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:13px;
+      font-weight:800;
+      color:rgba(255,255,255,.72);
+    }
+
+    .save-line .accent{
+      color:var(--accent);
+    }
+
+    .product-center{
+      position:relative;
+      min-height:450px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .product-stage-ring{
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at center, rgba(255,138,29,.12), transparent 34%);
+      z-index:0;
+      filter:blur(10px);
+    }
+
+    .product-stage-floor{
+      position:absolute;
+      width:420px;
+      height:120px;
+      bottom:40px;
+      border-radius:50%;
+      border:1px solid rgba(255,138,29,.25);
+      box-shadow:0 0 0 30px rgba(255,138,29,.04), 0 0 0 60px rgba(255,138,29,.02);
+      z-index:0;
+    }
+
+    .product-main-img{
+      position:relative;
+      z-index:1;
+      width:min(420px, 90%);
+      filter:drop-shadow(0 35px 70px rgba(0,0,0,.6));
+      animation:productFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes productFloat{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-10px); }
+    }
+
+    .product-right{
+      display:grid;
+      gap:22px;
+    }
+
+    .product-index{
+      color:var(--accent);
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-0.06em;
+    }
+
+    .product-name{
+      font-size:clamp(40px, 5vw, 72px);
+      line-height:.9;
+      letter-spacing:-0.06em;
+      font-weight:900;
+    }
+
+    .product-desc{
+      color:rgba(255,255,255,.72);
+      font-size:18px;
+      line-height:1.8;
+      max-width:420px;
+    }
+
+    .product-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--accent);
+    }
+
+    .product-detail-card{
+      margin-top:6px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      background:rgba(255,255,255,.02);
+      width:100%;
+      max-width:340px;
+    }
+
+    .product-detail-card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .product-tabs{
+      display:grid;
+      grid-template-columns:repeat(7, 1fr);
+      gap:0;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+    .tab{
+      padding:18px 16px;
+      border-right:1px solid rgba(255,255,255,.06);
+      min-height:88px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:6px;
+      transition:.2s ease;
+    }
+
+    .tab:last-child{
+      border-right:none;
+    }
+
+    .tab.active{
+      background:linear-gradient(135deg, rgba(255,138,29,.14), rgba(255,106,0,.10));
+      box-shadow:inset 0 0 0 1px rgba(255,138,29,.35);
+    }
+
+    .tab strong{
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .tab span{
+      color:rgba(255,255,255,.58);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    /* WORD BLOCK */
+    .word-block{
+      text-align:center;
+      padding:90px 0 40px;
+    }
+
+    .word-list{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .word-card{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      padding:18px 22px;
+      background:rgba(255,255,255,.03);
+      font-weight:800;
+      font-size:clamp(16px, 2vw, 28px);
+      letter-spacing:-0.04em;
+      color:rgba(255,255,255,.72);
+    }
+
+    .word-final{
+      margin-top:34px;
+      font-size:clamp(54px, 9vw, 140px);
+      line-height:.85;
+      font-weight:900;
+      letter-spacing:-0.08em;
+    }
+
+    .word-final .accent{
+      color:var(--accent);
+    }
+
+    /* PARTNERS */
+    .partners-grid{
+      margin-top:40px;
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:16px;
+    }
+
+    .partner{
+      min-height:130px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      background:rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      transition:.25s ease;
+    }
+
+    .partner:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,138,29,.24);
+    }
+
+    .partner img{
+      max-width:150px;
+      max-height:70px;
+      object-fit:contain;
+      filter:brightness(1.05);
+    }
+
+    .partner span{
+      font-size:18px;
+      font-weight:800;
+      color:rgba(255,255,255,.86);
+      text-align:center;
+    }
+
+    /* QUOTE */
+    .quote-section{
+      min-height:90vh;
+      display:flex;
+      align-items:flex-end;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.82)),
+        url("assets/chantier-bg.jpg") center/cover no-repeat;
+    }
+
+    .quote-box{
+      padding:0 0 80px;
+      max-width:980px;
+    }
+
+    .quote-text{
+      font-size:clamp(36px, 5vw, 84px);
+      line-height:.96;
+      letter-spacing:-0.07em;
+      font-weight:900;
+      max-width:960px;
+    }
+
+    .quote-author{
+      margin-top:28px;
+      font-size:18px;
+      color:rgba(255,255,255,.78);
+      font-weight:700;
+    }
+
+    .quote-author .accent{
+      color:var(--accent);
+    }
+
+    /* TRUST */
+    .trust{
+      text-align:center;
+    }
+
+    .trust .title{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .trust .lead{
+      margin-left:auto;
+      margin-right:auto;
     }
 
     /* CONTACT */
-    .contact {
-      background: var(--cream);
-      color: #111;
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:36px;
+      align-items:start;
     }
 
-    .contact .eyebrow {
-      color: #666;
+    .contact-card,
+    .form-card{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      padding:28px;
     }
 
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 70px;
-      align-items: start;
+    .contact-card p{
+      color:rgba(255,255,255,.72);
+      line-height:1.8;
+      margin-top:16px;
+      font-size:17px;
     }
 
-    .contact p {
-      color: #4b4b4b;
-      font-size: 19px;
-      line-height: 1.55;
-      margin-top: 24px;
+    .contact-list{
+      margin-top:24px;
+      display:grid;
+      gap:12px;
     }
 
-    .contact-details {
-      margin-top: 30px;
-      display: grid;
-      gap: 12px;
-      color: #111;
-      font-weight: 800;
+    .contact-list a,
+    .contact-list div{
+      color:rgba(255,255,255,.86);
+      font-weight:700;
     }
 
-    .form {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      border: 1px solid #e5e0d8;
-      border-radius: 34px;
-      background: #fff;
-      box-shadow: 0 26px 80px rgba(0,0,0,0.08);
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
     }
 
-    .field {
-      display: grid;
-      gap: 8px;
+    .field{
+      display:grid;
+      gap:8px;
     }
 
-    .field.full {
-      grid-column: 1 / -1;
+    .field.full{
+      grid-column:1 / -1;
     }
 
-    label {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.3;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-      font-weight: 900;
+    .field label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:rgba(255,255,255,.65);
+      font-weight:800;
     }
 
-    input, textarea {
-      width: 100%;
-      min-height: 54px;
-      border: 1px solid #ddd7cf;
-      border-radius: 16px;
-      background: #fbfbfb;
-      padding: 0 15px;
-      color: #111;
-      font: inherit;
-      font-weight: 700;
-      outline: none;
+    .field input,
+    .field textarea{
+      width:100%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      border-radius:16px;
+      padding:14px 16px;
+      font-family:inherit;
+      font-size:15px;
+      outline:none;
+      transition:.2s ease;
     }
 
-    textarea {
-      min-height: 130px;
-      padding-top: 15px;
-      resize: vertical;
+    .field input{
+      min-height:52px;
     }
 
-    input:focus, textarea:focus {
-      border-color: #111;
-      background: #fff;
+    .field textarea{
+      min-height:130px;
+      resize:vertical;
     }
 
-    .form button {
-      grid-column: 1 / -1;
-      min-height: 56px;
-      border: 0;
-      border-radius: 999px;
-      background: #111;
-      color: #fff;
-      font: inherit;
-      font-weight: 900;
-      cursor: pointer;
-      transition: transform .22s ease, background .22s ease;
+    .field input:focus,
+    .field textarea:focus{
+      border-color:rgba(255,138,29,.5);
+      background:rgba(255,255,255,.06);
     }
 
-    .form button:hover {
-      transform: translateY(-2px);
-      background: var(--orange);
-      color: #111;
+    .submit-btn{
+      margin-top:6px;
+      grid-column:1 / -1;
+      min-height:56px;
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#111;
+      font-size:15px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.2s ease;
     }
 
-    /* FINAL */
-    .future {
-      min-height: 70vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background: #050505;
+    .submit-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 40px rgba(255,138,29,.22);
     }
 
-    .future h2 {
-      max-width: 1100px;
-      font-size: clamp(58px, 10vw, 150px);
-      line-height: .9;
-      letter-spacing: -0.06em;
-      font-weight: 900;
+    /* FUTURE */
+    .future{
+      min-height:60vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
     }
 
-    .footer {
-      padding: 48px 0;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      background: #050505;
-      color: rgba(255,255,255,0.62);
+    .future h2{
+      font-size:clamp(56px, 10vw, 160px);
+      line-height:.85;
+      letter-spacing:-0.09em;
+      font-weight:900;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr .8fr;
-      gap: 34px;
+    .future h2 .accent{
+      color:var(--accent);
     }
 
-    .footer strong {
-      display: block;
-      margin-bottom: 14px;
-      color: #fff;
-      font-size: 16px;
+    /* FOOTER */
+    footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:34px 0 40px;
+      background:rgba(255,255,255,.01);
     }
 
-    .footer a {
-      display: block;
-      margin: 8px 0;
-      color: rgba(255,255,255,0.62);
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:30px;
     }
 
-    .footer a:hover {
-      color: #fff;
+    .footer-title{
+      font-size:16px;
+      font-weight:800;
+      margin-bottom:14px;
+      color:#fff;
     }
 
-    @media (max-width: 1020px) {
-      .nav {
-        top: 10px;
-        border-radius: 24px;
-        align-items: flex-start;
+    .footer-text,
+    .footer-links a{
+      color:rgba(255,255,255,.62);
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .footer-links a{
+      display:block;
+    }
+
+    /* Reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .hero-content,
+      .product-panel-main,
+      .contact-grid{
+        grid-template-columns:1fr;
       }
 
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-end;
+      .hero-right{
+        min-height:620px;
       }
 
-      .nav-links a {
-        padding: 9px 10px;
-        font-size: 12px;
+      .stats-wrap{
+        grid-template-columns:1fr;
       }
 
-      .hero-layout,
-      .purpose-box,
-      .stats-header,
-      .products-layout,
-      .zoom-layout,
-      .pricing-layout,
-      .contact-layout,
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .stat{
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
       }
 
-      .hero-product-card,
-      .product-display,
-      .zoom-visual {
-        min-height: 480px;
+      .stat:last-child{
+        border-bottom:none;
       }
 
-      .product-display {
-        position: relative;
-        top: auto;
+      .partners-grid{
+        grid-template-columns:repeat(3, 1fr);
       }
 
-      .product-item {
-        min-height: auto;
+      .product-tabs{
+        grid-template-columns:repeat(2, 1fr);
       }
 
-      .stats-grid {
-        grid-template-columns: 1fr;
+      .word-list{
+        grid-template-columns:repeat(2, 1fr);
       }
 
-      .identity-words,
-      .partner-grid,
-      .form {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full,
-      .form button {
-        grid-column: auto;
+      .footer-grid{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 640px) {
-      .container {
-        width: min(var(--max), calc(100% - 28px));
+    @media (max-width:760px){
+      .container{
+        width:min(100% - 26px, var(--max));
       }
 
-      .section {
-        padding: 90px 0;
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px;
       }
 
-      .brand span {
-        display: none;
+      .nav-links{
+        width:100%;
+        justify-content:flex-start;
       }
 
-      .nav-links a:not(.nav-cta) {
-        display: none;
+      .nav-links a{
+        font-size:13px;
+        padding:9px 12px;
       }
 
-      .nav {
-        width: calc(100% - 20px);
+      .hero{
+        min-height:auto;
       }
 
-      .hero {
-        padding-top: 120px;
+      .hero-sticky{
+        position:relative;
       }
 
-      .hero-actions {
-        flex-direction: column;
+      .hero-content{
+        min-height:auto;
+        padding-top:170px;
+        padding-bottom:80px;
       }
 
-      .btn {
-        width: 100%;
+      .hero-right{
+        min-height:520px;
       }
 
-      .product-note {
-        position: static;
-        margin: 0 18px 18px;
-        max-width: none;
+      .hero-tape-top{
+        left:10px;
+        top:20px;
+        width:120px;
       }
 
-      .hero-product-card {
-        flex-direction: column;
-        padding-top: 20px;
+      .hero-tape-bottom{
+        width:140px;
+      }
+
+      .hero-taloche{
+        width:170px;
+      }
+
+      .corner-callout{
+        width:170px;
+        height:170px;
+        right:10px;
+        top:180px;
+      }
+
+      .corner-callout-text{
+        position:relative;
+        transform:none;
+        right:auto;
+        bottom:auto;
+        margin-top:16px;
+        max-width:100%;
+      }
+
+      .hero-features{
+        flex-direction:column;
+        gap:14px;
+      }
+
+      .hero-feature{
+        border-right:none;
+        padding-right:0;
+      }
+
+      .floating-items img{
+        opacity:.45;
+      }
+
+      .partners-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .product-tabs{
+        grid-template-columns:1fr;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .word-list{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:540px){
+      .partners-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 <body>
-  <header class="nav" id="nav">
-    <a href="#accueil" class="brand" aria-label="Accueil TM DISTRI-MAT">
-      <img src="images/logotmdistrimat.png" alt="Logo TM DISTRI-MAT" />
-      <span>TM DISTRI-MAT</span>
-    </a>
 
-    <nav class="nav-links" aria-label="Navigation principale">
-      <a href="#produits">Nos produits</a>
-      <a href="#services">Notre service</a>
-      <a href="#livraison">Nos modes de livraison</a>
-      <a href="#qui-sommes-nous">Qui sommes-nous</a>
-      <a href="#contact" class="nav-cta">Obtenir un devis</a>
-    </nav>
+  <!-- NAV -->
+  <header class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="brand">
+        <span class="brand-badge">TM</span>
+        <span class="brand-text">DISTRI-MAT</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#produits">Nos produits</a>
+        <a href="#service">Notre service</a>
+        <a href="#livraison">Nos modes de livraison</a>
+        <a href="#qui">Qui sommes-nous</a>
+        <a href="#contact" class="btn-outline">Contact</a>
+        <a href="#contact" class="btn-accent">Demander un devis</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="accueil">
-      <div class="container hero-layout">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">Consommables bâtiment</div>
-          <h1>Faites confiance à un fournisseur dédié à vos consommables bâtiment.</h1>
-          <p>TM DISTRI-MAT accompagne les professionnels avec du stock, des volumes, des livraisons organisées et des tarifs dégressifs selon les quantités.</p>
-          <div class="hero-actions">
-            <a href="#produits" class="btn btn-primary">Découvrir nos produits</a>
-            <a href="#contact" class="btn">Demander un devis</a>
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="hero-sticky">
+      <div class="grid-bg"></div>
+      <div class="mesh-lines"></div>
+
+      <div class="hero-content">
+        <div class="hero-left reveal">
+          <div class="hero-topline">Consommables bâtiment • Façade • Peinture • Dallage</div>
+
+          <h1 class="hero-title">
+            Faites confiance à un fournisseur dédié à vos
+            <span class="accent">consommables bâtiment</span>
+          </h1>
+
+          <p class="hero-sub">
+            TM DISTRI-MAT existe pour simplifier l’approvisionnement des professionnels
+            avec du stock dédié, des livraisons en grande quantité à la palette,
+            et des tarifs dégressifs selon les volumes commandés.
+          </p>
+
+          <div class="hero-brand">
+            <span class="accent">TM</span> DISTRI-MAT
+          </div>
+          <div class="hero-brand-sub">La solution qu’il vous faut</div>
+
+          <div class="hero-features">
+            <div class="hero-feature">
+              <div class="hero-feature-icon">◉</div>
+              <div class="hero-feature-text">Stock dédié<br>grande quantité</div>
+            </div>
+            <div class="hero-feature">
+              <div class="hero-feature-icon">◎</div>
+              <div class="hero-feature-text">Livraison en<br>Occitanie</div>
+            </div>
+            <div class="hero-feature">
+              <div class="hero-feature-icon">⬢</div>
+              <div class="hero-feature-text">Tarifs dégressifs<br>au volume</div>
+            </div>
           </div>
         </div>
 
-        <div class="hero-product-card reveal">
-          <img class="corner-img" src="images/imagecorniere.png" alt="Cornière bâtiment" />
-          <div class="product-note">
-            <strong>TM DISTRI-MAT, la solution qu’il vous faut.</strong>
-            <span>Un approvisionnement pensé pour les façadiers, peintres, entreprises de dallage et professionnels du bâtiment.</span>
+        <div class="hero-right reveal">
+          <div class="hero-orbit"></div>
+
+          <!-- Image principale cornière -->
+          <img src="assets/corniere-hero.png" alt="Cornière TM DISTRI-MAT" class="corner-main">
+
+          <!-- Produits flottants -->
+          <img src="assets/adhesif-roll-top.png" alt="Adhésif" class="hero-product hero-tape-top">
+          <img src="assets/adhesif-roll-bottom.png" alt="Adhésif" class="hero-product hero-tape-bottom">
+          <img src="assets/taloche-hero.png" alt="Taloche" class="hero-product hero-taloche">
+
+          <!-- Détail cornière -->
+          <div class="corner-callout">
+            <img src="assets/corniere-detail.png" alt="Détail cornière">
+          </div>
+          <div class="corner-callout-text">
+            Cornière d’angle renforcée 0,6 mm<br>
+            grande résistance
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section purpose" id="services">
-      <div class="container purpose-box">
-        <div class="reveal">
-          <div class="eyebrow">Pourquoi nous existons</div>
-          <h2>Un système simple : stock, volume, palette et livraison.</h2>
-          <p>Nous existons pour simplifier l’approvisionnement des chantiers. Vous commandez vos consommables en quantité, nous organisons la disponibilité, les prix par volume et la livraison selon votre zone.</p>
-        </div>
+      <div class="scroll-indicator">Découvrir</div>
+    </div>
+  </section>
 
-        <div class="product-chips reveal">
-          <div class="chip"><span>Adhésifs chantier</span><span>Stock</span></div>
-          <div class="chip"><span>Taloches et outillage</span><span>Pro</span></div>
-          <div class="chip"><span>Polyane et sous-dallage</span><span>Palette</span></div>
-          <div class="chip"><span>Joints de dilatation</span><span>Technique</span></div>
-          <div class="chip"><span>Vis et jaquettes</span><span>Projection</span></div>
-        </div>
-      </div>
-    </section>
+  <!-- WHY -->
+  <section class="section why" id="service">
+    <div class="grid-bg"></div>
 
-    <section class="section stats" id="qui-sommes-nous">
-      <div class="container">
-        <div class="stats-header reveal">
-          <div>
-            <div class="eyebrow">Une base solide</div>
-            <h2 class="section-title">Des moyens pensés pour les pros.</h2>
+    <div class="floating-items">
+      <img src="assets/taloche-floating.png" alt="Taloche" class="float-1">
+      <img src="assets/adhesif-floating.png" alt="Adhésif" class="float-2">
+      <img src="assets/polyane-floating.png" alt="Polyane" class="float-3">
+      <img src="assets/joint-floating.png" alt="Joint de dilatation" class="float-4">
+    </div>
+
+    <div class="container why-inner reveal">
+      <div class="eyebrow">Pourquoi nous existons</div>
+      <h2 class="why-title">
+        Nous existons pour simplifier l’approvisionnement
+        des professionnels du bâtiment
+        <span>avec un système pensé pour le chantier.</span>
+      </h2>
+      <p class="why-text">
+        Livraison en grande quantité à la palette, tarifs dégressifs par produit,
+        disponibilité, réactivité, et sélection de consommables adaptés aux métiers
+        de la façade, de la peinture et du dallage.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS + RESEAU -->
+  <section class="section" id="qui">
+    <div class="container">
+      <div class="eyebrow reveal">Notre réseau</div>
+      <h2 class="title reveal">Votre performance.</h2>
+
+      <div class="stats-wrap reveal">
+        <div class="stat">
+          <div class="stat-number"><span class="counter" data-target="500">0</span>+</div>
+          <div class="stat-label">clients réguliers</div>
+          <div class="stat-small">
+            Artisans, négoces et entreprises nous font confiance au quotidien.
           </div>
-          <p class="section-lead">Une organisation commerciale et logistique basée à Narbonne, au service des professionnels d’Occitanie.</p>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card reveal">
-            <div class="stat-value"><span class="counter" data-target="500">0</span>+</div>
-            <p>clients réguliers accompagnés</p>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-value"><span class="counter" data-target="800">0</span></div>
-            <p>m² de centre logistique à Narbonne</p>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-value"><span class="counter" data-target="6">0</span></div>
-            <p>villes majeures couvertes en Occitanie</p>
+        <div class="stat">
+          <div class="stat-number"><span class="counter" data-target="800">0</span> m²</div>
+          <div class="stat-label">de centre logistique</div>
+          <div class="stat-small">
+            Un stock permanent pour répondre vite, livrer juste.
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section products" id="produits">
-      <div class="container products-layout">
-        <div class="product-display reveal">
-          <img class="product-img active" data-product="0" src="images/st390.jpg" alt="Adhésif ST390" />
-          <img class="product-img" data-product="1" src="images/polyanne.png" alt="Polyane" />
-          <img class="product-img" data-product="2" src="images/polyanne.png" alt="Sous-dallage" />
-          <img class="product-img" data-product="3" src="images/jointdedillatation.png" alt="Joint de dilatation" />
-          <img class="product-img" data-product="4" src="images/talochemondelin.png" alt="Taloche Mondelin" />
-          <img class="product-img" data-product="5" src="images/visjaquette%24.png" alt="Vis et jaquette" />
-        </div>
-
-        <div class="product-list">
-          <article class="product-item active" data-step="0">
-            <div class="product-num">01</div>
-            <h3>Adhésifs</h3>
-            <p>Adhésifs toilé, masquage et protection pour les usages chantier. Disponibles en volume selon vos besoins.</p>
-          </article>
-          <article class="product-item" data-step="1">
-            <div class="product-num">02</div>
-            <h3>Polyane</h3>
-            <p>Film de protection bâtiment pour préparer, protéger et organiser les zones de travail.</p>
-          </article>
-          <article class="product-item" data-step="2">
-            <div class="product-num">03</div>
-            <h3>Sous-dallage</h3>
-            <p>Consommables adaptés aux entreprises de dallage et de gros œuvre, avec une logique d’achat en volume.</p>
-          </article>
-          <article class="product-item" data-step="3">
-            <div class="product-num">04</div>
-            <h3>Joint de dilatation</h3>
-            <p>Produits techniques pour accompagner les mouvements et améliorer la durabilité des ouvrages.</p>
-          </article>
-          <article class="product-item" data-step="4">
-            <div class="product-num">05</div>
-            <h3>Taloches</h3>
-            <p>Outillage professionnel pour application, finition et préparation des surfaces.</p>
-          </article>
-          <article class="product-item" data-step="5">
-            <div class="product-num">06</div>
-            <h3>Vis et jaquettes</h3>
-            <p>Pièces d’usure et consommables pour machines à projeter, afin de limiter les interruptions de chantier.</p>
-          </article>
+        <div class="stat">
+          <div class="stat-number"><span class="counter" data-target="6">0</span></div>
+          <div class="stat-label">villes majeures couvertes en Occitanie</div>
+          <div class="stat-small">
+            Une présence régionale forte au plus proche de vos chantiers.
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section identity">
-      <div class="container reveal">
-        <div class="eyebrow">Notre identité</div>
-        <h2 class="section-title">Technique. Matériaux. Distribution. Matériel.</h2>
-        <div class="identity-words">
-          <div class="identity-word">Technique</div>
-          <div class="identity-word">Matériaux</div>
-          <div class="identity-word">Distribution</div>
-          <div class="identity-word">Matériel</div>
-        </div>
-        <div class="identity-result">TM DISTRI-MAT</div>
-      </div>
-    </section>
-
-    <section class="section zoom-product">
-      <div class="container zoom-layout">
-        <div class="zoom-visual reveal">
-          <img class="zoom-img" src="images/st390.jpg" alt="Adhésif toilé" />
-        </div>
-        <div class="reveal">
-          <div class="eyebrow">Zoom produit</div>
-          <h2 class="section-title">Un produit mis en avant, sans gêner la lecture.</h2>
-          <p class="section-lead">L’adhésif apparaît, se tourne légèrement, puis le zoom met en avant la fibre et la structure du produit. L’animation reste propre pour garder le texte lisible.</p>
-          <div class="zoom-detail">Détail fibre : une présentation visuelle utile pour montrer la résistance, l’usage chantier et la valeur du produit.</div>
+      <div class="network-bar reveal">
+        <div class="network-line"></div>
+        <div class="cities">
+          <span>Toulouse</span>
+          <span>Montpellier</span>
+          <span>Nîmes</span>
+          <span>Béziers</span>
+          <span>Perpignan</span>
+          <span>Albi</span>
         </div>
       </div>
-    </section>
 
-    <section class="section pricing" id="livraison">
-      <div class="container pricing-layout">
-        <div class="reveal">
-          <div class="eyebrow">Tarifs dégressifs</div>
-          <h2 class="section-title">Nous savons que les budgets chantier sont serrés.</h2>
-          <p class="section-lead">C’est pourquoi nous pratiquons des tarifs dégressifs au volume, avec une logique claire : plus le besoin est structuré, plus l’achat peut être optimisé.</p>
+      <!-- PRODUIT / TARIFS / TABS -->
+      <div class="product-panel reveal" id="produits">
+        <div class="product-panel-main">
+          <div class="product-left">
+            <div class="eyebrow">Volumes</div>
+            <h3>
+              Nous savons que les budgets chantier sont serrés.
+              <span class="accent">Nous pratiquons des tarifs dégressifs au volume.</span>
+            </h3>
+
+            <div class="benefit-list">
+              <div class="benefit-item">
+                <strong>Petits volumes</strong>
+                <span>Tarifs justes</span>
+              </div>
+              <div class="benefit-item">
+                <strong>Volumes intermédiaires</strong>
+                <span>Remises progressives</span>
+              </div>
+              <div class="benefit-item">
+                <strong>Grosses quantités</strong>
+                <span>Meilleurs tarifs garantis</span>
+              </div>
+            </div>
+
+            <div class="save-line">
+              Plus vous commandez, plus vous <span class="accent">économisez</span>.
+            </div>
+          </div>
+
+          <div class="product-center">
+            <div class="product-stage-ring"></div>
+            <div class="product-stage-floor"></div>
+            <!-- Ici tu peux mettre un visuel généré d’adhésif -->
+            <img src="assets/adhesif-main.png" alt="Adhésif TM DISTRI-MAT" class="product-main-img" id="mainProductImage">
+          </div>
+
+          <div class="product-right">
+            <div class="product-index">01</div>
+            <div class="product-name" id="productTitle">Adhésif</div>
+            <div class="product-desc" id="productDesc">
+              Adhésif chantier renforcé pour une tenue optimale, une protection efficace
+              et une utilisation fiable sur les opérations quotidiennes.
+            </div>
+            <a href="#contact" class="product-cta">En savoir plus →</a>
+
+            <div class="product-detail-card">
+              <img src="assets/adhesif-detail.jpg" alt="Détail produit" id="productDetailImage">
+            </div>
+          </div>
         </div>
-        <div class="volume-box reveal">
-          <div class="volume-row"><span>Commande au carton</span><strong>Réassort</strong></div>
-          <div class="volume-row"><span>Commande à la palette</span><strong>Prix volume</strong></div>
-          <div class="volume-row"><span>Livraison grande quantité</span><strong>Organisation zone</strong></div>
-          <div class="volume-row"><span>Suivi professionnel</span><strong>Contact terrain</strong></div>
+
+        <div class="product-tabs">
+          <div class="tab active"
+               data-title="Adhésif"
+               data-desc="Adhésif chantier renforcé pour une tenue optimale, une protection efficace et une utilisation fiable sur les opérations quotidiennes."
+               data-main="assets/adhesif-main.png"
+               data-detail="assets/adhesif-detail.jpg">
+            <strong>Adhésif</strong>
+            <span>Produit sélectionné</span>
+          </div>
+
+          <div class="tab"
+               data-title="Trame"
+               data-desc="Trame de renfort en fibre de verre pour systèmes d’enduit de façade, avec stabilité dimensionnelle et excellente tenue mécanique."
+               data-main="assets/trame-main.png"
+               data-detail="assets/trame-detail.jpg">
+            <strong>Trame</strong>
+            <span>Renfort façade</span>
+          </div>
+
+          <div class="tab"
+               data-title="Polyane"
+               data-desc="Film de protection bâtiment pour séparer, protéger et accompagner les phases de chantier de manière simple et propre."
+               data-main="assets/polyane-main.png"
+               data-detail="assets/polyane-detail.jpg">
+            <strong>Polyane</strong>
+            <span>Film de protection</span>
+          </div>
+
+          <div class="tab"
+               data-title="Sous-dallage"
+               data-desc="Solution de séparation et de protection dédiée aux besoins gros œuvre et dallage, avec une fourniture adaptée au volume."
+               data-main="assets/sousdallage-main.png"
+               data-detail="assets/sousdallage-detail.jpg">
+            <strong>Sous-dallage</strong>
+            <span>Séparation & protection</span>
+          </div>
+
+          <div class="tab"
+               data-title="Joint de dilatation"
+               data-desc="Produit technique destiné à accompagner les mouvements des structures et à sécuriser les finitions sur chantier."
+               data-main="assets/joint-main.png"
+               data-detail="assets/joint-detail.jpg">
+            <strong>Joint de dilatation</strong>
+            <span>Souplesse & étanchéité</span>
+          </div>
+
+          <div class="tab"
+               data-title="Taloche"
+               data-desc="Outil de finition pour les professionnels, conçu pour l’application, le lissage et la régularité du travail sur chantier."
+               data-main="assets/taloche-main.png"
+               data-detail="assets/taloche-detail.jpg">
+            <strong>Taloche</strong>
+            <span>Finition béton</span>
+          </div>
+
+          <div class="tab"
+               data-title="Vis & jaquettes"
+               data-desc="Pièces adaptées aux machines à projeter, utiles pour maintenir la régularité du travail et limiter les interruptions."
+               data-main="assets/vis-main.png"
+               data-detail="assets/vis-detail.jpg">
+            <strong>Vis & jaquettes</strong>
+            <span>Fixation & sécurité</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section partners">
-      <div class="container">
-        <div class="eyebrow">Nos partenaires pour vous fournir</div>
-        <h2 class="section-title">Des fournisseurs sélectionnés pour vos chantiers.</h2>
-        <div class="partner-grid">
-          <div class="partner-card reveal"><img src="images/partenaires/sacherie-pantin.png" alt="Sacherie de Pantin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Sacherie de Pantin</div></div>
-          <div class="partner-card reveal"><img src="images/partenaires/supertape.png" alt="Supertape" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Supertape</div></div>
-          <div class="partner-card reveal"><img src="images/partenaires/ozyma.png" alt="Ozyma" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Ozyma</div></div>
-          <div class="partner-card reveal"><img src="images/partenaires/mondelin.png" alt="Mondelin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Mondelin</div></div>
-          <div class="partner-card reveal"><img src="images/partenaires/ds-projection.png" alt="DS Projection" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">DS Projection</div></div>
+      <!-- TM DISTRI MAT -->
+      <div class="word-block reveal">
+        <div class="eyebrow" style="justify-content:center;">Notre identité</div>
+        <div class="word-list">
+          <div class="word-card">Technique</div>
+          <div class="word-card">Matériaux</div>
+          <div class="word-card">Distribution</div>
+          <div class="word-card">Matériel</div>
+        </div>
+        <div class="word-final">
+          <span class="accent">TM</span> DISTRI-MAT
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section quote">
-      <div class="container reveal">
-        <div class="eyebrow">Mot de notre dirigeant</div>
-        <blockquote class="quote-text">“Notre objectif est simple : fournir aux professionnels des solutions fiables, disponibles et adaptées aux réalités du terrain.”</blockquote>
-        <div class="quote-author">Zavier Leclerc — Mot de notre dirigeant</div>
+  <!-- PARTENAIRES -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow reveal">Nos partenaires pour vous fournir</div>
+      <h2 class="title reveal">Des partenaires sélectionnés pour vos chantiers.</h2>
+
+      <div class="partners-grid reveal">
+        <div class="partner"><img src="assets/logo-sacherie-pantin.png" alt="Sacherie de Pantin" onerror="this.style.display='none'; this.parentNode.innerHTML='<span>Sacherie de Pantin</span>'"></div>
+        <div class="partner"><img src="assets/logo-supertape.png" alt="Supertape" onerror="this.style.display='none'; this.parentNode.innerHTML='<span>Supertape</span>'"></div>
+        <div class="partner"><img src="assets/logo-ozyma.png" alt="Ozyma" onerror="this.style.display='none'; this.parentNode.innerHTML='<span>Ozyma</span>'"></div>
+        <div class="partner"><img src="assets/logo-mondelin.png" alt="Mondelin" onerror="this.style.display='none'; this.parentNode.innerHTML='<span>Mondelin</span>'"></div>
+        <div class="partner"><img src="assets/logo-dsprojection.png" alt="DS Projection" onerror="this.style.display='none'; this.parentNode.innerHTML='<span>DS Projection</span>'"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section trust">
-      <div class="container reveal">
-        <div class="eyebrow">Reconnaissance terrain</div>
-        <h2 class="section-title">Reconnue par les grands acteurs d’Occitanie dans les projets façade, peinture et dallage.</h2>
-        <p class="section-lead">Une approche orientée disponibilité, volume, prix et accompagnement professionnel.</p>
+  <!-- QUOTE -->
+  <section class="section quote-section">
+    <div class="container quote-box reveal">
+      <div class="eyebrow">Mot de notre dirigeant</div>
+      <div class="quote-text">
+        Chez TM DISTRI-MAT, nous voulons apporter aux professionnels
+        une solution simple : du stock, du service et des prix cohérents
+        pour faire avancer leurs chantiers.
       </div>
-    </section>
+      <div class="quote-author">
+        <span class="accent">Zavier Leclerc</span> — Mot de notre dirigeant
+      </div>
+    </div>
+  </section>
 
-    <section class="section contact" id="contact">
-      <div class="container contact-layout">
-        <div class="reveal">
+  <!-- TRUST -->
+  <section class="section trust">
+    <div class="container reveal">
+      <div class="eyebrow" style="justify-content:center;">Reconnaissance terrain</div>
+      <h2 class="title">
+        Reconnue par les plus grands acteurs d’Occitanie
+        dans les projets façade, peinture ou dallage.
+      </h2>
+      <p class="lead">
+        TM DISTRI-MAT accompagne les besoins en consommables bâtiment avec une logique de disponibilité,
+        d’approvisionnement chantier et de volumes maîtrisés.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card reveal">
           <div class="eyebrow">Contact</div>
-          <h2 class="section-title">Comment nous contacter ou obtenir un devis.</h2>
-          <p>Remplissez les informations. Le formulaire prépare automatiquement un e-mail avec votre demande.</p>
-          <div class="contact-details">
+          <h2 class="title">Comment nous contacter ou obtenir un devis.</h2>
+          <p>
+            Laissez vos informations et précisez votre besoin.
+            Nous pourrons vous recontacter rapidement pour vos demandes produits,
+            vos besoins en quantité, ou l’organisation de vos livraisons.
+          </p>
+
+          <div class="contact-list">
             <a href="tel:+33468403986">04 68 40 39 86</a>
             <a href="mailto:contact@technimat-outillage.fr">contact@technimat-outillage.fr</a>
-            <span>76 Chem. des Fours À Chaux, Narbonne</span>
+            <div>Narbonne, Occitanie</div>
           </div>
         </div>
 
-        <form class="form reveal" id="devisForm">
-          <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" required /></div>
-          <div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" type="text" required /></div>
-          <div class="field"><label for="poste">Poste</label><input id="poste" name="poste" type="text" /></div>
-          <div class="field"><label for="telephone">Téléphone</label><input id="telephone" name="telephone" type="tel" required /></div>
-          <div class="field"><label for="mail">Mail</label><input id="mail" name="mail" type="email" required /></div>
-          <div class="field"><label for="entreprise">Entreprise</label><input id="entreprise" name="entreprise" type="text" required /></div>
-          <div class="field full"><label for="message">Demande</label><textarea id="message" name="message" placeholder="Produits recherchés, volumes, livraison souhaitée..."></textarea></div>
-          <button type="submit">Préparer ma demande de devis</button>
-        </form>
+        <div class="form-card reveal">
+          <form class="form-grid" id="contactForm">
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" required>
+            </div>
+
+            <div class="field">
+              <label for="poste">Poste</label>
+              <input type="text" id="poste" name="poste">
+            </div>
+
+            <div class="field">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" name="tel" required>
+            </div>
+
+            <div class="field">
+              <label for="mail">Mail</label>
+              <input type="email" id="mail" name="mail" required>
+            </div>
+
+            <div class="field">
+              <label for="entreprise">Entreprise</label>
+              <input type="text" id="entreprise" name="entreprise" required>
+            </div>
+
+            <div class="field full">
+              <label for="message">Votre demande</label>
+              <textarea id="message" name="message" placeholder="Produits recherchés, quantités, zone de livraison, délai souhaité..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Envoyer ma demande</button>
+          </form>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="future">
-      <h2 class="reveal">L’avenir commence ici.</h2>
-    </section>
-  </main>
+  <!-- FUTURE -->
+  <section class="section future">
+    <div class="container reveal">
+      <h2>L’avenir commence <span class="accent">ici</span>.</h2>
+    </div>
+  </section>
 
-  <footer class="footer">
+  <!-- FOOTER -->
+  <footer>
     <div class="container footer-grid">
       <div>
-        <strong>TM DISTRI-MAT</strong>
-        <p>Consommables bâtiment, façade, peinture, dallage et approvisionnement chantier.</p>
+        <div class="footer-title">TM DISTRI-MAT</div>
+        <div class="footer-text">
+          Votre partenaire en consommables bâtiment, façade, peinture et dallage.
+        </div>
       </div>
-      <div>
-        <strong>Navigation</strong>
+
+      <div class="footer-links">
+        <div class="footer-title">Navigation</div>
         <a href="#produits">Nos produits</a>
-        <a href="#services">Notre service</a>
+        <a href="#service">Notre service</a>
         <a href="#livraison">Nos modes de livraison</a>
-        <a href="#qui-sommes-nous">Qui sommes-nous</a>
+        <a href="#qui">Qui sommes-nous</a>
       </div>
-      <div>
-        <strong>Contact</strong>
+
+      <div class="footer-links">
+        <div class="footer-title">Contact</div>
         <a href="tel:+33468403986">04 68 40 39 86</a>
         <a href="mailto:contact@technimat-outillage.fr">contact@technimat-outillage.fr</a>
         <a href="#contact">Obtenir un devis</a>
@@ -1261,119 +1708,111 @@
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const nav = document.getElementById("nav");
-      window.addEventListener("scroll", () => {
-        nav.classList.toggle("is-scrolled", window.scrollY > 35);
-      });
-
-      if (window.gsap && window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.utils.toArray(".reveal").forEach((el) => {
-          gsap.fromTo(el,
-            { opacity: 0, y: 42 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: .85,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: el,
-                start: "top 84%",
-                toggleActions: "play none none reverse"
-              }
-            }
-          );
-        });
-
-        gsap.fromTo(".corner-img",
-          { opacity: 0, y: 60, rotate: -10, scale: .88 },
-          { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.1, ease: "power3.out", delay: .25 }
-        );
-
-        gsap.to(".corner-img", {
-          rotate: 5,
-          scale: 1.08,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1
-          }
-        });
-
-        const counters = document.querySelectorAll(".counter");
-        counters.forEach(counter => {
-          const target = Number(counter.dataset.target || 0);
-          const obj = { value: 0 };
-          gsap.to(obj, {
-            value: target,
-            duration: 1.6,
-            ease: "power2.out",
-            scrollTrigger: { trigger: counter, start: "top 86%", once: true },
-            onUpdate: () => counter.textContent = Math.round(obj.value).toLocaleString("fr-FR")
-          });
-        });
-
-        const productItems = document.querySelectorAll(".product-item");
-        const productImages = document.querySelectorAll(".product-img");
-
-        function activateProduct(index) {
-          productItems.forEach(item => item.classList.toggle("active", Number(item.dataset.step) === index));
-          productImages.forEach(img => img.classList.toggle("active", Number(img.dataset.product) === index));
-        }
-
-        productItems.forEach(item => {
-          ScrollTrigger.create({
-            trigger: item,
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => activateProduct(Number(item.dataset.step)),
-            onEnterBack: () => activateProduct(Number(item.dataset.step))
-          });
-        });
-
-        gsap.to(".zoom-img", {
-          rotate: 4,
-          scale: 1.10,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".zoom-product",
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1
-          }
-        });
+    /* NAV scroll */
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 40){
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
       }
+    });
 
-      const form = document.getElementById("devisForm");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        const subject = encodeURIComponent("Demande de devis TM DISTRI-MAT");
-        const body = encodeURIComponent(
-          `Bonjour,
+    /* Reveal */
+    const reveals = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
 
-Je souhaite être recontacté pour une demande de devis TM DISTRI-MAT.
+    reveals.forEach(el => revealObserver.observe(el));
 
-Nom : ${data.get("nom") || ""}
-Prénom : ${data.get("prenom") || ""}
-Poste : ${data.get("poste") || ""}
-Téléphone : ${data.get("telephone") || ""}
-Mail : ${data.get("mail") || ""}
-Entreprise : ${data.get("entreprise") || ""}
+    /* Counters */
+    const counters = document.querySelectorAll(".counter");
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 80));
+
+          const update = () => {
+            current += step;
+            if(current >= target){
+              el.textContent = target;
+            } else {
+              el.textContent = current;
+              requestAnimationFrame(update);
+            }
+          };
+
+          update();
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.7 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    /* Product tabs */
+    const tabs = document.querySelectorAll(".tab");
+    const productTitle = document.getElementById("productTitle");
+    const productDesc = document.getElementById("productDesc");
+    const mainProductImage = document.getElementById("mainProductImage");
+    const productDetailImage = document.getElementById("productDetailImage");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        productTitle.textContent = tab.dataset.title;
+        productDesc.textContent = tab.dataset.desc;
+        mainProductImage.src = tab.dataset.main;
+        productDetailImage.src = tab.dataset.detail;
+        mainProductImage.alt = tab.dataset.title;
+        productDetailImage.alt = "Détail " + tab.dataset.title;
+      });
+    });
+
+    /* Form -> mailto */
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nom = document.getElementById("nom").value;
+      const prenom = document.getElementById("prenom").value;
+      const poste = document.getElementById("poste").value;
+      const tel = document.getElementById("tel").value;
+      const mail = document.getElementById("mail").value;
+      const entreprise = document.getElementById("entreprise").value;
+      const message = document.getElementById("message").value;
+
+      const subject = encodeURIComponent("Demande de devis TM DISTRI-MAT");
+      const body = encodeURIComponent(
+`Bonjour,
+
+Je souhaite obtenir un devis / être recontacté.
+
+Nom : ${nom}
+Prénom : ${prenom}
+Poste : ${poste}
+Téléphone : ${tel}
+Mail : ${mail}
+Entreprise : ${entreprise}
 
 Demande :
-${data.get("message") || ""}
+${message}
 
-Cordialement,`
-        );
-        window.location.href = `mailto:contact@technimat-outillage.fr?subject=${subject}&body=${body}`;
-      });
+Cordialement`
+      );
+
+      window.location.href = `mailto:contact@technimat-outillage.fr?subject=${subject}&body=${body}`;
     });
   </script>
 </body>
 </html>
-
