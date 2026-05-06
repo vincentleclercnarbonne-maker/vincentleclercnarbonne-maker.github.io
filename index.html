@@ -3,32 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TM DISTRI-MAT | Consommables bâtiment, façade, peinture et dallage</title>
-  <meta name="description" content="TM DISTRI-MAT, fournisseur de consommables bâtiment pour les professionnels : façade, peinture, dallage, livraison à la palette, tarifs dégressifs et centre logistique à Narbonne." />
+  <title>TM DISTRI-MAT | Consommables bâtiment</title>
+  <meta name="description" content="TM DISTRI-MAT fournit les professionnels du bâtiment en consommables façade, peinture et dallage : stock, livraison palette et tarifs dégressifs." />
 
-  <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Librairies animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
     :root {
-      --bg: #070707;
-      --bg-soft: #101010;
-      --bg-card: rgba(255,255,255,0.06);
-      --text: #f4f4f4;
-      --muted: #a7a7a7;
-      --line: rgba(255,255,255,0.15);
+      --black: #060606;
+      --dark: #101010;
+      --dark-2: #171717;
       --white: #ffffff;
-      --black: #000000;
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
       --orange: #ff6a00;
-      --orange-soft: rgba(255,106,0,0.18);
-      --grey: #bfc1c4;
-      --max: 1280px;
+      --orange-soft: rgba(255, 106, 0, 0.16);
+      --line: rgba(255, 255, 255, 0.14);
+      --cream: #f4f1eb;
+      --max: 1240px;
     }
 
     * {
@@ -43,11 +40,8 @@
 
     body {
       font-family: "Inter", Arial, sans-serif;
+      background: var(--black);
       color: var(--text);
-      background:
-        radial-gradient(circle at 70% 10%, rgba(255,106,0,0.16), transparent 24%),
-        radial-gradient(circle at 25% 35%, rgba(255,255,255,0.08), transparent 24%),
-        var(--bg);
       overflow-x: hidden;
     }
 
@@ -57,18 +51,17 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(var(--max), calc(100% - 48px));
+      width: min(var(--max), calc(100% - 56px));
       margin-inline: auto;
     }
 
     .section {
-      min-height: 100vh;
-      padding: 120px 0;
+      padding: 130px 0;
       position: relative;
       overflow: hidden;
     }
@@ -76,44 +69,61 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 24px;
       color: var(--muted);
       font-size: 13px;
-      letter-spacing: 0.14em;
+      line-height: 1.4;
+      font-weight: 800;
       text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 22px;
+      letter-spacing: 0.14em;
     }
 
     .eyebrow::before {
       content: "";
-      width: 42px;
+      width: 44px;
       height: 1px;
       background: var(--orange);
-      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 6vw, 82px);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+      font-weight: 900;
+    }
+
+    .section-lead {
+      max-width: 700px;
+      color: rgba(255,255,255,0.72);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .orange {
+      color: var(--orange);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
-      min-height: 48px;
+      min-height: 50px;
       padding: 0 22px;
       border-radius: 999px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+      border: 1px solid rgba(255,255,255,0.20);
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
       backdrop-filter: blur(12px);
-      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+      font-weight: 800;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.38);
     }
 
     .btn-primary {
@@ -123,33 +133,34 @@
     }
 
     .btn-primary:hover {
-      background: #ff7f24;
-      border-color: #ff7f24;
+      background: #ff7e22;
+      border-color: #ff7e22;
     }
 
-    /* NAV */
+    /* NAVIGATION */
     .nav {
       position: fixed;
+      z-index: 1000;
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
-      width: min(1180px, calc(100% - 32px));
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(10,10,10,0.28);
-      backdrop-filter: blur(20px);
-      border-radius: 999px;
-      padding: 10px 12px 10px 14px;
+      width: min(1180px, calc(100% - 34px));
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.28);
-      transition: background .3s ease, border-color .3s ease;
+      gap: 18px;
+      padding: 10px 12px 10px 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      background: rgba(12,12,12,0.38);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      transition: background .25s ease, border-color .25s ease;
     }
 
     .nav.is-scrolled {
-      background: rgba(10,10,10,0.78);
-      border-color: rgba(255,255,255,0.22);
+      background: rgba(10,10,10,0.88);
+      border-color: rgba(255,255,255,0.24);
     }
 
     .brand {
@@ -157,7 +168,7 @@
       align-items: center;
       gap: 10px;
       font-weight: 900;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
       white-space: nowrap;
     }
 
@@ -167,6 +178,7 @@
       object-fit: contain;
       border-radius: 50%;
       background: #fff;
+      padding: 3px;
     }
 
     .brand span {
@@ -176,608 +188,484 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
     .nav-links a {
+      padding: 11px 13px;
+      border-radius: 999px;
       color: rgba(255,255,255,0.78);
       font-size: 13px;
-      font-weight: 700;
-      padding: 12px 14px;
-      border-radius: 999px;
-      transition: background .2s ease, color .2s ease;
+      font-weight: 750;
+      transition: background .22s ease, color .22s ease;
     }
 
     .nav-links a:hover {
       color: #fff;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.10);
     }
 
-    .nav-cta {
-      background: rgba(255,255,255,0.92) !important;
-      color: #111 !important;
+    .nav-links .nav-cta {
+      color: #111;
+      background: rgba(255,255,255,0.92);
     }
 
-    /* HERO */
+    /* HERO PROPRE */
     .hero {
-      height: 280vh;
-      padding: 0;
-    }
-
-    .hero-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 150px 0 90px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      isolation: isolate;
+      background:
+        radial-gradient(circle at 72% 40%, rgba(255,106,0,0.17), transparent 28%),
+        radial-gradient(circle at 35% 20%, rgba(255,255,255,0.07), transparent 26%),
+        linear-gradient(180deg, #080808 0%, #0c0c0c 100%);
     }
 
-    .hero-grid {
+    .hero::before {
+      content: "";
       position: absolute;
       inset: 0;
-      opacity: .23;
       background-image:
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 82px 82px;
-      mask-image: radial-gradient(circle at 50% 45%, black, transparent 70%);
-      z-index: -3;
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 76px 76px;
+      opacity: .38;
+      mask-image: radial-gradient(circle at 62% 42%, #000, transparent 70%);
     }
 
-    .hero-halo {
-      position: absolute;
-      width: 760px;
-      height: 760px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,106,0,0.26), transparent 62%);
-      filter: blur(20px);
-      z-index: -2;
-      transform: translateY(30px);
-    }
-
-    .hero-corner {
-      position: absolute;
-      width: min(52vw, 620px);
-      max-height: 70vh;
-      object-fit: contain;
-      filter: drop-shadow(0 40px 80px rgba(0,0,0,.65));
-      z-index: -1;
-      transform-origin: center;
-    }
-
-    .hero-content {
-      text-align: center;
-      width: min(1050px, calc(100% - 40px));
-      margin-inline: auto;
+    .hero-layout {
       position: relative;
       z-index: 2;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 72px;
     }
 
-    .hero-kicker {
-      font-size: clamp(13px, 1.4vw, 16px);
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-weight: 800;
-      margin-bottom: 22px;
+    .hero-copy {
+      max-width: 650px;
     }
 
-    .hero-title {
-      font-size: clamp(44px, 8vw, 116px);
-      line-height: .9;
-      letter-spacing: -0.085em;
-      font-weight: 950;
-      max-width: 980px;
-      margin-inline: auto;
+    .hero-copy h1 {
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 1.01;
+      letter-spacing: -0.052em;
+      font-weight: 900;
+      margin-bottom: 28px;
     }
 
-    .hero-subtitle {
-      max-width: 760px;
-      margin: 28px auto 0;
-      color: rgba(255,255,255,0.72);
-      font-size: clamp(17px, 1.7vw, 23px);
+    .hero-copy p {
+      color: rgba(255,255,255,0.74);
+      font-size: clamp(18px, 2vw, 24px);
       line-height: 1.55;
       font-weight: 500;
+      max-width: 590px;
     }
 
     .hero-actions {
-      margin-top: 34px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 34px;
     }
 
-    .scroll-hint {
-      position: absolute;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .scroll-hint::after {
-      content: "";
-      width: 1px;
-      height: 46px;
-      background: linear-gradient(transparent, rgba(255,255,255,.7), transparent);
-      display: block;
-      margin: 12px auto 0;
-      animation: pulseLine 1.6s ease-in-out infinite;
-    }
-
-    @keyframes pulseLine {
-      0%,100% { opacity: .25; transform: scaleY(.7); }
-      50% { opacity: 1; transform: scaleY(1); }
-    }
-
-    /* PURPOSE */
-    .purpose {
-      min-height: 140vh;
+    .hero-product-card {
+      min-height: min(660px, 72vh);
       display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,106,0,0.20), transparent 42%),
+        rgba(255,255,255,0.045);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 40px 120px rgba(0,0,0,0.48);
+      overflow: hidden;
+    }
+
+    .hero-product-card::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 30px;
+      pointer-events: none;
+    }
+
+    .hero-product-card img {
+      width: min(82%, 620px);
+      max-height: 620px;
+      object-fit: contain;
+      filter: drop-shadow(0 40px 90px rgba(0,0,0,0.66));
+      transform-origin: center;
+    }
+
+    .product-note {
+      position: absolute;
+      right: 26px;
+      bottom: 26px;
+      max-width: 260px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.46);
+      backdrop-filter: blur(14px);
+    }
+
+    .product-note strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.35;
+      margin-bottom: 7px;
+    }
+
+    .product-note span {
+      color: rgba(255,255,255,0.67);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* POURQUOI */
+    .purpose {
+      background: #0d0d0d;
+    }
+
+    .purpose-box {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 70px;
       align-items: center;
     }
 
-    .purpose-content {
-      position: relative;
-      text-align: center;
-      z-index: 2;
-      max-width: 1050px;
-      margin-inline: auto;
+    .purpose h2 {
+      font-size: clamp(42px, 6vw, 88px);
+      line-height: 1.04;
+      letter-spacing: -0.047em;
+      font-weight: 900;
     }
 
-    .big-statement {
-      font-size: clamp(36px, 6vw, 86px);
-      line-height: .95;
-      letter-spacing: -0.065em;
-      font-weight: 950;
-    }
-
-    .big-statement span {
-      color: rgba(255,255,255,.42);
-    }
-
-    .purpose-text {
-      max-width: 760px;
-      margin: 32px auto 0;
-      color: rgba(255,255,255,.72);
-      font-size: clamp(18px, 2vw, 25px);
-      line-height: 1.55;
+    .purpose p {
+      margin-top: 28px;
+      color: rgba(255,255,255,0.74);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.6;
       font-weight: 500;
     }
 
-    .floating-products {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
+    .product-chips {
+      display: grid;
+      gap: 16px;
     }
 
-    .floating-product {
-      position: absolute;
-      width: clamp(110px, 14vw, 220px);
-      opacity: .72;
-      filter: drop-shadow(0 28px 50px rgba(0,0,0,.55));
-      will-change: transform;
+    .chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 76px;
+      padding: 18px 22px;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.045);
+      color: rgba(255,255,255,0.78);
+      font-weight: 800;
     }
 
-    .float-a { top: 8%; left: 5%; transform: rotate(-16deg); }
-    .float-b { top: 14%; right: 7%; transform: rotate(18deg); }
-    .float-c { bottom: 10%; left: 12%; transform: rotate(8deg); }
-    .float-d { bottom: 5%; right: 12%; transform: rotate(-12deg); }
-    .float-e { top: 48%; right: 1%; transform: rotate(9deg); }
-
-    .white-lines {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: .34;
-      z-index: 0;
+    .chip span:first-child {
+      color: #fff;
+      font-size: 18px;
     }
 
-    .white-lines span {
-      position: absolute;
-      display: block;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent);
-      width: 260px;
+    .chip span:last-child {
+      color: var(--orange);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
     }
 
-    .white-lines span:nth-child(1) { top: 25%; left: 4%; transform: rotate(-18deg); }
-    .white-lines span:nth-child(2) { top: 44%; right: 6%; transform: rotate(14deg); }
-    .white-lines span:nth-child(3) { bottom: 22%; left: 32%; transform: rotate(4deg); }
-
-    /* STATS */
+    /* CHIFFRES */
     .stats {
-      min-height: auto;
-      padding: 120px 0 160px;
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,.04), transparent);
+      background: #090909;
     }
 
     .stats-header {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 70px;
       align-items: end;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 64px;
-    }
-
-    .section-title {
-      font-size: clamp(38px, 5vw, 74px);
-      line-height: .95;
-      letter-spacing: -0.065em;
-      font-weight: 950;
-    }
-
-    .section-lead {
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 520px;
+      margin-bottom: 70px;
     }
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      gap: 18px;
     }
 
     .stat-card {
-      padding: 46px 34px;
-      border-right: 1px solid var(--line);
       min-height: 260px;
+      padding: 34px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: rgba(255,255,255,.025);
-    }
-
-    .stat-card:last-child {
-      border-right: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.045);
     }
 
     .stat-value {
-      font-size: clamp(62px, 8vw, 118px);
-      line-height: .8;
-      letter-spacing: -0.09em;
-      font-weight: 950;
+      color: var(--orange);
+      font-size: clamp(62px, 8vw, 112px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      font-weight: 900;
     }
 
-    .stat-label {
-      color: rgba(255,255,255,.72);
+    .stat-card p {
+      max-width: 260px;
+      color: rgba(255,255,255,0.72);
       font-size: 18px;
-      line-height: 1.35;
+      line-height: 1.45;
       font-weight: 700;
-      max-width: 240px;
     }
 
-    /* PRODUCTS STICKY */
-    .products-scroll {
-      padding: 0;
-      min-height: 520vh;
+    /* PRODUITS */
+    .products {
+      background: #0f0f0f;
     }
 
-    .products-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
+    .products-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 60px;
-      width: min(var(--max), calc(100% - 48px));
-      margin-inline: auto;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 70px;
+      align-items: start;
     }
 
-    .product-visual-stage {
-      position: relative;
-      height: min(640px, 76vh);
-      border: 1px solid var(--line);
-      border-radius: 34px;
+    .product-display {
+      position: sticky;
+      top: 120px;
+      min-height: 620px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 36px;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,106,0,.16), transparent 44%),
-        rgba(255,255,255,.04);
+        radial-gradient(circle at 50% 42%, rgba(255,106,0,0.16), transparent 42%),
+        rgba(255,255,255,0.04);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 46px;
     }
 
-    .product-visual-stage::before {
+    .product-display::after {
       content: "";
       position: absolute;
-      inset: 22px;
-      border: 1px solid rgba(255,255,255,.08);
+      inset: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 26px;
+      pointer-events: none;
     }
 
-    .product-image {
+    .product-display img {
       position: absolute;
-      width: min(78%, 470px);
-      max-height: 78%;
+      width: min(72%, 440px);
+      max-height: 70%;
       object-fit: contain;
       opacity: 0;
-      transform: translateY(60px) scale(.86) rotate(-8deg);
-      filter: drop-shadow(0 40px 80px rgba(0,0,0,.56));
+      transform: translateY(36px) scale(.92);
+      transition: opacity .45s ease, transform .55s ease;
+      filter: drop-shadow(0 36px 80px rgba(0,0,0,0.55));
+      background: rgba(255,255,255,0.02);
+      border-radius: 24px;
     }
 
-    .product-image.active {
+    .product-display img.active {
       opacity: 1;
-      transform: translateY(0) scale(1) rotate(0deg);
-      transition: opacity .55s ease, transform .75s cubic-bezier(.22,1,.36,1);
+      transform: translateY(0) scale(1);
     }
 
-    .product-copy {
-      position: relative;
+    .product-list {
+      display: grid;
+      gap: 28px;
     }
 
-    .product-step {
-      min-height: 100vh;
+    .product-item {
+      min-height: 320px;
+      padding: 38px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      opacity: .24;
-      transform: translateY(30px);
-      transition: opacity .35s ease, transform .35s ease;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 34px;
+      background: rgba(255,255,255,0.045);
+      opacity: .45;
+      transition: opacity .25s ease, background .25s ease, transform .25s ease;
     }
 
-    .product-step.active {
+    .product-item.active {
       opacity: 1;
-      transform: translateY(0);
+      background: rgba(255,255,255,0.075);
+      transform: translateX(-8px);
     }
 
-    .product-index {
+    .product-num {
       color: var(--orange);
-      font-weight: 950;
-      letter-spacing: -0.05em;
-      font-size: 24px;
-      margin-bottom: 12px;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
-    .product-step h3 {
-      font-size: clamp(38px, 5vw, 76px);
-      line-height: .9;
-      letter-spacing: -0.065em;
-      font-weight: 950;
-      margin-bottom: 24px;
+    .product-item h3 {
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.042em;
+      font-weight: 900;
+      margin-bottom: 20px;
     }
 
-    .product-step p {
-      color: rgba(255,255,255,.72);
-      font-size: clamp(18px, 1.8vw, 23px);
-      line-height: 1.55;
-      max-width: 560px;
+    .product-item p {
+      color: rgba(255,255,255,0.72);
+      font-size: 19px;
+      line-height: 1.58;
+      max-width: 640px;
+      font-weight: 500;
     }
 
-    .product-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .tag {
-      border: 1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.72);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    /* WORD FORMATION */
-    .word-section {
-      min-height: 160vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* TM FORMATION */
+    .identity {
+      background: #080808;
       text-align: center;
     }
 
-    .word-stage {
-      width: min(1100px, calc(100% - 48px));
-      margin-inline: auto;
-    }
-
-    .word-list {
+    .identity-words {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-bottom: 50px;
+      margin: 50px 0;
     }
 
-    .word-token {
-      border: 1px solid var(--line);
+    .identity-word {
+      padding: 22px 18px;
+      border: 1px solid rgba(255,255,255,0.13);
       border-radius: 999px;
-      padding: 18px 20px;
-      color: rgba(255,255,255,.7);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,0.045);
+      color: rgba(255,255,255,0.82);
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.1;
       font-weight: 900;
-      letter-spacing: -0.04em;
-      font-size: clamp(17px, 2vw, 30px);
+      letter-spacing: -0.035em;
     }
 
-    .formed-name {
-      font-size: clamp(54px, 10vw, 150px);
-      line-height: .82;
-      letter-spacing: -0.09em;
-      font-weight: 950;
-      opacity: .18;
-      transform: scale(.8);
+    .identity-result {
+      color: #fff;
+      font-size: clamp(58px, 9vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      font-weight: 900;
     }
 
-    /* PRODUCT FILM */
-    .film-section {
-      padding: 0;
-      min-height: 270vh;
+    /* ZOOM PRODUIT */
+    .zoom-product {
+      background: #0d0d0d;
     }
 
-    .film-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
+    .zoom-layout {
       display: grid;
-      place-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 58%, rgba(255,106,0,.18), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.03), transparent);
-    }
-
-    .film-product {
-      width: min(54vw, 650px);
-      max-height: 72vh;
-      object-fit: contain;
-      filter: drop-shadow(0 50px 90px rgba(0,0,0,.68));
-      transform-origin: center;
-    }
-
-    .film-text {
-      position: absolute;
-      bottom: 64px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(850px, calc(100% - 48px));
-      text-align: center;
-    }
-
-    .film-text h2 {
-      font-size: clamp(34px, 5vw, 70px);
-      line-height: .94;
-      letter-spacing: -0.065em;
-      font-weight: 950;
-      margin-bottom: 16px;
-    }
-
-    .film-text p {
-      color: rgba(255,255,255,.68);
-      font-size: 18px;
-      line-height: 1.55;
-    }
-
-    .fiber-callout {
-      position: absolute;
-      right: 12%;
-      top: 28%;
-      max-width: 260px;
-      padding: 18px 18px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.42);
-      backdrop-filter: blur(18px);
-      border-radius: 22px;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .fiber-callout strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--orange);
-    }
-
-    .fiber-callout span {
-      color: rgba(255,255,255,.72);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    /* PRICING */
-    .pricing {
-      min-height: auto;
-      background: #f4f2ee;
-      color: #111;
-      padding: 130px 0;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
       align-items: center;
     }
 
-    .pricing h2 {
-      font-size: clamp(44px, 6vw, 92px);
-      line-height: .88;
-      letter-spacing: -0.08em;
-      font-weight: 950;
-      margin-bottom: 28px;
+    .zoom-visual {
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,106,0,0.16), transparent 42%),
+        rgba(255,255,255,0.04);
+      overflow: hidden;
     }
 
-    .pricing p {
-      color: #4b4b4b;
-      font-size: clamp(18px, 1.8vw, 23px);
-      line-height: 1.55;
-      max-width: 740px;
+    .zoom-visual img {
+      width: min(72%, 470px);
+      max-height: 420px;
+      object-fit: contain;
+      filter: drop-shadow(0 34px 80px rgba(0,0,0,0.60));
+      border-radius: 22px;
     }
 
-    .volume-card {
+    .zoom-detail {
+      margin-top: 26px;
+      padding: 22px;
+      border-left: 3px solid var(--orange);
+      color: rgba(255,255,255,0.72);
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 22px 22px 0;
+    }
+
+    /* TARIFS */
+    .pricing {
+      background: var(--cream);
+      color: #111;
+    }
+
+    .pricing .eyebrow {
+      color: #666;
+    }
+
+    .pricing .section-lead {
+      color: #4f4f4f;
+    }
+
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .volume-box {
+      padding: 34px;
+      border-radius: 34px;
       background: #111;
       color: #fff;
-      border-radius: 32px;
-      padding: 34px;
-      min-height: 430px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      position: relative;
     }
 
-    .volume-card::after {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: var(--orange-soft);
-      right: -110px;
-      top: -110px;
-    }
-
-    .volume-card h3 {
-      font-size: 34px;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      max-width: 360px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .volume-list {
-      display: grid;
-      gap: 12px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .volume-list div {
+    .volume-row {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
-      border-bottom: 1px solid rgba(255,255,255,.14);
-      padding-bottom: 12px;
-      color: rgba(255,255,255,.76);
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.74);
+      font-size: 17px;
+      line-height: 1.4;
       font-weight: 700;
     }
 
-    /* PARTNERS */
+    .volume-row:last-child {
+      border-bottom: 0;
+    }
+
+    .volume-row strong {
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    /* PARTENAIRES */
     .partners {
-      min-height: auto;
-      padding: 120px 0;
       background: #fff;
       color: #111;
     }
@@ -786,161 +674,120 @@
       color: #666;
     }
 
-    .partners-grid {
-      margin-top: 46px;
+    .partner-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      gap: 16px;
+      margin-top: 48px;
     }
 
     .partner-card {
       min-height: 150px;
-      border: 1px solid #e8e8e8;
-      border-radius: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 22px;
+      padding: 24px;
+      border: 1px solid #e8e8e8;
+      border-radius: 28px;
       background: #fafafa;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .partner-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 50px rgba(0,0,0,.08);
     }
 
     .partner-card img {
       max-width: 150px;
-      max-height: 70px;
+      max-height: 74px;
       object-fit: contain;
     }
 
     .partner-fallback {
       display: none;
-      text-align: center;
-      font-weight: 950;
-      letter-spacing: -0.04em;
       color: #111;
+      text-align: center;
       font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: -0.025em;
     }
 
-    /* QUOTE */
-    .quote-section {
-      min-height: 100vh;
+    /* CITATION */
+    .quote {
+      min-height: 90vh;
       display: flex;
-      align-items: end;
-      padding: 120px 0;
+      align-items: flex-end;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.88)),
-        url("images/chantier-facade.jpg") center/cover no-repeat,
-        linear-gradient(135deg, #252525, #090909);
-    }
-
-    .quote-box {
-      width: min(980px, calc(100% - 48px));
-      margin-inline: auto;
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.88)),
+        url("images/chantier-facade.jpg") center / cover no-repeat,
+        linear-gradient(135deg, #313131, #080808);
     }
 
     .quote-text {
-      font-size: clamp(34px, 5.4vw, 84px);
-      line-height: .94;
-      letter-spacing: -0.075em;
-      font-weight: 950;
       max-width: 980px;
+      font-size: clamp(38px, 5.6vw, 86px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      font-weight: 900;
     }
 
     .quote-author {
-      margin-top: 34px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: rgba(255,255,255,.72);
+      margin-top: 30px;
+      color: rgba(255,255,255,0.76);
+      font-size: 17px;
+      line-height: 1.5;
       font-weight: 800;
     }
 
-    .quote-author::before {
-      content: "";
-      width: 56px;
-      height: 1px;
-      background: var(--orange);
-    }
-
-    /* TRUST */
+    /* RECONNAISSANCE */
     .trust {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
       text-align: center;
       background:
         radial-gradient(circle at 50% 50%, rgba(255,106,0,.14), transparent 42%),
-        var(--bg);
+        #090909;
     }
 
-    .trust h2 {
-      font-size: clamp(44px, 7vw, 112px);
-      line-height: .9;
-      letter-spacing: -0.085em;
-      font-weight: 950;
-      max-width: 1160px;
-      margin-inline: auto;
-    }
-
-    .trust p {
-      margin: 28px auto 0;
-      max-width: 760px;
-      color: rgba(255,255,255,.68);
-      font-size: 20px;
-      line-height: 1.55;
+    .trust .section-lead {
+      margin: 26px auto 0;
     }
 
     /* CONTACT */
     .contact {
-      min-height: auto;
-      padding: 130px 0;
-      background: #f4f2ee;
+      background: var(--cream);
       color: #111;
     }
 
-    .contact-grid {
+    .contact .eyebrow {
+      color: #666;
+    }
+
+    .contact-layout {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 70px;
       align-items: start;
     }
 
-    .contact h2 {
-      font-size: clamp(42px, 6vw, 88px);
-      line-height: .9;
-      letter-spacing: -0.08em;
-      font-weight: 950;
-      margin-bottom: 24px;
-    }
-
     .contact p {
-      color: #4f4f4f;
+      color: #4b4b4b;
       font-size: 19px;
       line-height: 1.55;
-      max-width: 520px;
+      margin-top: 24px;
     }
 
     .contact-details {
       margin-top: 30px;
       display: grid;
       gap: 12px;
-      color: #252525;
+      color: #111;
       font-weight: 800;
     }
 
     .form {
-      background: #fff;
-      border: 1px solid #e5e1db;
-      border-radius: 32px;
-      padding: 28px;
+      padding: 30px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      box-shadow: 0 24px 70px rgba(0,0,0,.08);
+      border: 1px solid #e5e0d8;
+      border-radius: 34px;
+      background: #fff;
+      box-shadow: 0 26px 80px rgba(0,0,0,0.08);
     }
 
     .field {
@@ -953,29 +800,30 @@
     }
 
     label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
       color: #777;
+      font-size: 12px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: .09em;
       font-weight: 900;
     }
 
     input, textarea {
       width: 100%;
-      min-height: 52px;
+      min-height: 54px;
+      border: 1px solid #ddd7cf;
       border-radius: 16px;
-      border: 1px solid #ddd8d0;
+      background: #fbfbfb;
       padding: 0 15px;
+      color: #111;
       font: inherit;
       font-weight: 700;
-      color: #111;
-      background: #fafafa;
       outline: none;
     }
 
     textarea {
-      padding-top: 15px;
       min-height: 130px;
+      padding-top: 15px;
       resize: vertical;
     }
 
@@ -986,15 +834,15 @@
 
     .form button {
       grid-column: 1 / -1;
+      min-height: 56px;
       border: 0;
       border-radius: 999px;
-      min-height: 56px;
       background: #111;
       color: #fff;
       font: inherit;
-      font-weight: 950;
+      font-weight: 900;
       cursor: pointer;
-      transition: transform .2s ease, background .2s ease;
+      transition: transform .22s ease, background .22s ease;
     }
 
     .form button:hover {
@@ -1005,72 +853,56 @@
 
     /* FINAL */
     .future {
-      min-height: 85vh;
+      min-height: 70vh;
       display: grid;
       place-items: center;
       text-align: center;
       background: #050505;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .future::before {
-      content: "";
-      position: absolute;
-      width: 900px;
-      height: 900px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,106,0,.19), transparent 64%);
     }
 
     .future h2 {
-      font-size: clamp(56px, 11vw, 170px);
-      line-height: .8;
-      letter-spacing: -0.095em;
-      font-weight: 950;
       max-width: 1100px;
-      position: relative;
-      z-index: 2;
+      font-size: clamp(58px, 10vw, 150px);
+      line-height: .9;
+      letter-spacing: -0.06em;
+      font-weight: 900;
     }
 
     .footer {
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
       background: #050505;
-      border-top: 1px solid var(--line);
-      padding: 46px 0;
-      color: rgba(255,255,255,.62);
+      color: rgba(255,255,255,0.62);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1.2fr .8fr .8fr;
-      gap: 24px;
-      align-items: start;
+      gap: 34px;
     }
 
     .footer strong {
-      color: #fff;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      color: #fff;
       font-size: 16px;
     }
 
     .footer a {
       display: block;
       margin: 8px 0;
-      color: rgba(255,255,255,.62);
+      color: rgba(255,255,255,0.62);
     }
 
     .footer a:hover {
       color: #fff;
     }
 
-    /* Responsive */
-    @media (max-width: 980px) {
+    @media (max-width: 1020px) {
       .nav {
         top: 10px;
-        border-radius: 26px;
+        border-radius: 24px;
         align-items: flex-start;
-        gap: 12px;
       }
 
       .nav-links {
@@ -1079,56 +911,42 @@
       }
 
       .nav-links a {
-        font-size: 12px;
         padding: 9px 10px;
+        font-size: 12px;
       }
 
-      .hero-corner {
-        width: min(78vw, 560px);
-      }
-
+      .hero-layout,
+      .purpose-box,
       .stats-header,
-      .pricing-grid,
-      .contact-grid,
+      .products-layout,
+      .zoom-layout,
+      .pricing-layout,
+      .contact-layout,
       .footer-grid {
         grid-template-columns: 1fr;
-        display: grid;
+      }
+
+      .hero-product-card,
+      .product-display,
+      .zoom-visual {
+        min-height: 480px;
+      }
+
+      .product-display {
+        position: relative;
+        top: auto;
+      }
+
+      .product-item {
+        min-height: auto;
       }
 
       .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .stat-card {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .products-sticky {
-        grid-template-columns: 1fr;
-        height: auto;
-        position: relative;
-        padding: 100px 0;
-      }
-
-      .products-scroll {
-        min-height: auto;
-      }
-
-      .product-visual-stage {
-        position: sticky;
-        top: 90px;
-        height: 52vh;
-        z-index: 2;
-      }
-
-      .product-step {
-        min-height: 70vh;
-        padding-top: 30px;
-      }
-
-      .word-list,
-      .partners-grid,
+      .identity-words,
+      .partner-grid,
       .form {
         grid-template-columns: 1fr;
       }
@@ -1137,20 +955,15 @@
       .form button {
         grid-column: auto;
       }
-
-      .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (max-width: 640px) {
       .container {
-        width: min(100% - 28px, var(--max));
+        width: min(var(--max), calc(100% - 28px));
       }
 
-      .nav {
-        width: calc(100% - 20px);
-        padding: 10px;
+      .section {
+        padding: 90px 0;
       }
 
       .brand span {
@@ -1161,8 +974,12 @@
         display: none;
       }
 
-      .hero-title {
-        font-size: clamp(48px, 15vw, 82px);
+      .nav {
+        width: calc(100% - 20px);
+      }
+
+      .hero {
+        padding-top: 120px;
       }
 
       .hero-actions {
@@ -1173,12 +990,15 @@
         width: 100%;
       }
 
-      .floating-product {
-        opacity: .34;
+      .product-note {
+        position: static;
+        margin: 0 18px 18px;
+        max-width: none;
       }
 
-      .partners-grid {
-        grid-template-columns: 1fr;
+      .hero-product-card {
+        flex-direction: column;
+        padding-top: 20px;
       }
     }
   </style>
@@ -1200,54 +1020,46 @@
   </header>
 
   <main>
-    <!-- 1. HERO CORNIÈRE -->
-    <section class="hero" id="accueil" aria-label="Introduction TM DISTRI-MAT">
-      <div class="hero-sticky">
-        <div class="hero-grid"></div>
-        <div class="hero-halo"></div>
-        <img class="hero-corner" src="images/imagecorniere.png" alt="Cornière façade TM DISTRI-MAT" />
-
-        <div class="hero-content">
-          <div class="hero-kicker hero-kicker-1">Consommables bâtiment • Façade • Peinture • Dallage</div>
-          <h1 class="hero-title hero-title-1">Faites confiance à un fournisseur dédié à vos consommables bâtiment.</h1>
-          <p class="hero-subtitle hero-subtitle-1">Stock, volumes, réactivité et accompagnement terrain pour les professionnels du bâtiment en Occitanie.</p>
-
-          <div class="hero-kicker hero-kicker-2">TM DISTRI-MAT</div>
-          <h2 class="hero-title hero-title-2">La solution qu’il vous faut.</h2>
-          <p class="hero-subtitle hero-subtitle-2">Une plateforme de distribution pensée pour vos chantiers, vos volumes et vos délais.</p>
-
-          <div class="hero-actions hero-actions-1">
-            <a href="#produits" class="btn btn-primary">Découvrir les produits</a>
+    <section class="hero" id="accueil">
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Consommables bâtiment</div>
+          <h1>Faites confiance à un fournisseur dédié à vos consommables bâtiment.</h1>
+          <p>TM DISTRI-MAT accompagne les professionnels avec du stock, des volumes, des livraisons organisées et des tarifs dégressifs selon les quantités.</p>
+          <div class="hero-actions">
+            <a href="#produits" class="btn btn-primary">Découvrir nos produits</a>
             <a href="#contact" class="btn">Demander un devis</a>
           </div>
         </div>
 
-        <div class="scroll-hint">Scroll</div>
+        <div class="hero-product-card reveal">
+          <img class="corner-img" src="images/imagecorniere.png" alt="Cornière bâtiment" />
+          <div class="product-note">
+            <strong>TM DISTRI-MAT, la solution qu’il vous faut.</strong>
+            <span>Un approvisionnement pensé pour les façadiers, peintres, entreprises de dallage et professionnels du bâtiment.</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 2. POURQUOI NOUS EXISTONS -->
     <section class="section purpose" id="services">
-      <div class="white-lines">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="container purpose-box">
+        <div class="reveal">
+          <div class="eyebrow">Pourquoi nous existons</div>
+          <h2>Un système simple : stock, volume, palette et livraison.</h2>
+          <p>Nous existons pour simplifier l’approvisionnement des chantiers. Vous commandez vos consommables en quantité, nous organisons la disponibilité, les prix par volume et la livraison selon votre zone.</p>
+        </div>
 
-      <div class="floating-products">
-        <img class="floating-product float-a" src="images/talochemondelin.png" alt="Taloche Mondelin" />
-        <img class="floating-product float-b" src="images/st390.jpg" alt="Adhésif chantier" />
-        <img class="floating-product float-c" src="images/polyanne.png" alt="Polyane" />
-        <img class="floating-product float-d" src="images/jointdedillatation.png" alt="Joint de dilatation" />
-        <img class="floating-product float-e" src="images/trame.png" alt="Trame façade" />
-      </div>
-
-      <div class="container purpose-content">
-        <div class="eyebrow">Pourquoi nous existons</div>
-        <h2 class="big-statement">Simplifier l’approvisionnement chantier <span>avec une logique de stock, de volume et de livraison.</span></h2>
-        <p class="purpose-text">TM DISTRI-MAT accompagne les professionnels avec des livraisons en grande quantité, à la palette, et des tarifs dégressifs selon les volumes commandés par produit.</p>
+        <div class="product-chips reveal">
+          <div class="chip"><span>Adhésifs chantier</span><span>Stock</span></div>
+          <div class="chip"><span>Taloches et outillage</span><span>Pro</span></div>
+          <div class="chip"><span>Polyane et sous-dallage</span><span>Palette</span></div>
+          <div class="chip"><span>Joints de dilatation</span><span>Technique</span></div>
+          <div class="chip"><span>Vis et jaquettes</span><span>Projection</span></div>
+        </div>
       </div>
     </section>
 
-    <!-- 3. CHIFFRES CLÉS -->
     <section class="section stats" id="qui-sommes-nous">
       <div class="container">
         <div class="stats-header reveal">
@@ -1255,190 +1067,152 @@
             <div class="eyebrow">Une base solide</div>
             <h2 class="section-title">Des moyens pensés pour les pros.</h2>
           </div>
-          <p class="section-lead">TM DISTRI-MAT s’appuie sur une organisation terrain, un centre logistique à Narbonne et un rayonnement commercial sur l’Occitanie.</p>
+          <p class="section-lead">Une organisation commerciale et logistique basée à Narbonne, au service des professionnels d’Occitanie.</p>
         </div>
 
         <div class="stats-grid">
           <div class="stat-card reveal">
             <div class="stat-value"><span class="counter" data-target="500">0</span>+</div>
-            <div class="stat-label">clients réguliers accompagnés</div>
+            <p>clients réguliers accompagnés</p>
           </div>
           <div class="stat-card reveal">
             <div class="stat-value"><span class="counter" data-target="800">0</span></div>
-            <div class="stat-label">m² de centre logistique à Narbonne</div>
+            <p>m² de centre logistique à Narbonne</p>
           </div>
           <div class="stat-card reveal">
             <div class="stat-value"><span class="counter" data-target="6">0</span></div>
-            <div class="stat-label">villes majeures couvertes en Occitanie</div>
+            <p>villes majeures couvertes en Occitanie</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. PRODUITS AVEC IMAGE FIXE ET TEXTE AU SCROLL -->
-    <section class="products-scroll" id="produits">
-      <div class="products-sticky">
-        <div class="product-visual-stage" aria-hidden="true">
-          <img class="product-image active" data-product="0" src="images/st390.jpg" alt="Adhésif ST390" />
-          <img class="product-image" data-product="1" src="images/polyanne.png" alt="Polyane" />
-          <img class="product-image" data-product="2" src="images/polyanne.png" alt="Sous dallage" />
-          <img class="product-image" data-product="3" src="images/jointdedillatation.png" alt="Joint de dilatation" />
-          <img class="product-image" data-product="4" src="images/talochemondelin.png" alt="Taloche" />
-          <img class="product-image" data-product="5" src="images/visjaquette%24.png" alt="Vis et jaquettes" />
+    <section class="section products" id="produits">
+      <div class="container products-layout">
+        <div class="product-display reveal">
+          <img class="product-img active" data-product="0" src="images/st390.jpg" alt="Adhésif ST390" />
+          <img class="product-img" data-product="1" src="images/polyanne.png" alt="Polyane" />
+          <img class="product-img" data-product="2" src="images/polyanne.png" alt="Sous-dallage" />
+          <img class="product-img" data-product="3" src="images/jointdedillatation.png" alt="Joint de dilatation" />
+          <img class="product-img" data-product="4" src="images/talochemondelin.png" alt="Taloche Mondelin" />
+          <img class="product-img" data-product="5" src="images/visjaquette%24.png" alt="Vis et jaquette" />
         </div>
 
-        <div class="product-copy">
-          <article class="product-step active" data-step="0">
-            <div class="product-index">01</div>
-            <h3>Adhésifs chantier</h3>
-            <p>Des adhésifs toilé ST390 et ST451 pour la protection, le maintien, le masquage et les interventions quotidiennes sur chantier.</p>
-            <div class="product-tags"><span class="tag">Façade</span><span class="tag">Peinture</span><span class="tag">Protection</span></div>
+        <div class="product-list">
+          <article class="product-item active" data-step="0">
+            <div class="product-num">01</div>
+            <h3>Adhésifs</h3>
+            <p>Adhésifs toilé, masquage et protection pour les usages chantier. Disponibles en volume selon vos besoins.</p>
           </article>
-
-          <article class="product-step" data-step="1">
-            <div class="product-index">02</div>
+          <article class="product-item" data-step="1">
+            <div class="product-num">02</div>
             <h3>Polyane</h3>
-            <p>Des films bâtiment utiles pour protéger les zones sensibles, séparer les supports et organiser proprement les phases de chantier.</p>
-            <div class="product-tags"><span class="tag">Protection</span><span class="tag">Rouleaux</span><span class="tag">Stock</span></div>
+            <p>Film de protection bâtiment pour préparer, protéger et organiser les zones de travail.</p>
           </article>
-
-          <article class="product-step" data-step="2">
-            <div class="product-index">03</div>
+          <article class="product-item" data-step="2">
+            <div class="product-num">03</div>
             <h3>Sous-dallage</h3>
-            <p>Une solution pour les entreprises de dallage et gros œuvre qui recherchent une fourniture disponible en volume.</p>
-            <div class="product-tags"><span class="tag">Dallage</span><span class="tag">Gros œuvre</span><span class="tag">Volume</span></div>
+            <p>Consommables adaptés aux entreprises de dallage et de gros œuvre, avec une logique d’achat en volume.</p>
           </article>
-
-          <article class="product-step" data-step="3">
-            <div class="product-index">04</div>
-            <h3>Joints de dilatation</h3>
-            <p>Des consommables techniques pour accompagner les mouvements des structures et améliorer la durabilité des ouvrages.</p>
-            <div class="product-tags"><span class="tag">Façade</span><span class="tag">Dallage</span><span class="tag">Finition</span></div>
+          <article class="product-item" data-step="3">
+            <div class="product-num">04</div>
+            <h3>Joint de dilatation</h3>
+            <p>Produits techniques pour accompagner les mouvements et améliorer la durabilité des ouvrages.</p>
           </article>
-
-          <article class="product-step" data-step="4">
-            <div class="product-index">05</div>
+          <article class="product-item" data-step="4">
+            <div class="product-num">05</div>
             <h3>Taloches</h3>
-            <p>Des outils professionnels pour la finition, l’application et la préparation des surfaces sur chantier.</p>
-            <div class="product-tags"><span class="tag">Outillage</span><span class="tag">Application</span><span class="tag">Finition</span></div>
+            <p>Outillage professionnel pour application, finition et préparation des surfaces.</p>
           </article>
-
-          <article class="product-step" data-step="5">
-            <div class="product-index">06</div>
+          <article class="product-item" data-step="5">
+            <div class="product-num">06</div>
             <h3>Vis et jaquettes</h3>
-            <p>Des pièces d’usure pour machines à projeter afin de limiter les arrêts chantier et maintenir un débit régulier.</p>
-            <div class="product-tags"><span class="tag">Projection</span><span class="tag">Façade</span><span class="tag">Maintenance</span></div>
+            <p>Pièces d’usure et consommables pour machines à projeter, afin de limiter les interruptions de chantier.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 5. TECHNIQUE MATÉRIAUX DISTRIBUTION MATÉRIEL -->
-    <section class="section word-section">
-      <div class="word-stage">
-        <div class="eyebrow" style="justify-content:center;">Notre identité</div>
-        <div class="word-list">
-          <div class="word-token">Technique</div>
-          <div class="word-token">Matériaux</div>
-          <div class="word-token">Distribution</div>
-          <div class="word-token">Matériel</div>
+    <section class="section identity">
+      <div class="container reveal">
+        <div class="eyebrow">Notre identité</div>
+        <h2 class="section-title">Technique. Matériaux. Distribution. Matériel.</h2>
+        <div class="identity-words">
+          <div class="identity-word">Technique</div>
+          <div class="identity-word">Matériaux</div>
+          <div class="identity-word">Distribution</div>
+          <div class="identity-word">Matériel</div>
         </div>
-        <div class="formed-name">TM DISTRI-MAT</div>
+        <div class="identity-result">TM DISTRI-MAT</div>
       </div>
     </section>
 
-    <!-- 6. PRODUIT FILM / ZOOM FIBRE -->
-    <section class="film-section">
-      <div class="film-sticky">
-        <img class="film-product" src="images/st390.jpg" alt="Adhésif toilé ST390 avec fibre" />
-        <div class="fiber-callout">
-          <strong>Structure renforcée</strong>
-          <span>Zoom sur la trame de l’adhésif : un produit pensé pour les usages professionnels et les chantiers exigeants.</span>
+    <section class="section zoom-product">
+      <div class="container zoom-layout">
+        <div class="zoom-visual reveal">
+          <img class="zoom-img" src="images/st390.jpg" alt="Adhésif toilé" />
         </div>
-        <div class="film-text">
-          <h2>L’adhésif apparaît, pivote, puis révèle sa fibre.</h2>
-          <p>Une mise en avant produit claire pour montrer la matière, la résistance et l’usage chantier.</p>
+        <div class="reveal">
+          <div class="eyebrow">Zoom produit</div>
+          <h2 class="section-title">Un produit mis en avant, sans gêner la lecture.</h2>
+          <p class="section-lead">L’adhésif apparaît, se tourne légèrement, puis le zoom met en avant la fibre et la structure du produit. L’animation reste propre pour garder le texte lisible.</p>
+          <div class="zoom-detail">Détail fibre : une présentation visuelle utile pour montrer la résistance, l’usage chantier et la valeur du produit.</div>
         </div>
       </div>
     </section>
 
-    <!-- 7. TARIFS DÉGRESSIFS -->
-    <section class="pricing" id="livraison">
-      <div class="container pricing-grid">
+    <section class="section pricing" id="livraison">
+      <div class="container pricing-layout">
         <div class="reveal">
           <div class="eyebrow">Tarifs dégressifs</div>
-          <h2>Parce que les budgets chantier sont serrés.</h2>
-          <p>Nous pratiquons des tarifs adaptés au volume. Plus le besoin est structuré, plus l’achat peut être optimisé : commande à la palette, réassort régulier, volume par produit et livraison organisée selon votre zone.</p>
+          <h2 class="section-title">Nous savons que les budgets chantier sont serrés.</h2>
+          <p class="section-lead">C’est pourquoi nous pratiquons des tarifs dégressifs au volume, avec une logique claire : plus le besoin est structuré, plus l’achat peut être optimisé.</p>
         </div>
-
-        <div class="volume-card reveal">
-          <h3>Un système pensé pour vos volumes.</h3>
-          <div class="volume-list">
-            <div><span>Commande carton</span><strong>Réassort rapide</strong></div>
-            <div><span>Commande palette</span><strong>Prix volume</strong></div>
-            <div><span>Livraison chantier</span><strong>Organisation zone</strong></div>
-            <div><span>Suivi pro</span><strong>Contact terrain</strong></div>
-          </div>
+        <div class="volume-box reveal">
+          <div class="volume-row"><span>Commande au carton</span><strong>Réassort</strong></div>
+          <div class="volume-row"><span>Commande à la palette</span><strong>Prix volume</strong></div>
+          <div class="volume-row"><span>Livraison grande quantité</span><strong>Organisation zone</strong></div>
+          <div class="volume-row"><span>Suivi professionnel</span><strong>Contact terrain</strong></div>
         </div>
       </div>
     </section>
 
-    <!-- 8. PARTENAIRES -->
-    <section class="partners">
+    <section class="section partners">
       <div class="container">
         <div class="eyebrow">Nos partenaires pour vous fournir</div>
         <h2 class="section-title">Des fournisseurs sélectionnés pour vos chantiers.</h2>
-
-        <div class="partners-grid">
-          <div class="partner-card reveal">
-            <img src="images/partenaires/sacherie-pantin.png" alt="Sacherie de Pantin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-            <div class="partner-fallback">Sacherie de Pantin</div>
-          </div>
-          <div class="partner-card reveal">
-            <img src="images/partenaires/supertape.png" alt="Supertape" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-            <div class="partner-fallback">Supertape</div>
-          </div>
-          <div class="partner-card reveal">
-            <img src="images/partenaires/ozyma.png" alt="Ozyma" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-            <div class="partner-fallback">Ozyma</div>
-          </div>
-          <div class="partner-card reveal">
-            <img src="images/partenaires/mondelin.png" alt="Mondelin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-            <div class="partner-fallback">Mondelin</div>
-          </div>
-          <div class="partner-card reveal">
-            <img src="images/partenaires/ds-projection.png" alt="DS Projection" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-            <div class="partner-fallback">DS Projection</div>
-          </div>
+        <div class="partner-grid">
+          <div class="partner-card reveal"><img src="images/partenaires/sacherie-pantin.png" alt="Sacherie de Pantin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Sacherie de Pantin</div></div>
+          <div class="partner-card reveal"><img src="images/partenaires/supertape.png" alt="Supertape" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Supertape</div></div>
+          <div class="partner-card reveal"><img src="images/partenaires/ozyma.png" alt="Ozyma" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Ozyma</div></div>
+          <div class="partner-card reveal"><img src="images/partenaires/mondelin.png" alt="Mondelin" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">Mondelin</div></div>
+          <div class="partner-card reveal"><img src="images/partenaires/ds-projection.png" alt="DS Projection" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" /><div class="partner-fallback">DS Projection</div></div>
         </div>
       </div>
     </section>
 
-    <!-- 9. MOT DU DIRIGEANT -->
-    <section class="quote-section">
-      <div class="quote-box reveal">
+    <section class="section quote">
+      <div class="container reveal">
         <div class="eyebrow">Mot de notre dirigeant</div>
         <blockquote class="quote-text">“Notre objectif est simple : fournir aux professionnels des solutions fiables, disponibles et adaptées aux réalités du terrain.”</blockquote>
-        <div class="quote-author">Zavier Leclerc — TM DISTRI-MAT</div>
+        <div class="quote-author">Zavier Leclerc — Mot de notre dirigeant</div>
       </div>
     </section>
 
-    <!-- 10. CRÉDIBILITÉ -->
-    <section class="trust">
+    <section class="section trust">
       <div class="container reveal">
-        <div class="eyebrow" style="justify-content:center;">Reconnaissance terrain</div>
-        <h2>Reconnue par les grands acteurs d’Occitanie dans les projets façade, peinture et dallage.</h2>
-        <p>Une approche orientée disponibilité, volume et accompagnement professionnel pour simplifier les achats chantier.</p>
+        <div class="eyebrow">Reconnaissance terrain</div>
+        <h2 class="section-title">Reconnue par les grands acteurs d’Occitanie dans les projets façade, peinture et dallage.</h2>
+        <p class="section-lead">Une approche orientée disponibilité, volume, prix et accompagnement professionnel.</p>
       </div>
     </section>
 
-    <!-- 11. CONTACT / DEVIS -->
-    <section class="contact" id="contact">
-      <div class="container contact-grid">
+    <section class="section contact" id="contact">
+      <div class="container contact-layout">
         <div class="reveal">
           <div class="eyebrow">Contact</div>
-          <h2>Comment nous contacter ou obtenir un devis.</h2>
-          <p>Remplissez les informations ci-dessous. Le bouton prépare un e-mail avec votre demande. Vous pouvez aussi nous contacter directement.</p>
+          <h2 class="section-title">Comment nous contacter ou obtenir un devis.</h2>
+          <p>Remplissez les informations. Le formulaire prépare automatiquement un e-mail avec votre demande.</p>
           <div class="contact-details">
             <a href="tel:+33468403986">04 68 40 39 86</a>
             <a href="mailto:contact@technimat-outillage.fr">contact@technimat-outillage.fr</a>
@@ -1447,40 +1221,18 @@
         </div>
 
         <form class="form reveal" id="devisForm">
-          <div class="field">
-            <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" autocomplete="family-name" required />
-          </div>
-          <div class="field">
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prenom" type="text" autocomplete="given-name" required />
-          </div>
-          <div class="field">
-            <label for="poste">Poste</label>
-            <input id="poste" name="poste" type="text" placeholder="Gérant, conducteur travaux..." />
-          </div>
-          <div class="field">
-            <label for="telephone">Téléphone</label>
-            <input id="telephone" name="telephone" type="tel" autocomplete="tel" required />
-          </div>
-          <div class="field">
-            <label for="mail">Mail</label>
-            <input id="mail" name="mail" type="email" autocomplete="email" required />
-          </div>
-          <div class="field">
-            <label for="entreprise">Entreprise</label>
-            <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required />
-          </div>
-          <div class="field full">
-            <label for="message">Demande</label>
-            <textarea id="message" name="message" placeholder="Produits recherchés, volumes, livraison souhaitée..."></textarea>
-          </div>
+          <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" required /></div>
+          <div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" type="text" required /></div>
+          <div class="field"><label for="poste">Poste</label><input id="poste" name="poste" type="text" /></div>
+          <div class="field"><label for="telephone">Téléphone</label><input id="telephone" name="telephone" type="tel" required /></div>
+          <div class="field"><label for="mail">Mail</label><input id="mail" name="mail" type="email" required /></div>
+          <div class="field"><label for="entreprise">Entreprise</label><input id="entreprise" name="entreprise" type="text" required /></div>
+          <div class="field full"><label for="message">Demande</label><textarea id="message" name="message" placeholder="Produits recherchés, volumes, livraison souhaitée..."></textarea></div>
           <button type="submit">Préparer ma demande de devis</button>
         </form>
       </div>
     </section>
 
-    <!-- 12. FINAL -->
     <section class="future">
       <h2 class="reveal">L’avenir commence ici.</h2>
     </section>
@@ -1490,7 +1242,7 @@
     <div class="container footer-grid">
       <div>
         <strong>TM DISTRI-MAT</strong>
-        <p>Consommables façade, peinture, dallage et approvisionnement chantier pour les professionnels.</p>
+        <p>Consommables bâtiment, façade, peinture, dallage et approvisionnement chantier.</p>
       </div>
       <div>
         <strong>Navigation</strong>
@@ -1512,175 +1264,116 @@
     document.addEventListener("DOMContentLoaded", () => {
       const nav = document.getElementById("nav");
       window.addEventListener("scroll", () => {
-        nav.classList.toggle("is-scrolled", window.scrollY > 40);
+        nav.classList.toggle("is-scrolled", window.scrollY > 35);
       });
 
-      // Si GSAP n'est pas chargé, on garde le site lisible.
-      if (!window.gsap || !window.ScrollTrigger) {
-        document.querySelectorAll(".reveal").forEach(el => el.style.opacity = 1);
-        return;
-      }
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
 
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Apparitions générales
-      gsap.utils.toArray(".reveal").forEach((el) => {
-        gsap.fromTo(el,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 82%",
-              toggleActions: "play none none reverse"
+        gsap.utils.toArray(".reveal").forEach((el) => {
+          gsap.fromTo(el,
+            { opacity: 0, y: 42 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: .85,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 84%",
+                toggleActions: "play none none reverse"
+              }
             }
-          }
+          );
+        });
+
+        gsap.fromTo(".corner-img",
+          { opacity: 0, y: 60, rotate: -10, scale: .88 },
+          { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1.1, ease: "power3.out", delay: .25 }
         );
-      });
 
-      // HERO : cornière + texte + zoom
-      const heroTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1
-        }
-      });
-
-      gsap.set([".hero-kicker-2", ".hero-title-2", ".hero-subtitle-2"], { opacity: 0, y: 40 });
-
-      heroTl
-        .fromTo(".hero-corner", { opacity: 0, y: 140, rotate: -18, scale: .68 }, { opacity: 1, y: 20, rotate: 0, scale: 1, duration: 1.2 })
-        .fromTo([".hero-kicker-1", ".hero-title-1", ".hero-subtitle-1", ".hero-actions-1"], { opacity: 0, y: 35 }, { opacity: 1, y: 0, stagger: .08, duration: .8 }, "<.15")
-        .to(".hero-corner", { scale: 1.45, rotate: 8, x: 18, duration: 1.2 })
-        .to([".hero-kicker-1", ".hero-title-1", ".hero-subtitle-1"], { opacity: 0, y: -40, duration: .5 }, "<.1")
-        .to([".hero-kicker-2", ".hero-title-2", ".hero-subtitle-2"], { opacity: 1, y: 0, stagger: .08, duration: .8 }, "<.2")
-        .to(".hero-corner", { scale: 2.2, rotate: 18, opacity: .52, duration: 1.2 })
-        .to(".hero-halo", { scale: 1.4, opacity: .85, duration: 1.2 }, "<");
-
-      // Produits flottants autour du texte
-      gsap.utils.toArray(".floating-product").forEach((product, index) => {
-        gsap.to(product, {
-          y: index % 2 === 0 ? 180 : -160,
-          x: index % 2 === 0 ? 40 : -40,
-          rotate: index % 2 === 0 ? 18 : -18,
+        gsap.to(".corner-img", {
+          rotate: 5,
+          scale: 1.08,
           ease: "none",
           scrollTrigger: {
-            trigger: ".purpose",
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
+
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach(counter => {
+          const target = Number(counter.dataset.target || 0);
+          const obj = { value: 0 };
+          gsap.to(obj, {
+            value: target,
+            duration: 1.6,
+            ease: "power2.out",
+            scrollTrigger: { trigger: counter, start: "top 86%", once: true },
+            onUpdate: () => counter.textContent = Math.round(obj.value).toLocaleString("fr-FR")
+          });
+        });
+
+        const productItems = document.querySelectorAll(".product-item");
+        const productImages = document.querySelectorAll(".product-img");
+
+        function activateProduct(index) {
+          productItems.forEach(item => item.classList.toggle("active", Number(item.dataset.step) === index));
+          productImages.forEach(img => img.classList.toggle("active", Number(img.dataset.product) === index));
+        }
+
+        productItems.forEach(item => {
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => activateProduct(Number(item.dataset.step)),
+            onEnterBack: () => activateProduct(Number(item.dataset.step))
+          });
+        });
+
+        gsap.to(".zoom-img", {
+          rotate: 4,
+          scale: 1.10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".zoom-product",
             start: "top bottom",
             end: "bottom top",
             scrub: 1
           }
         });
-      });
-
-      gsap.fromTo(".big-statement", { opacity: 0, y: 70 }, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ".purpose-content", start: "top 72%" }
-      });
-
-      // Compteurs animés
-      const counters = document.querySelectorAll(".counter");
-      counters.forEach(counter => {
-        const target = Number(counter.dataset.target);
-        const obj = { value: 0 };
-        gsap.to(obj, {
-          value: target,
-          duration: 1.7,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: counter,
-            start: "top 85%",
-            once: true
-          },
-          onUpdate: () => {
-            counter.textContent = Math.round(obj.value).toLocaleString("fr-FR");
-          }
-        });
-      });
-
-      // Produits sticky : changement image selon le texte actif
-      const productSteps = document.querySelectorAll(".product-step");
-      const productImages = document.querySelectorAll(".product-image");
-
-      function setProductActive(index) {
-        productSteps.forEach(step => step.classList.toggle("active", Number(step.dataset.step) === index));
-        productImages.forEach(img => img.classList.toggle("active", Number(img.dataset.product) === index));
       }
 
-      productSteps.forEach(step => {
-        ScrollTrigger.create({
-          trigger: step,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => setProductActive(Number(step.dataset.step)),
-          onEnterBack: () => setProductActive(Number(step.dataset.step))
-        });
-      });
-
-      // Formation du nom TM DISTRI-MAT
-      const wordTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".word-section",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-          pin: ".word-stage"
-        }
-      });
-
-      wordTl
-        .from(".word-token", { opacity: 0, y: 80, stagger: .12, duration: .8 })
-        .to(".word-token", { y: -40, opacity: .18, scale: .86, stagger: .03, duration: .6 })
-        .to(".formed-name", { opacity: 1, scale: 1, duration: .9 }, "<.1");
-
-      // Film produit : apparition, rotation, zoom fibre, disparition
-      const filmTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".film-section",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1
-        }
-      });
-
-      filmTl
-        .fromTo(".film-product", { opacity: 0, y: 160, rotate: -12, scale: .72 }, { opacity: 1, y: 0, rotate: 0, scale: 1, duration: 1 })
-        .to(".film-product", { rotateY: 24, rotateZ: 4, scale: 1.06, duration: 1 })
-        .to(".film-product", { scale: 1.85, x: -120, duration: 1.2 })
-        .to(".fiber-callout", { opacity: 1, y: 0, duration: .6 }, "<.2")
-        .to(".film-text", { opacity: 0, y: 40, duration: .6 }, "<")
-        .to(".fiber-callout", { opacity: 0, y: -30, duration: .5 })
-        .to(".film-product", { opacity: 0, scale: 2.4, duration: .8 });
-
-      // Formulaire : préparation mailto
       const form = document.getElementById("devisForm");
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = new FormData(form);
-        const nom = data.get("nom") || "";
-        const prenom = data.get("prenom") || "";
-        const poste = data.get("poste") || "";
-        const tel = data.get("telephone") || "";
-        const mail = data.get("mail") || "";
-        const entreprise = data.get("entreprise") || "";
-        const message = data.get("message") || "";
-
         const subject = encodeURIComponent("Demande de devis TM DISTRI-MAT");
         const body = encodeURIComponent(
-          `Bonjour,\n\nJe souhaite être recontacté pour une demande de devis TM DISTRI-MAT.\n\nNom : ${nom}\nPrénom : ${prenom}\nPoste : ${poste}\nTéléphone : ${tel}\nMail : ${mail}\nEntreprise : ${entreprise}\n\nDemande :\n${message}\n\nCordialement,`
-        );
+          `Bonjour,
 
+Je souhaite être recontacté pour une demande de devis TM DISTRI-MAT.
+
+Nom : ${data.get("nom") || ""}
+Prénom : ${data.get("prenom") || ""}
+Poste : ${data.get("poste") || ""}
+Téléphone : ${data.get("telephone") || ""}
+Mail : ${data.get("mail") || ""}
+Entreprise : ${data.get("entreprise") || ""}
+
+Demande :
+${data.get("message") || ""}
+
+Cordialement,`
+        );
         window.location.href = `mailto:contact@technimat-outillage.fr?subject=${subject}&body=${body}`;
       });
     });
   </script>
 </body>
 </html>
+
