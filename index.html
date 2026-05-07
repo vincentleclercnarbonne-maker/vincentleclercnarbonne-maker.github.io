@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TM DISTRI-MAT — Consommables Bâtiment, Façade, Peinture & Dallage</title>
+  <meta name="description" content="TM DISTRI-MAT, fournisseur de consommables bâtiment en Occitanie. Stock dédié, livraison palette, tarifs dégressifs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+  <!-- ═══════════════════════════════════════════════════ NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="nav-logo">
+        <img src="images/logotmdistrimat.png" alt="TM DISTRI-MAT" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#produits">Nos produits</a></li>
+        <li><a href="#service">Notre service</a></li>
+        <li><a href="#livraison">Nos modes de livraison</a></li>
+        <li><a href="#qui">Qui sommes-nous</a></li>
+        <li><a href="#contact" class="nav-cta">Demander un devis</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════ HERO -->
+  <section id="accueil" class="hero-wrap">
+    <div class="hero-pin" id="heroPinned">
+
+      <!-- fond technique -->
+      <div class="hero-grid"></div>
+      <div class="hero-halo halo-1"></div>
+      <div class="hero-halo halo-2"></div>
+      <canvas id="heroCanvas"></canvas>
+
+      <!-- produits flottants -->
+      <div class="hero-float fp-1" id="fp1">
+        <img src="images/st390.jpg" alt="Adhésif" />
+      </div>
+      <div class="hero-float fp-2" id="fp2">
+        <img src="images/trame.png" alt="Trame façade" />
+      </div>
+      <div class="hero-float fp-3" id="fp3">
+        <img src="images/talochemondelin.png" alt="Taloche" />
+      </div>
+
+      <!-- cornière centrale -->
+      <div class="hero-product" id="heroProduct">
+        <div class="hero-ring"></div>
+        <img src="images/imagecorniere.png" alt="Cornière bâtiment" id="heroImg" />
+        <div class="hero-product-glow"></div>
+      </div>
+
+      <!-- textes -->
+      <div class="hero-text-block" id="heroText1">
+        <p class="hero-eyebrow">Fournisseur professionnel · Occitanie</p>
+        <h1 class="hero-title">Faites confiance à un<br/><span class="orange">fournisseur dédié</span><br/>à vos consommables bâtiment</h1>
+        <ul class="hero-args">
+          <li><span class="dot"></span>Stock dédié grande quantité</li>
+          <li><span class="dot"></span>Livraison en Occitanie</li>
+          <li><span class="dot"></span>Tarifs dégressifs au volume</li>
+        </ul>
+      </div>
+
+      <div class="hero-text-block hero-text-2" id="heroText2">
+        <div class="hero-brand-reveal">
+          <span class="brand-tm">TM</span>
+          <span class="brand-distri">DISTRI-MAT</span>
+        </div>
+        <p class="hero-tagline">La solution qu'il vous faut</p>
+      </div>
+
+      <!-- scroll indicator -->
+      <div class="scroll-ind" id="scrollInd">
+        <span>Défiler</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ SERVICE -->
+  <section id="service" class="section-service">
+    <div class="service-bg-products">
+      <div class="sbp sbp1"><img src="images/st390.jpg" alt="" /></div>
+      <div class="sbp sbp2"><img src="images/trame.png" alt="" /></div>
+      <div class="sbp sbp3"><img src="images/polyanne.png" alt="" /></div>
+      <div class="sbp sbp4"><img src="images/jointdedillatation.png" alt="" /></div>
+      <div class="sbp sbp5"><img src="images/talochemondelin.png" alt="" /></div>
+    </div>
+    <div class="container">
+      <div class="service-text">
+        <p class="service-main reveal-lines" id="serviceMain">
+          Nous existons pour simplifier l'<em class="orange">approvisionnement</em> des professionnels du bâtiment avec un système pensé pour le <em class="orange">chantier</em>.
+        </p>
+        <p class="service-secondary reveal-lines" id="serviceSecondary">
+          Livraison en grande quantité à la <em class="orange">palette</em>, <em class="orange">tarifs dégressifs</em> par produit, <em class="orange">disponibilité</em>, réactivité et sélection de consommables adaptés aux métiers de la façade, de la peinture et du dallage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ QUI (chiffres) -->
+  <section id="qui" class="section-qui">
+    <div class="container">
+      <p class="section-label">— À propos</p>
+      <h2 class="section-title">TM DISTRI-MAT <span class="orange">en chiffres</span></h2>
+      <div class="stats-grid">
+        <div class="stat-card" data-delay="0">
+          <div class="stat-glow"></div>
+          <div class="stat-num"><span class="counter" data-target="500">0</span>+</div>
+          <div class="stat-label">clients réguliers</div>
+          <p class="stat-desc">Artisans, négoces et entreprises nous font confiance au quotidien.</p>
+        </div>
+        <div class="stat-card" data-delay="1">
+          <div class="stat-glow"></div>
+          <div class="stat-num"><span class="counter" data-target="800">0</span> m²</div>
+          <div class="stat-label">centre logistique</div>
+          <p class="stat-desc">Un stock permanent pour répondre vite, livrer juste.</p>
+        </div>
+        <div class="stat-card" data-delay="2">
+          <div class="stat-glow"></div>
+          <div class="stat-num"><span class="counter" data-target="6">0</span> villes</div>
+          <div class="stat-label">couvertes en Occitanie</div>
+          <p class="stat-desc">Une présence régionale forte au plus proche de vos chantiers.</p>
+        </div>
+      </div>
+
+      <!-- carte réseau -->
+      <div class="map-block">
+        <div class="map-container">
+          <img src="images/carteoccitanie.png" alt="Couverture Occitanie" class="map-img" id="mapImg" />
+          <div class="map-cities" id="mapCities">
+            <div class="city-dot" style="--cx:44%;--cy:60%" data-name="Narbonne" data-i="0"></div>
+            <div class="city-dot" style="--cx:36%;--cy:54%" data-name="Béziers" data-i="1"></div>
+            <div class="city-dot" style="--cx:32%;--cy:45%" data-name="Montpellier" data-i="2"></div>
+            <div class="city-dot" style="--cx:55%;--cy:62%" data-name="Perpignan" data-i="3"></div>
+            <div class="city-dot" style="--cx:30%;--cy:38%" data-name="Nîmes" data-i="4"></div>
+            <div class="city-dot" style="--cx:20%;--cy:32%" data-name="Toulouse" data-i="5"></div>
+            <div class="city-dot" style="--cx:40%;--cy:48%" data-name="Carcassonne" data-i="6"></div>
+          </div>
+          <svg class="map-lines" id="mapLines" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ PRODUITS STICKY -->
+  <section id="produits" class="section-produits">
+    <div class="produits-pin" id="produitsPinned">
+      <div class="prod-bg-glow"></div>
+      <div class="prod-layout">
+        <!-- gauche : image produit -->
+        <div class="prod-visual">
+          <div class="prod-ring prod-ring-outer"></div>
+          <div class="prod-ring prod-ring-inner"></div>
+          <div class="prod-halo"></div>
+          <div class="prod-img-wrap" id="prodImgWrap">
+            <img src="images/st390.jpg" alt="Adhésif" id="prodImg" />
+          </div>
+          <div class="prod-number" id="prodNumber">01</div>
+        </div>
+        <!-- droite : texte -->
+        <div class="prod-content">
+          <div class="prod-cat" id="prodCat">Consommables chantier</div>
+          <h2 class="prod-name" id="prodName">Adhésif</h2>
+          <p class="prod-desc" id="prodDesc">Adhésif chantier renforcé pour une tenue optimale, une protection efficace et une utilisation fiable sur les opérations quotidiennes.</p>
+          <div class="prod-progress">
+            <div class="prod-progress-bar" id="prodBar"></div>
+          </div>
+          <!-- onglets bas -->
+          <div class="prod-tabs" id="prodTabs">
+            <button class="ptab active" data-idx="0">01<span>Adhésif</span></button>
+            <button class="ptab" data-idx="1">02<span>Trame</span></button>
+            <button class="ptab" data-idx="2">03<span>Polyane</span></button>
+            <button class="ptab" data-idx="3">04<span>Sous-dallage</span></button>
+            <button class="ptab" data-idx="4">05<span>Joint</span></button>
+            <button class="ptab" data-idx="5">06<span>Taloche</span></button>
+            <button class="ptab" data-idx="6">07<span>Vis & jaquettes</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ TRAME ZOOM -->
+  <section class="section-trame">
+    <div class="container trame-inner">
+      <div class="trame-visual">
+        <div class="trame-circle-glow"></div>
+        <div class="trame-ring trame-ring-rot"></div>
+        <img src="images/trame.png" alt="Trame façade" class="trame-img" id="trameImg" />
+        <div class="trame-magnify" id="trameMagnify"></div>
+        <div class="trame-dots">
+          <div class="tdot" style="--tx:15%;--ty:25%"></div>
+          <div class="tdot" style="--tx:80%;--ty:15%"></div>
+          <div class="tdot" style="--tx:70%;--ty:75%"></div>
+          <div class="tdot" style="--tx:20%;--ty:70%"></div>
+        </div>
+      </div>
+      <div class="trame-content">
+        <p class="section-label">— Zoom matière</p>
+        <h2 class="trame-title">Trame de renfort <span class="orange">façade</span></h2>
+        <p class="trame-sub">Une fibre de verre pensée pour renforcer les systèmes d'enduit et sécuriser les applications professionnelles.</p>
+        <div class="trame-specs" id="trameSpecs">
+          <div class="ts-item"><span class="ts-icon">◆</span>Maille régulière</div>
+          <div class="ts-item"><span class="ts-icon">◆</span>Bonne tenue mécanique</div>
+          <div class="ts-item"><span class="ts-icon">◆</span>Application façade</div>
+          <div class="ts-item"><span class="ts-icon">◆</span>Conditionnement volume</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ IDENTITÉ -->
+  <section class="section-identite">
+    <div class="ident-wrap" id="identWrap">
+      <span class="ident-word iw-1" id="iw1">Technique</span>
+      <span class="ident-word iw-2" id="iw2">Matériaux</span>
+      <span class="ident-word iw-3" id="iw3">Distribution</span>
+      <span class="ident-word iw-4" id="iw4">Matériel</span>
+    </div>
+    <div class="ident-final" id="identFinal">
+      <div class="ident-halo"></div>
+      <span class="ident-tm">TM</span>
+      <span class="ident-sep"> </span>
+      <span class="ident-distri">DISTRI-MAT</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ TARIFS / LIVRAISON -->
+  <section id="livraison" class="section-tarifs">
+    <div class="container">
+      <p class="section-label">— Tarification</p>
+      <h2 class="section-title tarif-title">Nous savons que les budgets<br/><span class="orange">chantier sont serrés.</span></h2>
+      <p class="tarif-sub">Nous pratiquons des <strong class="orange">tarifs dégressifs au volume.</strong></p>
+      <div class="tarif-grid">
+        <div class="tarif-card tc1">
+          <div class="tc-icon">▪</div>
+          <div class="tc-tier">Petits volumes</div>
+          <div class="tc-label">Tarifs justes</div>
+        </div>
+        <div class="tarif-card tc2">
+          <div class="tc-icon">▪▪</div>
+          <div class="tc-tier">Volumes intermédiaires</div>
+          <div class="tc-label orange">Remises progressives</div>
+        </div>
+        <div class="tarif-card tc3">
+          <div class="tc-icon">▪▪▪</div>
+          <div class="tc-tier">Commandes palette</div>
+          <div class="tc-label orange">Conditions adaptées</div>
+        </div>
+        <div class="tarif-card tc4">
+          <div class="tc-icon">▪▪▪▪</div>
+          <div class="tc-tier">Grosses quantités</div>
+          <div class="tc-label orange">Meilleurs tarifs</div>
+        </div>
+      </div>
+      <p class="tarif-phrase">Plus vous commandez, <span class="orange">plus vous économisez.</span></p>
+      <!-- dépôt visuel -->
+      <div class="depot-block">
+        <img src="images/imagedepot.jpeg" alt="Centre logistique TM DISTRI-MAT" class="depot-img" />
+        <div class="depot-overlay"></div>
+        <div class="depot-label"><img src="images/depot.png" alt="Dépôt" class="depot-icon" />Centre logistique</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ PARTENAIRES -->
+  <section id="partenaires" class="section-partenaires">
+    <div class="container">
+      <p class="section-label">— Réseau</p>
+      <h2 class="section-title">Nos partenaires pour <span class="orange">vous fournir</span></h2>
+      <div class="partners-grid">
+        <div class="partner-card" data-p="0">
+          <div class="pc-glow"></div>
+          <div class="pc-name">Sacherie de Pantin</div>
+          <div class="pc-cat">Emballage & sacherie</div>
+        </div>
+        <div class="partner-card" data-p="1">
+          <div class="pc-glow"></div>
+          <div class="pc-name">Supertape</div>
+          <div class="pc-cat">Adhésifs & rubans</div>
+        </div>
+        <div class="partner-card" data-p="2">
+          <div class="pc-glow"></div>
+          <div class="pc-name">Ozyma</div>
+          <div class="pc-cat">Consommables bâtiment</div>
+        </div>
+        <div class="partner-card" data-p="3">
+          <div class="pc-glow"></div>
+          <div class="pc-name">Mondelin</div>
+          <div class="pc-cat">Outillage & finition</div>
+        </div>
+        <div class="partner-card" data-p="4">
+          <div class="pc-glow"></div>
+          <div class="pc-name">DS Projection</div>
+          <div class="pc-cat">Machines à projeter</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ DIRIGEANT -->
+  <section class="section-dirigeant">
+    <div class="dirigeant-bg" style="background-image:url('images/chantier-bg.jpg')"></div>
+    <div class="dirigeant-overlay"></div>
+    <div class="container dirigeant-content">
+      <div class="quote-mark">"</div>
+      <blockquote class="dirigeant-quote reveal-lines" id="dirigeantQuote">
+        Chez TM DISTRI-MAT, nous voulons apporter aux professionnels une solution simple&nbsp;: du stock, du service et des prix cohérents pour faire avancer leurs chantiers.
+      </blockquote>
+      <div class="dirigeant-sig" id="dirigeantSig">
+        <div class="sig-line"></div>
+        <span>Zavier Leclerc — Mot de notre dirigeant</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ RECONNAISSANCE -->
+  <section class="section-reco">
+    <div class="reco-halo"></div>
+    <div class="container">
+      <p class="reco-text" id="recoText">
+        Reconnue par les plus grands acteurs d'<em class="orange">Occitanie</em> dans les projets <em class="orange">façade</em>, <em class="orange">peinture</em> ou <em class="orange">dallage</em>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ CONTACT -->
+  <section id="contact" class="section-contact">
+    <div class="container contact-grid">
+      <div class="contact-left" id="contactLeft">
+        <p class="section-label">— Devis & contact</p>
+        <h2 class="section-title">Comment nous contacter<br/>ou obtenir un <span class="orange">devis</span></h2>
+        <p class="contact-desc">Laissez vos informations et précisez votre besoin. Nous pourrons vous recontacter rapidement pour vos demandes produits, vos besoins en quantité ou l'organisation de vos livraisons.</p>
+        <div class="contact-info">
+          <a href="tel:0468403986" class="ci-item"><span class="ci-icon">☎</span>04 68 40 39 86</a>
+          <a href="mailto:contact@technimat-outillage.fr" class="ci-item"><span class="ci-icon">✉</span>contact@technimat-outillage.fr</a>
+        </div>
+      </div>
+      <div class="contact-right" id="contactRight">
+        <form class="contact-form" id="contactForm" action="mailto:contact@technimat-outillage.fr" method="get" enctype="text/plain">
+          <input type="hidden" name="subject" value="Demande de devis TM DISTRI-MAT" />
+          <div class="form-row">
+            <div class="form-field">
+              <label>Nom</label>
+              <input type="text" name="Nom" placeholder="Votre nom" />
+            </div>
+            <div class="form-field">
+              <label>Prénom</label>
+              <input type="text" name="Prenom" placeholder="Votre prénom" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Poste</label>
+              <input type="text" name="Poste" placeholder="Votre poste" />
+            </div>
+            <div class="form-field">
+              <label>Téléphone</label>
+              <input type="tel" name="Telephone" placeholder="Votre téléphone" />
+            </div>
+          </div>
+          <div class="form-field full">
+            <label>Mail</label>
+            <input type="email" name="Mail" placeholder="votre@email.fr" />
+          </div>
+          <div class="form-field full">
+            <label>Entreprise</label>
+            <input type="text" name="Entreprise" placeholder="Votre entreprise" />
+          </div>
+          <div class="form-field full">
+            <label>Votre demande</label>
+            <textarea name="Demande" rows="4" placeholder="Décrivez votre besoin, produits, quantités…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <span class="btn-text">Envoyer ma demande</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ FINALE -->
+  <section class="section-finale">
+    <div class="finale-halo" id="finaleHalo"></div>
+    <div class="finale-text">
+      <span class="finale-word">L'avenir</span>
+      <span class="finale-word">commence</span>
+      <span class="finale-word orange" id="finaleIci">ici.</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logotmdistrimat.png" alt="TM DISTRI-MAT" class="footer-logo" />
+        <p>Votre partenaire en consommables bâtiment,<br/>façade, peinture et dallage.</p>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Navigation</p>
+        <a href="#produits">Nos produits</a>
+        <a href="#service">Notre service</a>
+        <a href="#livraison">Nos modes de livraison</a>
+        <a href="#qui">Qui sommes-nous</a>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-nav-title">Contact</p>
+        <a href="tel:0468403986">04 68 40 39 86</a>
+        <a href="mailto:contact@technimat-outillage.fr">contact@technimat-outillage.fr</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 TM DISTRI-MAT — Tous droits réservés</span>
+    </div>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
