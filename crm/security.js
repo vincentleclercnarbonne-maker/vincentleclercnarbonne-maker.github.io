@@ -39,25 +39,32 @@
   }
 
   function askMicConsent(){
+    const old=document.querySelector('#micConsent');
+    if(old) old.remove();
     sessionStorage.removeItem('crmMicAllowed');
     const dg=document.createElement('dialog');dg.id='micConsent';dg.innerHTML=`<div class="mic-card"><div class="mic-icon">🎙️</div><h2>Autorisation du microphone</h2><p>Le microphone sert uniquement à dicter votre journée dans le planning. Aucun enregistrement audio n’est conservé par le CRM.</p><div class="mic-actions"><button class="mic-allow" type="button">Autoriser le microphone</button><button class="mic-deny" type="button">Continuer sans microphone</button></div><div class="mic-status"></div></div>`;document.body.appendChild(dg);dg.showModal();
     const status=dg.querySelector('.mic-status');
     dg.querySelector('.mic-allow').onclick=async()=>{
+      status.textContent='Demande d’autorisation en cours…';
       try{
         const stream=await navigator.mediaDevices.getUserMedia({audio:true});
         stream.getTracks().forEach(t=>t.stop());
         sessionStorage.setItem('crmMicAllowed','1');
         dg.close();dg.remove();
-      }catch(e){status.textContent='Microphone refusé ou indisponible. Vous pourrez utiliser la saisie écrite.'}
+      }catch(e){
+        sessionStorage.setItem('crmMicAllowed','0');
+        status.textContent='Microphone refusé ou indisponible. Vérifiez l’autorisation dans le navigateur.';
+      }
     };
     dg.querySelector('.mic-deny').onclick=()=>{sessionStorage.setItem('crmMicAllowed','0');dg.close();dg.remove()};
   }
 
   document.addEventListener('click',e=>{
+    if(e.target.closest('#micConsent,#crmLock')) return;
     const mic=e.target.closest('[id*="mic" i], [class*="mic" i], [aria-label*="micro" i], [title*="micro" i]');
     if(mic&&sessionStorage.getItem('crmMicAllowed')!=='1'){
       e.preventDefault();e.stopImmediatePropagation();
-      alert('Le microphone n’est pas autorisé pour cette session. Rechargez la page et choisissez « Autoriser le microphone ».');
+      askMicConsent();
     }
   },true);
 })();
