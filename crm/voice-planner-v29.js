@@ -1,0 +1,177 @@
+(()=>{
+  const wait=()=>{
+    const planning=document.querySelector('#planning');
+    const addBtn=document.querySelector('#addPlanningEvent');
+    if(!planning||!addBtn)return setTimeout(wait,150);
+
+    const style=document.createElement('style');
+    style.textContent=`
+      button,a,[role="button"],select,label[for],.clickable{cursor:pointer}
+      button:disabled{cursor:not-allowed}
+      .voice-planner{margin:14px 0;padding:16px;background:#fff;border:1px solid #e5e7eb;border-radius:18px}
+      .voice-planner h2{margin:0 0 5px}.voice-planner p{margin:0 0 12px;color:#666}
+      .voice-row{display:flex;gap:8px;align-items:stretch}.voice-row textarea{flex:1;min-height:110px}
+      .mic-btn{min-width:58px;font-size:24px}.mic-btn.listening{background:#b3131b;animation:pulse 1s infinite}
+      .voice-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.voice-preview{margin-top:12px}
+      .voice-preview .item{margin:7px 0;padding:10px;border:1px solid #eee;border-radius:12px}
+      .route-step{background:#f7f7f7;border-style:dashed}.voice-status{font-size:13px;margin-top:8px;color:#555}
+      .finish-dictation{display:none;background:#111;color:#fff}.finish-dictation.visible{display:inline-block}
+      .smart-note{font-size:12px;padding:8px;border-radius:9px;margin-top:7px}.smart-note.ok{color:#155724;background:#eaf7ee}
+      .smart-note.warn{color:#7a3d00;background:#fff1db}.smart-note.bad{color:#8a1010;background:#ffe7e7}
+      .route-line{font-size:12px;color:#333;margin-top:6px}@keyframes pulse{50%{opacity:.65}}
+      @media(max-width:600px){.voice-row{flex-direction:column}.mic-btn{width:100%}}
+    `;
+    document.head.appendChild(style);
+
+    const box=document.createElement('div');
+    box.className='voice-planner';
+    box.innerHTML=`<h2>Assistant intelligent de journée</h2><p>Les heures demandées sont respectées. Si deux rendez-vous sont incompatibles, le suivant est placé au premier horaire réaliste.</p><div class="voice-row"><textarea id="dayPrompt" placeholder="Exemple : vendredi EPE à 8 h 30, puis MC Projec vers 9 h 15, ajoute des prospects et retour à Technimat vers 15 h 30"></textarea><button type="button" id="voiceMic" class="mic-btn">🎙️</button></div><div class="voice-actions"><button type="button" id="finishDictation" class="finish-dictation">Dictée terminée</button><button type="button" id="analyseDay">Préparer intelligemment</button><button type="button" id="createDay" class="ghost dark" disabled>Ajouter au planning</button></div><div id="voiceStatus" class="voice-status"></div><div id="voicePreview" class="voice-preview"></div>`;
+    addBtn.before(box);
+
+    const prompt=document.querySelector('#dayPrompt');
+    const status=document.querySelector('#voiceStatus');
+    const preview=document.querySelector('#voicePreview');
+    const create=document.querySelector('#createDay');
+    const analyse=document.querySelector('#analyseDay');
+    const TECH={name:'TECHNIMAT',address:'2 rue Émile Levassor, 11100 Narbonne',lat:43.1843,lon:3.0031};
+    let proposals=[],summary={return:null,target:null};
+
+    const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const mins=t=>{const[h,m]=String(t||'00:00').split(':').map(Number);return h*60+m};
+    const fmt=m=>`${String(Math.floor(Math.max(0,m)/60)%24).padStart(2,'0')}:${String(Math.max(0,m)%60).padStart(2,'0')}`;
+    const add=(t,n)=>fmt(mins(t)+n);
+    const localIso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
+    function companies(){
+      const all=[];
+      (window.state?.prospects||[]).forEach(p=>all.push({id:p.id,name:p.name,address:p.address||'',dept:String(p.dept||''),status:p.status||p.type||''}));
+      (window.RP||[]).forEach(p=>all.push({id:p.i||p.s,name:p.c,address:p.a||'',dept:String(p.d||''),status:p.t||''}));
+      all.push({id:'mc-projec-fixed',name:'M C PROJEC',address:'34 impasse Saint-Jacques, 31120 Portet-sur-Garonne',dept:'31',status:'Prospect'});
+      const seen=new Map();for(const c of all){if(!c.name)continue;const k=norm(c.name);if(!seen.has(k)||(!seen.get(k).address&&c.address))seen.set(k,c)}
+      return [...seen.values()];
+    }
+    function findCompany(text){
+      const n=norm(text);
+      const forced=n.includes('mcprojec')||n.includes('mcproject')||n.includes('mcprojet')||n.includes('mcprojeu')?'mcprojec':n.includes('bsa')?'bsaoccitanie':n.includes('epe')?'entreprisepeintureetenduits':n.includes('etr')?'entreprisedetravauxetderavalement':'';
+      if(forced){const hit=companies().find(c=>norm(c.name).includes(forced));if(hit)return hit}
+      for(const c of companies())if(n.includes(norm(c.name)))return c;
+      return null;
+    }
+    function resolveDate(text){
+      const d=new Date(),n=norm(text);
+      const days=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+      if(n.includes('demain'))d.setDate(d.getDate()+1);
+      else{const i=days.findIndex(x=>n.includes(x));if(i>=0){let a=(i-d.getDay()+7)%7;if(!a)a=7;d.setDate(d.getDate()+a)}}
+      return localIso(d);
+    }
+    function extractTime(s){
+      const m=s.match(/\b(?:a|à|vers)?\s*(\d{1,2})(?:\s*(?:h|:|heure(?:s)?)\s*(\d{1,2})?)\b/i);
+      return m?`${String(+m[1]).padStart(2,'0')}:${String(m[2]||0).padStart(2,'0')}`:null;
+    }
+    function returnTarget(text){
+      const m=text.match(/(?:retour|etre|être|arriver|rentrer)[^,.;]{0,60}?(?:narbonne|technimat|magasin)[^,.;]{0,25}?(?:a|à|vers|avant)?\s*(\d{1,2})(?:\s*(?:h|:|heure(?:s)?)\s*(\d{1,2})?)?/i)
+        ||text.match(/(?:narbonne|technimat|magasin)[^,.;]{0,25}?(\d{1,2})\s*h\s*(\d{1,2})?/i);
+      return m?`${String(+m[1]).padStart(2,'0')}:${String(m[2]||0).padStart(2,'0')}`:null;
+    }
+
+    const city={narbonne:[43.1843,3.0031],toulouse:[43.6047,1.4442],carcassonne:[43.213,2.3491],auterive:[43.3517,1.4747],muret:[43.46,1.325],plaisancedutouch:[43.5657,1.296],portetsurgaronne:[43.5239,1.406],deyme:[43.4719,1.526],fontenilles:[43.5539,1.19],ausson:[43.082,0.591],mirepoix:[43.088,1.874]};
+    function point(address){const n=norm(address);if(n.includes('2rueemilelevassor'))return{lat:TECH.lat,lon:TECH.lon};for(const[k,v]of Object.entries(city))if(n.includes(k))return{lat:v[0],lon:v[1]};const cp=(String(address).match(/\b(11|31|34|66)\d{3}\b/)||[])[0];if(cp?.startsWith('31'))return{lat:43.55,lon:1.40};if(cp?.startsWith('11'))return{lat:43.21,lon:2.35};if(cp?.startsWith('34'))return{lat:43.61,lon:3.88};if(cp?.startsWith('66'))return{lat:42.69,lon:2.89};return null}
+    function route(a,b){const p=point(a),q=point(b);if(!p||!q)return{minutes:35,km:30};const R=6371,toRad=x=>x*Math.PI/180,dLat=toRad(q.lat-p.lat),dLon=toRad(q.lon-p.lon),h=Math.sin(dLat/2)**2+Math.cos(toRad(p.lat))*Math.cos(toRad(q.lat))*Math.sin(dLon/2)**2;const straight=2*R*Math.asin(Math.sqrt(h)),km=Math.max(2,straight*1.28),speed=km>80?82:km>25?65:42;return{minutes:Math.ceil(km/speed*60),km:Math.round(km*10)/10}}
+    function rec(c,date,start,title,notes,requested=true){return{id:'smart-'+Date.now()+'-'+Math.random().toString(36).slice(2),companyId:c?.id||'',company:c?.name||'',address:c?.address||'',date,start,end:add(start,45),title,notes,requested,travelMinutes:0,distanceKm:0,fromName:''}}
+
+    function parseRequested(text,date){
+      const chunks=text.split(/(?:,|;|\bpuis\b|\bensuite\b|\bet après\b|\bet apres\b)/i).map(x=>x.trim()).filter(Boolean);
+      const out=[];
+      for(const chunk of chunks){
+        const n=norm(chunk);
+        if((n.includes('technimat')||n.includes('narbonne')||n.includes('magasin'))&&returnTarget(chunk))continue;
+        if(/prospect|complete|continue|remplis|remplir/.test(n)&&!findCompany(chunk))continue;
+        const c=findCompany(chunk);if(!c)continue;
+        const t=extractTime(chunk);
+        out.push({company:c,requestedTime:t,notes:chunk});
+      }
+      return out;
+    }
+
+    function scheduleRequested(items,date){
+      proposals=[];
+      let prev={company:TECH.name,address:TECH.address,end:null};
+      items.forEach((item,index)=>{
+        const r=route(prev.address,item.company.address);
+        let start;
+        let adapted=false;
+        if(index===0){start=item.requestedTime||'08:30'}
+        else{
+          const earliest=mins(prev.end)+r.minutes+10;
+          const wanted=item.requestedTime?mins(item.requestedTime):earliest;
+          start=fmt(Math.max(earliest,wanted));
+          adapted=start!==item.requestedTime&&Boolean(item.requestedTime);
+        }
+        const p=rec(item.company,date,start,'Visite commerciale',item.notes,true);
+        p.fromName=prev.company;p.travelMinutes=r.minutes;p.distanceKm=r.km;p.adapted=adapted;p.requestedTime=item.requestedTime;
+        proposals.push(p);prev=p;
+      });
+    }
+
+    function addProspects(text,date){
+      if(!/prospect|complete|continue|remplis|remplir/.test(norm(text))||!proposals.length)return;
+      const target=returnTarget(text),latest=target?mins(target)+15:17*60+30;
+      const excluded=new Set(proposals.map(p=>norm(p.company)));
+      let current=proposals.at(-1);
+      const dept=companies().find(c=>String(c.id)===String(current.companyId))?.dept||'';
+      let candidates=companies().filter(c=>!excluded.has(norm(c.name))&&(!dept||!c.dept||c.dept===dept)&&(/prospect|nonvisite/.test(norm(c.status))||!c.status));
+      for(let count=0;count<5;count++){
+        let best=null;
+        for(const c of candidates){
+          const out=route(current.address,c.address),start=Math.max(mins(current.end)+out.minutes+10,13*60+30),end=start+45,back=route(c.address,TECH.address),arrival=end+back.minutes+10;
+          if(arrival<=latest&&(!best||out.minutes<best.out.minutes))best={c,out,start};
+        }
+        if(!best)break;
+        const p=rec(best.c,date,fmt(best.start),'Prospection','Suggestion compatible avec le retour',false);
+        p.fromName=current.company;p.travelMinutes=best.out.minutes;p.distanceKm=best.out.km;
+        proposals.push(p);current=p;candidates=candidates.filter(c=>norm(c.name)!==norm(best.c.name));
+      }
+    }
+
+    function computeSummary(text){
+      summary={target:returnTarget(text),return:null};
+      const last=proposals.at(-1);if(!last)return;
+      const back=route(last.address,TECH.address);summary.return={...back,from:last.company,depart:last.end,arrival:add(last.end,back.minutes+10)};
+    }
+    function render(){
+      let html='';
+      if(proposals.length){const first=proposals[0],r=route(TECH.address,first.address);html+=`<article class="item route-step"><h3>🚐 Départ de TECHNIMAT</h3><p><strong>${TECH.address}</strong></p><div class="route-line">Départ conseillé : ${add(first.start,-r.minutes-10)} · ${r.minutes} min · ${r.km} km</div></article>`}
+      html+=proposals.map(p=>`<article class="item"><h3>${p.start}–${p.end} · ${p.title}${p.requested?' · demandé':''}</h3><p><strong>${p.company}</strong><br>${p.address}</p><div class="route-line">🚗 Depuis ${p.fromName} : ${p.travelMinutes} min · ${p.distanceKm} km</div><div class="smart-note ${p.adapted?'warn':'ok'}">${p.adapted?`Horaire demandé ${p.requestedTime}, déplacé à ${p.start} car le trajet précédent ne permet pas d’arriver plus tôt.`:'Horaire demandé respecté.'}</div></article>`).join('');
+      if(summary.return){const target=summary.target,diff=target?mins(summary.return.arrival)-mins(target):0;html+=`<article class="item route-step"><h3>🏁 Retour à TECHNIMAT</h3><p>Départ de ${summary.return.from} à ${summary.return.depart}</p><div class="route-line">🚗 ${summary.return.minutes} min · arrivée estimée ${summary.return.arrival}</div><div class="smart-note ${target&&Math.abs(diff)>15?'warn':'ok'}">${target?`Objectif ${target} ±15 min. Retour estimé ${summary.return.arrival}.`:`Retour estimé ${summary.return.arrival}.`}</div></article>`}
+      preview.innerHTML=html||'<p>Aucun rendez-vous clairement reconnu.</p>';
+    }
+
+    analyse.addEventListener('click',()=>{
+      const text=prompt.value.trim();if(!text){status.textContent='Décrivez d’abord votre journée.';return}
+      analyse.disabled=true;analyse.textContent='Calcul…';create.disabled=true;
+      try{
+        const date=resolveDate(text),items=parseRequested(text,date);
+        scheduleRequested(items,date);addProspects(text,date);computeSummary(text);render();
+        status.textContent=`${proposals.length} étape(s) préparée(s) pour le ${date}. Le premier rendez-vous reste à l’heure demandée.`;
+        create.disabled=!proposals.length;
+      }catch(e){status.textContent='Erreur : '+e.message}
+      analyse.disabled=false;analyse.textContent='Préparer intelligemment';
+    });
+
+    create.addEventListener('click',()=>{
+      if(!proposals.length)return;
+      const current=JSON.parse(localStorage.getItem('crmPlanning')||'[]');
+      const keys=new Set(current.map(e=>`${e.date}|${e.start}|${norm(e.company||e.title)}`));
+      let added=0;
+      for(const p of proposals){const k=`${p.date}|${p.start}|${norm(p.company||p.title)}`;if(keys.has(k))continue;current.push({...p});keys.add(k);added++}
+      localStorage.setItem('crmPlanning',JSON.stringify(current));
+      localStorage.setItem('crmPlanningOpenDate',proposals[0].date);
+      status.textContent=`${added} rendez-vous ajouté(s) au planning du ${proposals[0].date}.`;
+      setTimeout(()=>location.reload(),250);
+    });
+
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=document.querySelector('#voiceMic'),finish=document.querySelector('#finishDictation');
+    if(SR){const r=new SR();r.lang='fr-FR';r.continuous=true;r.interimResults=true;let listen=false,committed='';const start=()=>{if(listen)try{r.start()}catch(e){}};mic.addEventListener('click',()=>{if(listen)return;listen=true;committed=prompt.value.trim();finish.classList.add('visible');start()});finish.addEventListener('click',()=>{listen=false;finish.classList.remove('visible');try{r.stop()}catch(e){}});r.onresult=e=>{let temp='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.trim();if(e.results[i].isFinal)committed=[committed,t].filter(Boolean).join(' ');else temp=t}prompt.value=[committed,temp].filter(Boolean).join(' ')};r.onend=()=>{if(listen)setTimeout(start,150)}}else mic.disabled=true;
+  };
+  wait();
+})();
