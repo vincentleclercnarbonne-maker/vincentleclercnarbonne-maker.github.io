@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#151515">
+  <meta name="description" content="Gestion Instagram et Facebook de TECHNIMAT">
+  <title>TECHNIMAT Social Manager</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">TM</div><div><strong>TECHNI<span>MAT</span></strong><small>Social Manager</small></div></div>
+    <nav id="nav">
+      <button data-page="dashboard" class="active">Tableau de bord</button>
+      <button data-page="proposals">Propositions du jour</button>
+      <button data-page="calendar">Calendrier</button>
+      <button data-page="manual">Création manuelle</button>
+      <button data-page="trends">Tendances</button>
+      <button data-page="stats">Statistiques</button>
+      <button data-page="visuals">Bibliothèque visuelle</button>
+      <button data-page="history">Historique</button>
+      <button data-page="settings">Paramètres</button>
+      <button data-page="connections">Connexions</button>
+    </nav>
+    <div class="sidebar-foot"><span class="status-dot"></span><div><strong>Version GitHub Pages</strong><small>Données enregistrées sur cet appareil</small></div></div>
+  </aside>
+  <main>
+    <header class="topbar">
+      <button class="menu-button" id="menuButton" aria-label="Menu">☰</button>
+      <div><p class="eyebrow">Application indépendante TECHNIMAT</p><h1 id="pageTitle">Tableau de bord</h1></div>
+      <button class="button primary" id="generateNow">Générer 3 idées</button>
+    </header>
+    <section id="content" class="content" aria-live="polite"></section>
+  </main>
+</div>
+<dialog id="editor" class="modal"></dialog>
+<div id="toasts" class="toast-container"></div>
+<script src="./data.js"></script>
+<script src="./pages.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+const PRODUCTS=[
+{id:'bac',name:'Bac à béton acier 500 litres',brand:'TECHNIMAT',price:286.80,old:314.50,stock:'En stock : 11',url:'https://www.technimat-outillage.fr/bac-a-beton/2139-bac-a-beton-acier-500-litres-1100000002956.html'},
+{id:'makita',name:'Batterie BL1850B Makstar 18V 5,0 Ah',brand:'MAKITA',price:102,old:117,stock:'En stock',url:'https://www.technimat-outillage.fr/batterie-et-chargeur/540-batterie-bl1850b-makstar-18v-50ah-li-ion-promo-pack-0088381459129.html'},
+{id:'obsima',name:'Bétonnière électrique, cuve 350 L',brand:'OBSIMA',price:2074.80,old:2637.05,stock:'En stock',url:'https://www.technimat-outillage.fr/betonniere/498-betonniere-electrique-capacite-cuve-350l-obsima-3700018163342.html'},
+{id:'columbia',name:'Boîte automatique grande capacité 12 pouces',brand:'COLUMBIA TOOLS',price:383.98,old:516,stock:'En stock',url:'https://www.technimat-outillage.fr/boite-automatique/409-boite-automatique-grande-capacite-12-30cm-columbia-tools-8241490081120.html'},
+{id:'brouette',name:'Brouette cuve métal 85 L, roue increvable',brand:'TECHNIMAT',price:82.80,old:116.30,stock:'En stock',url:'https://www.technimat-outillage.fr/promotions'},
+{id:'grille',name:'Grille fibre de verre 10 × 10, 330 mm × 50 m',brand:'TECHNIMAT',price:20.27,stock:'En stock',url:'https://www.technimat-outillage.fr/brand/technimat-2960863'}
+];
+const METRICS={instagram:{views:3340,reach:1059,likes:67,engagement:2.01},facebook:{views:3610,likes:98,engagement:2.71},reels:{views:1543,share:46.2}};
+const TRENDS=[
+{title:'Démonstration courte',platform:'Instagram Reels',fit:'Très adaptée à TECHNIMAT',why:'Montre rapidement l’usage réel d’un outil ou d’un consommable.',adapt:'Filmer une démonstration de 10 à 20 secondes au magasin ou sur chantier.'},
+{title:'Avant / après chantier',platform:'Instagram et Facebook',fit:'Très adaptée à TECHNIMAT',why:'Le résultat est immédiatement compréhensible.',adapt:'Associer une réalisation client au produit utilisé, avec son autorisation.'},
+{title:'Question métier simple',platform:'Stories',fit:'Adaptable avec modifications',why:'Encourage une réponse rapide et améliore l’interaction.',adapt:'Proposer deux choix : marque, technique, outil ou problème de chantier.'}
+];
+const KEY='technimat-social-pages-v1';
+const defaultState={proposals:[],history:[],settings:{generationTime:'08:00',days:'Lundi, Mardi, Mercredi, Jeudi, Vendredi',validation:true,publish:false},page:'dashboard'};
+let state=load();
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const titles={dashboard:'Tableau de bord',proposals:'Propositions du jour',calendar:'Calendrier éditorial',manual:'Création manuelle',trends:'Tendances',stats:'Statistiques',visuals:'Bibliothèque visuelle',history:'Historique',settings:'Paramètres',connections:'Connexions'};
+function load(){try{return {...defaultState,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return structuredClone(defaultState)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function id(){return crypto.randomUUID?.()||`${Date.now()}-${Math.random()}`}
+function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function frDate(v){return new Intl.DateTimeFormat('fr-FR',{dateStyle:'medium'}).format(new Date(`${v}T12:00:00`))}
+function eur(v){return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(v)}
+function today(){return new Intl.DateTimeFormat('fr-CA',{timeZone:'Europe/Paris'}).format(new Date())}
+function toast(msg){const e=document.createElement('div');e.className='toast';e.textContent=msg;$('#toasts').append(e);setTimeout(()=>e.remove(),2800)}
+function badge(t,c=''){return `<span class="badge ${c}">${esc(t)}</span>`}
+function statusColor(s){return s==='Validé'||s==='Publié'?'green':s==='Refusé'?'':s==='Planifié'?'black':s==='Brouillon'?'orange':'red'}
+function addHistory(action,detail){state.history.unshift({id:id(),date:new Date().toISOString(),action,detail});save()}
+function makeProposal(type,index,date){const p=PRODUCTS[(new Date(date).getDate()+index)%PRODUCTS.length];
+ if(type==='product')return {id:id(),date,status:'Proposition',theme:'Produit',format:'Post Instagram + Facebook',title:`Focus ${p.brand} : ${p.name}`,objective:'Présenter un produit disponible et générer des demandes',audience:'Artisans et professionnels du bâtiment',hook:`Un équipement concret pour vos chantiers`,caption:`${p.name} disponible chez TECHNIMAT. Prix constaté sur le site : ${eur(p.price)} TTC${p.old?` au lieu de ${eur(p.old)} TTC`:''}. ${p.stock}. Passez au magasin ou contactez-nous pour vérifier votre besoin.`,cta:'Voir le produit ou demander conseil à l’équipe TECHNIMAT',hashtags:['#TECHNIMAT','#OutillagePro','#BTP','#Narbonne',`#${p.brand.replace(/\W/g,'')}`],product:p,source:'Site officiel TECHNIMAT',time:'11:45'};
+ if(type==='advice')return {id:id(),date,status:'Proposition',theme:'Conseil professionnel',format:'Carrousel Instagram + post Facebook',title:'Conseil chantier : préparer avant de démarrer',objective:'Apporter de la valeur et renforcer l’expertise locale',audience:'Façadiers, peintres et entreprises du bâtiment',hook:'Un chantier efficace commence avant le premier geste',caption:'Avant de démarrer, contrôlez le support, préparez vos protections et vérifiez que les consommables nécessaires sont disponibles. Une bonne préparation limite les interruptions et améliore la régularité du travail. L’équipe TECHNIMAT peut vous aider à composer votre liste selon le chantier.',cta:'Passez nous voir avec votre besoin ou votre liste de matériel',hashtags:['#TECHNIMAT','#ConseilChantier','#Artisans','#Bâtiment','#Narbonne'],source:'Conseil métier TECHNIMAT',time:'07:45'};
+ return {id:id(),date,status:'Proposition',theme:'Interaction',format:'Story Instagram + Facebook',title:'Question à la communauté : votre indispensable',objective:'Créer de l’interaction et mieux comprendre les besoins clients',audience:'Communauté locale et professionnels',hook:'Quel est l’outil que vous vérifiez toujours avant de partir ?',caption:'Question aux pros : quel outil ou consommable vous a déjà sauvé une journée de chantier ? Répondez en commentaire ou en story. Vos réponses pourront inspirer une prochaine sélection TECHNIMAT.',cta:'Répondez avec votre indispensable chantier',hashtags:['#TECHNIMAT','#QuestionDuJour','#VieDeChantier','#ProsDuBTP','#Occitanie'],source:'Animation de communauté',time:'18:00'};
+}
+function generate(force=false){const d=today();if(!force&&state.proposals.filter(p=>p.date===d).length>=3){toast('Les 3 propositions du jour existent déjà.');return}state.proposals=state.proposals.filter(p=>p.date!==d||!force);['product','advice','interaction'].forEach((t,i)=>state.proposals.unshift(makeProposal(t,i,d)));addHistory('Génération','3 propositions créées');save();toast('3 propositions créées');render(state.page)}
+function visual(p){return `<div class="visual"><div class="brandline">TECHNI<span>MAT</span></div><h3>${esc(p.hook)}</h3><small>${esc(p.format)} · ${esc(p.time)}</small></div>`}
+function card(p){return `<article class="card proposal">${visual(p)}<div class="meta">${badge(p.status,statusColor(p.status))}${badge(p.theme)}${badge(p.format,'black')}</div><h3>${esc(p.title)}</h3><p>${esc(p.caption)}</p><div class="hashtags">${p.hashtags.map(h=>`<span>${esc(h)}</span>`).join('')}</div><div class="actions"><button class="button secondary small" data-edit="${p.id}">Modifier</button><button class="button primary small" data-valid="${p.id}">Valider</button><button class="button danger small" data-refuse="${p.id}">Refuser</button></div></article>`}
