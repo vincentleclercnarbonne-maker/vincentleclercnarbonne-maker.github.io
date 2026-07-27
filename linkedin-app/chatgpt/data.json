@@ -1,0 +1,80 @@
+{
+  "lastSync": "2026-07-27T14:35:00+02:00",
+  "syncMessage": "Données préparées depuis le projet ChatGPT Intégration IA à TECHNIMAT",
+  "profile": {
+    "score": 82,
+    "title": "Commercial terrain chez TECHNIMAT | Développement commercial BtoB | Digital et intelligence artificielle | Narbonne & Occitanie",
+    "summary": "J’évolue dans le commerce BtoB et le secteur du bâtiment chez TECHNIMAT à Narbonne. Mon quotidien se partage entre la prospection terrain, les visites clients, le suivi commercial et le développement d’outils numériques.\n\nÀ 20 ans, je construis mon expérience directement sur le terrain : comprendre les besoins, créer une relation de confiance et progresser à chaque échange. Je m’intéresse aussi à l’intelligence artificielle appliquée au commerce, à l’e-commerce et à la communication.\n\nIci, je partage des retours de tournées, des apprentissages commerciaux et les coulisses de mon évolution professionnelle, sans prétendre tout savoir.",
+    "skills": ["Prospection commerciale", "Développement commercial BtoB", "Relation client", "Vente terrain", "CRM commercial", "E-commerce", "Canva", "IA appliquée au commerce"]
+  },
+  "stats": {
+    "followers": 214,
+    "profileViews": 137,
+    "weeklyImpressions": 5140,
+    "engagement": 4.8,
+    "themes": [["Retours terrain",82],["Commerce & IA",74],["Parcours personnel",68],["Produits TECHNIMAT",51],["Golf & réseau",47]]
+  },
+  "posts": [
+    {
+      "id": "p1",
+      "date": "2026-07-28",
+      "time": "08:00",
+      "title": "Le prix n’est pas toujours le premier critère",
+      "objective": "Valoriser un apprentissage terrain",
+      "audience": "Dirigeants, commerciaux et professionnels du bâtiment",
+      "angle": "Retour de tournée commerciale",
+      "type": "Retour d’expérience",
+      "status": "Proposition",
+      "hook": "Une tournée commerciale, ce n’est pas seulement enchaîner les kilomètres et les rendez-vous.",
+      "body": "Cette semaine, plusieurs échanges avec des entreprises de façade m’ont rappelé une chose simple : le prix compte, mais il n’arrive pas toujours en premier.\n\nLa disponibilité, la régularité des livraisons, la compréhension du chantier et la capacité à répondre vite peuvent faire la différence.\n\nÀ chaque visite, j’apprends à poser moins de questions catalogue et davantage de questions sur la façon dont l’entreprise travaille réellement.\n\nC’est encore un apprentissage, mais c’est clairement ce qui rend le terrain intéressant.",
+      "cta": "Dans votre activité, qu’est-ce qui fait vraiment la différence chez un fournisseur ?",
+      "hashtags": ["#CommerceBtoB", "#RelationClient", "#Bâtiment", "#Occitanie"],
+      "visual": "Une vraie photo de tournée, sans élément confidentiel.",
+      "reason": "Les retours terrain correspondent à ton positionnement et montrent une progression concrète."
+    },
+    {
+      "id": "p2",
+      "date": "2026-07-29",
+      "time": "08:00",
+      "title": "À 20 ans, apprendre directement sur le terrain",
+      "objective": "Humaniser le profil et montrer ton évolution",
+      "audience": "Jeunes professionnels, recruteurs et entrepreneurs",
+      "angle": "Parcours professionnel",
+      "type": "Personnel professionnel",
+      "status": "Proposition",
+      "hook": "À 20 ans, je n’ai pas encore toutes les réponses. Et c’est justement ce qui rend cette période intéressante.",
+      "body": "Depuis mon arrivée chez TECHNIMAT, j’ai découvert que le commerce ne s’apprend pas uniquement dans les cours ou derrière un écran.\n\nIl s’apprend dans les premiers appels qui ne se passent pas comme prévu, les kilomètres entre deux clients, les devis à reprendre et les discussions qui changent complètement la façon de voir un besoin.\n\nJe progresse encore, mais je vois déjà la différence entre vouloir vendre et chercher à comprendre.\n\nMon objectif pour la suite : continuer à gagner en autonomie, rester curieux et construire une façon de travailler qui me ressemble.",
+      "cta": "Quel apprentissage du début de carrière vous a le plus marqué ?",
+      "hashtags": ["#JeuneProfessionnel", "#Commerce", "#Apprentissage", "#Narbonne"],
+      "visual": "Portrait naturel au magasin ou en extérieur.",
+      "reason": "Ce contenu crée de la proximité sans transformer le profil en page publicitaire."
+    },
+    {
+      "id": "p3",
+      "date": "2026-07-30",
+      "time": "12:15",
+      "title": "Au golf comme dans le commerce : chercher la régularité",
+      "objective": "Créer un lien naturel entre passion et progression",
+      "audience": "Réseau local, commerciaux et entrepreneurs",
+      "angle": "Golf et réseau professionnel",
+      "type": "Golf et réseau",
+      "status": "Proposition",
+      "hook": "Au golf, un très bon coup ne rattrape pas toujours une partie irrégulière.",
+      "body": "C’est une idée que je retrouve aussi dans mon quotidien commercial.\n\nUn rendez-vous réussi fait plaisir, mais ce qui construit vraiment les résultats, c’est la régularité : préparer ses tournées, relancer, tenir ses engagements et revenir au bon moment.\n\nJe suis encore en train d’apprendre dans les deux domaines. Et dans les deux cas, vouloir aller trop vite fait rarement gagner du temps.",
+      "cta": "Dans votre métier, quelle habitude régulière vous apporte le plus de résultats ?",
+      "hashtags": ["#Golf", "#RéseauProfessionnel", "#Commerce", "#Progression"],
+      "visual": "Photo réelle sur un parcours, sobre et naturelle.",
+      "reason": "Le lien avec le golf reste naturel et centré sur la progression."
+    }
+  ],
+  "tasks": [
+    {"title":"3 idées LinkedIn","schedule":"Du lundi au vendredi à 8 h","status":"Active"},
+    {"title":"Tendances LinkedIn","schedule":"Chaque lundi à 7 h 45","status":"Active"},
+    {"title":"Bilan hebdomadaire","schedule":"À ajouter quand une place d’automatisation sera disponible","status":"En attente"}
+  ],
+  "history": [
+    ["27/07/2026 14:35", "Synchronisation ChatGPT", "Création du tableau de bord alimenté par le projet"],
+    ["27/07/2026 14:31", "Automatisation activée", "Trois idées du lundi au vendredi à 8 h"],
+    ["27/07/2026 14:31", "Automatisation activée", "Analyse des tendances le lundi à 7 h 45"]
+  ]
+}
