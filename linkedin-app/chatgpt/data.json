@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-07-27T15:03:00+02:00",
-  "syncMessage": "Profil LinkedIn exact confirmé et intégré depuis ChatGPT",
+  "lastSync": "2026-07-27T15:20:00+02:00",
+  "syncMessage": "Les propositions peuvent maintenant afficher les visuels créés dans ChatGPT",
   "profile": {
     "score": 82,
     "url": "https://www.linkedin.com/in/vincent-leclerc-14a3492bb/",
@@ -34,6 +34,8 @@
       "cta": "Dans votre activité, qu’est-ce qui fait vraiment la différence chez un fournisseur ?",
       "hashtags": ["#CommerceBtoB", "#RelationClient", "#Bâtiment", "#Occitanie"],
       "visual": "Une vraie photo de tournée, sans élément confidentiel.",
+      "image": null,
+      "imageAlt": "Vincent pendant une tournée commerciale dans le bâtiment",
       "reason": "Les retours terrain correspondent à ton positionnement et montrent une progression concrète."
     },
     {
@@ -51,6 +53,8 @@
       "cta": "Quel apprentissage du début de carrière vous a le plus marqué ?",
       "hashtags": ["#JeuneProfessionnel", "#Commerce", "#Apprentissage", "#Narbonne"],
       "visual": "Portrait naturel au magasin ou en extérieur.",
+      "image": null,
+      "imageAlt": "Portrait professionnel naturel de Vincent Leclerc",
       "reason": "Ce contenu crée de la proximité sans transformer le profil en page publicitaire."
     },
     {
@@ -68,6 +72,8 @@
       "cta": "Dans votre métier, quelle habitude régulière vous apporte le plus de résultats ?",
       "hashtags": ["#Golf", "#RéseauProfessionnel", "#Commerce", "#Progression"],
       "visual": "Photo réelle sur un parcours, sobre et naturelle.",
+      "image": null,
+      "imageAlt": "Vincent sur un parcours de golf dans un style naturel",
       "reason": "Le lien avec le golf reste naturel et centré sur la progression."
     }
   ],
@@ -77,6 +83,7 @@
     {"title":"Bilan hebdomadaire","schedule":"À ajouter quand une place d’automatisation sera disponible","status":"En attente"}
   ],
   "history": [
+    ["27/07/2026 15:20", "Affichage des visuels activé", "Les images créées dans ChatGPT peuvent être associées aux propositions"],
     ["27/07/2026 15:03", "Profil LinkedIn confirmé", "Lien exact intégré : vincent-leclerc-14a3492bb"],
     ["27/07/2026 15:03", "Statistiques corrigées", "Les anciennes valeurs de démonstration ont été retirées"],
     ["27/07/2026 14:35", "Synchronisation ChatGPT", "Création du tableau de bord alimenté par le projet"],
