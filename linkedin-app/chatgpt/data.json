@@ -1,18 +1,22 @@
 {
-  "lastSync": "2026-07-27T14:35:00+02:00",
-  "syncMessage": "Données préparées depuis le projet ChatGPT Intégration IA à TECHNIMAT",
+  "lastSync": "2026-07-27T15:03:00+02:00",
+  "syncMessage": "Profil LinkedIn exact confirmé et intégré depuis ChatGPT",
   "profile": {
     "score": 82,
+    "url": "https://www.linkedin.com/in/vincent-leclerc-14a3492bb/",
+    "verifiedLink": true,
     "title": "Commercial terrain chez TECHNIMAT | Développement commercial BtoB | Digital et intelligence artificielle | Narbonne & Occitanie",
     "summary": "J’évolue dans le commerce BtoB et le secteur du bâtiment chez TECHNIMAT à Narbonne. Mon quotidien se partage entre la prospection terrain, les visites clients, le suivi commercial et le développement d’outils numériques.\n\nÀ 20 ans, je construis mon expérience directement sur le terrain : comprendre les besoins, créer une relation de confiance et progresser à chaque échange. Je m’intéresse aussi à l’intelligence artificielle appliquée au commerce, à l’e-commerce et à la communication.\n\nIci, je partage des retours de tournées, des apprentissages commerciaux et les coulisses de mon évolution professionnelle, sans prétendre tout savoir.",
     "skills": ["Prospection commerciale", "Développement commercial BtoB", "Relation client", "Vente terrain", "CRM commercial", "E-commerce", "Canva", "IA appliquée au commerce"]
   },
   "stats": {
-    "followers": 214,
-    "profileViews": 137,
-    "weeklyImpressions": 5140,
-    "engagement": 4.8,
-    "themes": [["Retours terrain",82],["Commerce & IA",74],["Parcours personnel",68],["Produits TECHNIMAT",51],["Golf & réseau",47]]
+    "verified": false,
+    "source": "Aucune statistique LinkedIn réelle n’est encore accessible au plugin ChatGPT.",
+    "followers": null,
+    "profileViews": null,
+    "weeklyImpressions": null,
+    "engagement": null,
+    "themes": []
   },
   "posts": [
     {
@@ -73,6 +77,8 @@
     {"title":"Bilan hebdomadaire","schedule":"À ajouter quand une place d’automatisation sera disponible","status":"En attente"}
   ],
   "history": [
+    ["27/07/2026 15:03", "Profil LinkedIn confirmé", "Lien exact intégré : vincent-leclerc-14a3492bb"],
+    ["27/07/2026 15:03", "Statistiques corrigées", "Les anciennes valeurs de démonstration ont été retirées"],
     ["27/07/2026 14:35", "Synchronisation ChatGPT", "Création du tableau de bord alimenté par le projet"],
     ["27/07/2026 14:31", "Automatisation activée", "Trois idées du lundi au vendredi à 8 h"],
     ["27/07/2026 14:31", "Automatisation activée", "Analyse des tendances le lundi à 7 h 45"]
