@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-07-27T15:20:00+02:00",
-  "syncMessage": "Les propositions peuvent maintenant afficher les visuels créés dans ChatGPT",
+  "lastSync": "2026-07-27T15:25:00+02:00",
+  "syncMessage": "Génération des posts à 8 h 15 et synchronisation automatique du site à 8 h 30",
   "profile": {
     "score": 82,
     "url": "https://www.linkedin.com/in/vincent-leclerc-14a3492bb/",
@@ -31,11 +31,20 @@
       "status": "Proposition",
       "hook": "Une tournée commerciale, ce n’est pas seulement enchaîner les kilomètres et les rendez-vous.",
       "body": "Cette semaine, plusieurs échanges avec des entreprises de façade m’ont rappelé une chose simple : le prix compte, mais il n’arrive pas toujours en premier.\n\nLa disponibilité, la régularité des livraisons, la compréhension du chantier et la capacité à répondre vite peuvent faire la différence.\n\nÀ chaque visite, j’apprends à poser moins de questions catalogue et davantage de questions sur la façon dont l’entreprise travaille réellement.\n\nC’est encore un apprentissage, mais c’est clairement ce qui rend le terrain intéressant.",
+      "short": "Sur le terrain, le prix compte, mais la disponibilité, la réactivité et la compréhension du chantier font souvent la différence.",
       "cta": "Dans votre activité, qu’est-ce qui fait vraiment la différence chez un fournisseur ?",
       "hashtags": ["#CommerceBtoB", "#RelationClient", "#Bâtiment", "#Occitanie"],
-      "visual": "Une vraie photo de tournée, sans élément confidentiel.",
+      "visual": "Visuel éditorial sobre sur le thème du terrain commercial.",
       "image": null,
-      "imageAlt": "Vincent pendant une tournée commerciale dans le bâtiment",
+      "imageAlt": "Visuel LinkedIn sur les priorités d’un client professionnel",
+      "visualData": {
+        "title": "Le prix n’est pas toujours le premier critère",
+        "subtitle": "Ce que le terrain m’apprend sur la relation client",
+        "category": "Retour terrain",
+        "background": "#0f172a",
+        "accent": "#2563eb",
+        "layout": "editorial"
+      },
       "reason": "Les retours terrain correspondent à ton positionnement et montrent une progression concrète."
     },
     {
@@ -50,11 +59,20 @@
       "status": "Proposition",
       "hook": "À 20 ans, je n’ai pas encore toutes les réponses. Et c’est justement ce qui rend cette période intéressante.",
       "body": "Depuis mon arrivée chez TECHNIMAT, j’ai découvert que le commerce ne s’apprend pas uniquement dans les cours ou derrière un écran.\n\nIl s’apprend dans les premiers appels qui ne se passent pas comme prévu, les kilomètres entre deux clients, les devis à reprendre et les discussions qui changent complètement la façon de voir un besoin.\n\nJe progresse encore, mais je vois déjà la différence entre vouloir vendre et chercher à comprendre.\n\nMon objectif pour la suite : continuer à gagner en autonomie, rester curieux et construire une façon de travailler qui me ressemble.",
+      "short": "À 20 ans, chaque appel, visite et devis me fait progresser un peu plus.",
       "cta": "Quel apprentissage du début de carrière vous a le plus marqué ?",
       "hashtags": ["#JeuneProfessionnel", "#Commerce", "#Apprentissage", "#Narbonne"],
-      "visual": "Portrait naturel au magasin ou en extérieur.",
+      "visual": "Visuel moderne et humain sur la progression professionnelle.",
       "image": null,
-      "imageAlt": "Portrait professionnel naturel de Vincent Leclerc",
+      "imageAlt": "Visuel LinkedIn sur l’apprentissage professionnel à 20 ans",
+      "visualData": {
+        "title": "À 20 ans, apprendre directement sur le terrain",
+        "subtitle": "Chaque échange devient une expérience utile",
+        "category": "Parcours",
+        "background": "#172554",
+        "accent": "#60a5fa",
+        "layout": "split"
+      },
       "reason": "Ce contenu crée de la proximité sans transformer le profil en page publicitaire."
     },
     {
@@ -69,25 +87,32 @@
       "status": "Proposition",
       "hook": "Au golf, un très bon coup ne rattrape pas toujours une partie irrégulière.",
       "body": "C’est une idée que je retrouve aussi dans mon quotidien commercial.\n\nUn rendez-vous réussi fait plaisir, mais ce qui construit vraiment les résultats, c’est la régularité : préparer ses tournées, relancer, tenir ses engagements et revenir au bon moment.\n\nJe suis encore en train d’apprendre dans les deux domaines. Et dans les deux cas, vouloir aller trop vite fait rarement gagner du temps.",
+      "short": "Au golf comme dans le commerce, la régularité compte davantage qu’un seul très bon coup.",
       "cta": "Dans votre métier, quelle habitude régulière vous apporte le plus de résultats ?",
       "hashtags": ["#Golf", "#RéseauProfessionnel", "#Commerce", "#Progression"],
-      "visual": "Photo réelle sur un parcours, sobre et naturelle.",
+      "visual": "Visuel premium et naturel sur la régularité.",
       "image": null,
-      "imageAlt": "Vincent sur un parcours de golf dans un style naturel",
+      "imageAlt": "Visuel LinkedIn reliant golf, commerce et régularité",
+      "visualData": {
+        "title": "La régularité avant le coup parfait",
+        "subtitle": "Au golf comme dans le commerce",
+        "category": "Golf & commerce",
+        "background": "#052e2b",
+        "accent": "#22c55e",
+        "layout": "editorial"
+      },
       "reason": "Le lien avec le golf reste naturel et centré sur la progression."
     }
   ],
   "tasks": [
-    {"title":"3 idées LinkedIn","schedule":"Du lundi au vendredi à 8 h","status":"Active"},
-    {"title":"Tendances LinkedIn","schedule":"Chaque lundi à 7 h 45","status":"Active"},
-    {"title":"Bilan hebdomadaire","schedule":"À ajouter quand une place d’automatisation sera disponible","status":"En attente"}
+    {"title":"Création des 3 posts LinkedIn","schedule":"Chaque jour à 8 h 15","status":"Active"},
+    {"title":"Synchronisation du site","schedule":"Chaque jour à 8 h 30","status":"Active"},
+    {"title":"Tendances LinkedIn","schedule":"Chaque lundi à 7 h 45","status":"Active"}
   ],
   "history": [
-    ["27/07/2026 15:20", "Affichage des visuels activé", "Les images créées dans ChatGPT peuvent être associées aux propositions"],
+    ["27/07/2026 15:25", "Automatisation complète activée", "Trois posts à 8 h 15 puis synchronisation du site à 8 h 30"],
+    ["27/07/2026 15:25", "Visuels automatiques activés", "Chaque proposition possède un visuel 1200 × 627 téléchargeable en PNG"],
     ["27/07/2026 15:03", "Profil LinkedIn confirmé", "Lien exact intégré : vincent-leclerc-14a3492bb"],
-    ["27/07/2026 15:03", "Statistiques corrigées", "Les anciennes valeurs de démonstration ont été retirées"],
-    ["27/07/2026 14:35", "Synchronisation ChatGPT", "Création du tableau de bord alimenté par le projet"],
-    ["27/07/2026 14:31", "Automatisation activée", "Trois idées du lundi au vendredi à 8 h"],
-    ["27/07/2026 14:31", "Automatisation activée", "Analyse des tendances le lundi à 7 h 45"]
+    ["27/07/2026 14:35", "Synchronisation ChatGPT", "Création du tableau de bord alimenté par le projet"]
   ]
 }
