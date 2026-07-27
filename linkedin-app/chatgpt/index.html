@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Tableau de bord LinkedIn de Vincent alimenté par ChatGPT">
+  <title>Vincent LinkedIn · ChatGPT</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="logo">VL</div><div><strong>Vincent LinkedIn</strong><span>Alimenté par ChatGPT</span></div></div>
+      <nav id="nav"></nav>
+      <div class="sync-card"><span class="dot"></span><div><strong>Synchronisation ChatGPT</strong><small id="lastSync">Chargement…</small></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">COMMUNITY MANAGER PERSONNEL</span><h1 id="pageTitle">Tableau de bord</h1></div>
+        <div class="top-actions"><button class="btn light" id="refreshBtn">Actualiser</button><button class="btn primary" data-route="proposals">Voir les idées</button></div>
+      </header>
+      <section id="app" class="content"></section>
+    </main>
+  </div>
+  <nav class="bottom-nav" id="bottomNav"></nav>
+  <dialog id="postDialog"><div class="dialog-head"><div><span class="eyebrow">PUBLICATION LINKEDIN</span><h2 id="dialogTitle"></h2></div><button class="icon-btn" id="closeDialog">×</button></div><div id="dialogBody" class="dialog-body"></div><div class="dialog-actions"><button class="btn light" id="copyPost">Copier le post</button><button class="btn success" id="validatePost">Valider</button></div></dialog>
+  <div class="toast" id="toast"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
