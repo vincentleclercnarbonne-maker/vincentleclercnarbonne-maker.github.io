@@ -3,49 +3,85 @@
 
 const routes=[['dashboard','Tableau de bord'],['proposals','Propositions'],['calendar','Calendrier'],['profile','Profil'],['stats','Statistiques'],['history','Historique']];
 const LINKEDIN_COMPOSER='https://www.linkedin.com/feed/?shareActive=true';
+const PHOTO_PREFIX='vincent-linkedin-photo-v1-';
 let data=null,route='dashboard',current=null;
 
 const $=q=>document.querySelector(q);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-const xml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-const safeColor=(v,fallback)=>/^#[0-9a-f]{6}$/i.test(String(v||''))?v:fallback;
 const badge=s=>`<span class="badge ${s==='Active'||s==='Validé'?'green':s==='Proposition'?'blue':'orange'}">${esc(s)}</span>`;
 const postText=p=>`${p.hook}\n\n${p.body}\n\n${p.cta}\n\n${p.hashtags.join(' ')}`;
+const photoKey=p=>PHOTO_PREFIX+p.id;
+const photoData=p=>localStorage.getItem(photoKey(p))||p.image||'';
 
-function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2800)}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),3000)}
 function slug(v){return String(v||'publication-linkedin').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
-function wrapWords(text,max=24,maxLines=3){const words=String(text||'').trim().split(/\s+/),lines=[];let line='';for(const word of words){const next=(line+' '+word).trim();if(next.length>max&&line){lines.push(line);line=word}else line=next;if(lines.length===maxLines-1)break}if(line&&lines.length<maxLines)lines.push(line);if(words.join(' ').length>lines.join(' ').length&&lines.length)lines[lines.length-1]=lines[lines.length-1].replace(/[.,;:]?$/,'…');return lines}
 
-function visualSpec(p){return Object.assign({title:p.title,subtitle:p.angle,category:p.type,background:'#0f172a',accent:'#2563eb',layout:'editorial'},p.visualData||{})}
-function visualSvg(p){
-  const v=visualSpec(p),bg=safeColor(v.background,'#0f172a'),accent=safeColor(v.accent,'#2563eb');
-  const titleLines=wrapWords(v.title||p.title,25,3),subLines=wrapWords(v.subtitle||p.angle,48,2);
-  const title=titleLines.map((line,i)=>`<text x="72" y="${220+i*74}" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="58" font-weight="800" letter-spacing="-1.2">${xml(line)}</text>`).join('');
-  const subtitle=subLines.map((line,i)=>`<text x="74" y="${468+i*32}" fill="#dbeafe" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="500">${xml(line)}</text>`).join('');
-  const deco=v.layout==='split'?`<rect x="920" y="0" width="280" height="627" fill="${accent}" opacity=".16"/><rect x="980" y="115" width="150" height="397" rx="75" fill="${accent}" opacity=".36"/>`:`<circle cx="1060" cy="105" r="230" fill="${accent}" opacity=".18"/><circle cx="1100" cy="510" r="120" fill="#ffffff" opacity=".06"/>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${bg}"/><stop offset="1" stop-color="#111827"/></linearGradient></defs><rect width="1200" height="627" fill="url(#g)"/>${deco}<rect x="72" y="68" width="${Math.min(410,110+String(v.category||p.type).length*12)}" height="48" rx="24" fill="${accent}"/><text x="96" y="100" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="800" letter-spacing="1.4">${xml(String(v.category||p.type).toUpperCase())}</text>${title}${subtitle}<rect x="72" y="560" width="1056" height="1" fill="#ffffff" opacity=".2"/><text x="72" y="596" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700">Vincent Leclerc</text><text x="255" y="596" fill="#94a3b8" font-family="Arial,Helvetica,sans-serif" font-size="17">Commercial terrain · TECHNIMAT</text><text x="1128" y="596" text-anchor="end" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700">LinkedIn</text></svg>`;
+function visualHtml(p,large=false){
+  const src=photoData(p);
+  if(src)return `<figure class="visual-frame ${large?'large':''}"><img src="${src}" alt="${esc(p.imageAlt||('Photo LinkedIn : '+p.title))}"><figcaption>Photo personnelle ajoutée sur cet appareil</figcaption></figure>`;
+  return `<div class="photo-placeholder ${large?'large':''}"><div class="photo-icon">📷</div><strong>Ajoute ta photo réelle</strong><p>${esc(p.visual||'Choisis une photo naturelle en rapport avec la publication.')}</p><button class="btn light" data-photo="${p.id}">Ajouter ma photo</button></div>`;
 }
-function visualUrl(p){return p.image||`data:image/svg+xml;charset=utf-8,${encodeURIComponent(visualSvg(p))}`}
-function visualHtml(p,large=false){return `<figure class="visual-frame ${large?'large':''}"><img src="${visualUrl(p)}" alt="${esc(p.imageAlt||('Visuel LinkedIn : '+p.title))}" loading="lazy"><figcaption>Visuel LinkedIn 1200 × 627 généré automatiquement</figcaption></figure>`}
-async function visualBlob(p){const img=new Image(),url=`data:image/svg+xml;charset=utf-8,${encodeURIComponent(visualSvg(p))}`;await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=627;canvas.getContext('2d').drawImage(img,0,0,1200,627);return await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('PNG impossible')),'image/png',.96))}
+
+async function fileToLinkedInPhoto(file){
+  if(!file||!file.type.startsWith('image/'))throw new Error('Fichier non reconnu');
+  const url=URL.createObjectURL(file),img=new Image();
+  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error('Image illisible'));img.src=url});
+  const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=627;
+  const ctx=canvas.getContext('2d');
+  const scale=Math.max(canvas.width/img.width,canvas.height/img.height);
+  const w=img.width*scale,h=img.height*scale,x=(canvas.width-w)/2,y=(canvas.height-h)/2;
+  ctx.drawImage(img,x,y,w,h);URL.revokeObjectURL(url);
+  return canvas.toDataURL('image/jpeg',.84);
+}
+
+async function choosePhoto(p){
+  const input=document.createElement('input');input.type='file';input.accept='image/*';
+  input.onchange=async()=>{try{const file=input.files?.[0];if(!file)return;const photo=await fileToLinkedInPhoto(file);localStorage.setItem(photoKey(p),photo);render();if(current?.id===p.id&&$('#postDialog').open)populateDialog(p);toast('Photo ajoutée et recadrée au format LinkedIn')}catch(e){toast(e?.name==='QuotaExceededError'?'Photo trop lourde pour être conservée sur cet appareil':'Impossible d’ajouter cette photo')}};
+  input.click();
+}
+
+async function photoBlob(p){const src=photoData(p);if(!src)throw new Error('Aucune photo');const r=await fetch(src);return await r.blob()}
 async function copyPost(p){try{await navigator.clipboard.writeText(postText(p));toast('Texte LinkedIn copié')}catch{toast('Copie impossible : sélectionne le texte manuellement')}}
-async function downloadVisual(p){try{const blob=await visualBlob(p),a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=`${slug(p.title)}-linkedin.png`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Image LinkedIn téléchargée')}catch{toast('Impossible de préparer l’image')}}
-async function sharePost(p){try{const blob=await visualBlob(p),file=new File([blob],`${slug(p.title)}-linkedin.png`,{type:'image/png'});if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){await navigator.share({title:p.title,text:postText(p),files:[file]});toast('Partage ouvert avec le texte et l’image');return}}catch(e){if(e&&e.name==='AbortError')return}await prepareLinkedIn(p)}
-async function prepareLinkedIn(p){window.open(LINKEDIN_COMPOSER,'_blank','noopener,noreferrer');await copyPost(p);await downloadVisual(p);p.status='Validé';render();toast('LinkedIn est ouvert : colle le texte et ajoute l’image téléchargée.')}
+async function downloadPhoto(p){try{const blob=await photoBlob(p),a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=`${slug(p.title)}-linkedin.jpg`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Photo téléchargée')}catch{toast('Ajoute d’abord ta photo réelle')}}
+async function sharePost(p){
+  const src=photoData(p);
+  try{
+    if(src){const blob=await photoBlob(p),file=new File([blob],`${slug(p.title)}-linkedin.jpg`,{type:'image/jpeg'});if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){await navigator.share({title:p.title,text:postText(p),files:[file]});return}}
+    if(navigator.share){await navigator.share({title:p.title,text:postText(p)});return}
+  }catch(e){if(e&&e.name==='AbortError')return}
+  await prepareLinkedIn(p);
+}
+async function prepareLinkedIn(p){
+  window.open(LINKEDIN_COMPOSER,'_blank','noopener,noreferrer');
+  await copyPost(p);
+  if(photoData(p))await downloadPhoto(p);
+  p.status='Validé';render();
+  toast(photoData(p)?'LinkedIn ouvert : colle le texte et ajoute la photo téléchargée.':'LinkedIn ouvert : colle le texte puis ajoute ta photo.');
+}
 
 async function load(){try{const r=await fetch('data.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error();data=await r.json();render();const d=new Date(data.lastSync);$('#lastSync').textContent='Dernière mise à jour : '+d.toLocaleString('fr-FR')}catch{$('#app').innerHTML='<div class="card">Impossible de charger les données. Réessaie dans quelques instants.</div>'}}
 function nav(){const buttons=routes.map(([r,l])=>`<button class="nav-btn ${route===r?'active':''}" data-route="${r}">${l}</button>`).join('');$('#nav').innerHTML=buttons;$('#bottomNav').innerHTML=routes.slice(0,5).map(([r,l])=>`<button class="${route===r?'active':''}" data-route="${r}">${l}</button>`).join('')}
 function metric(label,value,foot){return `<article class="card metric"><label>${label}</label><strong>${value}</strong><span>${foot}</span></article>`}
-function postCard(p){return `<article class="card post-card">${visualHtml(p)}<div class="status">${badge(p.status)}<span class="badge">${p.date} · ${p.time}</span></div><h3>${esc(p.title)}</h3><div class="hook">${esc(p.hook)}</div><div class="excerpt">${esc(p.body)}</div><div class="reason"><strong>Pourquoi cette idée ?</strong><br>${esc(p.reason)}</div><div class="actions"><button class="btn primary" data-open="${p.id}">Ouvrir</button><button class="btn light" data-download="${p.id}">Image</button><button class="btn success" data-share="${p.id}">Partager</button></div></article>`}
-function dashboard(){const verified=data.stats.verified;return `<section class="hero"><div><span class="badge blue">8 H 15 → CHATGPT · 8 H 30 → APPLICATION</span><h2>Trois posts complets, avec visuels, chaque matin.</h2><p>ChatGPT analyse le projet, prépare les contenus puis synchronise automatiquement cette application. Ouvre une proposition pour obtenir le texte et l’image prêts à utiliser sur LinkedIn.</p><button class="btn primary" data-route="proposals">Voir les propositions du jour</button></div><div class="hero-stat"><strong>${data.posts.length}</strong><span>posts prêts</span></div></section><div class="section"><div><h2>Vue d’ensemble</h2><p>Données synchronisées depuis ChatGPT.</p></div></div><section class="grid g4">${metric('Propositions',data.posts.length,'Texte + image')}${metric('Synchronisation','8 h 30','Chaque jour')}${metric('Impressions',verified?data.stats.weeklyImpressions.toLocaleString('fr-FR'):'—','Non connecté à LinkedIn')}${metric('Engagement',verified?data.stats.engagement+' %':'—','Non connecté à LinkedIn')}</section><div class="section"><div><h2>Propositions du moment</h2></div></div><section class="grid g3">${data.posts.slice(0,3).map(postCard).join('')}</section><div class="section"><div><h2>Automatisations ChatGPT</h2></div></div><div class="card">${data.tasks.map(t=>`<div class="list-row"><div><strong>${esc(t.title)}</strong><span>${esc(t.schedule)}</span></div>${badge(t.status)}</div>`).join('')}</div>`}
-function proposals(){return `<div class="section"><div><h2>Propositions préparées par ChatGPT</h2><p>Chaque carte contient le texte complet et son visuel LinkedIn téléchargeable.</p></div></div><section class="grid g3">${data.posts.map(postCard).join('')}</section>`}
+function postCard(p){const hasPhoto=!!photoData(p);return `<article class="card post-card">${visualHtml(p)}<div class="status">${badge(p.status)}<span class="badge">${p.date} · ${p.time}</span></div><h3>${esc(p.title)}</h3><div class="hook">${esc(p.hook)}</div><div class="excerpt">${esc(p.body)}</div><div class="reason"><strong>Photo conseillée</strong><br>${esc(p.visual)}</div><div class="actions"><button class="btn primary" data-open="${p.id}">Ouvrir</button><button class="btn light" data-photo="${p.id}">${hasPhoto?'Changer la photo':'Ajouter ma photo'}</button><button class="btn success" data-share="${p.id}">Partager</button></div></article>`}
+function dashboard(){const verified=data.stats.verified;return `<section class="hero"><div><span class="badge blue">8 H 15 → CHATGPT · 8 H 30 → APPLICATION</span><h2>Trois posts prêts, avec tes vraies photos.</h2><p>ChatGPT prépare les textes et recommande la photo idéale. Tu ajoutes ensuite ta propre photo dans chaque proposition avant d’ouvrir LinkedIn.</p><button class="btn primary" data-route="proposals">Voir les propositions du jour</button></div><div class="hero-stat"><strong>${data.posts.length}</strong><span>posts prêts</span></div></section><div class="section"><div><h2>Vue d’ensemble</h2><p>Données synchronisées depuis ChatGPT.</p></div></div><section class="grid g4">${metric('Propositions',data.posts.length,'Textes complets')}${metric('Photos','Personnelles','Ajoutées par toi')}${metric('Impressions',verified?data.stats.weeklyImpressions.toLocaleString('fr-FR'):'—','Non connecté à LinkedIn')}${metric('Engagement',verified?data.stats.engagement+' %':'—','Non connecté à LinkedIn')}</section><div class="section"><div><h2>Propositions du moment</h2></div></div><section class="grid g3">${data.posts.slice(0,3).map(postCard).join('')}</section><div class="section"><div><h2>Automatisations ChatGPT</h2></div></div><div class="card">${data.tasks.map(t=>`<div class="list-row"><div><strong>${esc(t.title)}</strong><span>${esc(t.schedule)}</span></div>${badge(t.status)}</div>`).join('')}</div>`}
+function proposals(){return `<div class="section"><div><h2>Propositions préparées par ChatGPT</h2><p>Ajoute une photo réelle à chaque publication, puis ouvre LinkedIn.</p></div></div><section class="grid g3">${data.posts.map(postCard).join('')}</section>`}
 function calendar(){const days=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];return `<div class="section"><div><h2>Calendrier éditorial</h2><p>Planning conseillé à partir des publications du jour.</p></div></div><section class="calendar">${days.map((d,i)=>{const p=data.posts[i]||null;return `<div class="day"><h3>${d}</h3>${p?`<div class="cal-item" data-open="${p.id}">${badge(p.status)}<strong>${esc(p.title)}</strong><span>${p.time} · ${esc(p.type)}</span></div>`:'<span class="badge">Libre</span>'}</div>`}).join('')}</section>`}
 function profile(){return `<div class="section"><div><h2>Profil LinkedIn</h2><p>Lien exact confirmé par Vincent.</p></div><a class="btn primary" href="${esc(data.profile.url)}" target="_blank" rel="noopener noreferrer">Ouvrir mon profil LinkedIn</a></div><section class="grid g2"><article class="card"><span class="badge green">Profil identifié</span><h2 class="profile-title">${esc(data.profile.title)}</h2><div class="progress"><i style="width:${data.profile.score}%"></i></div><div class="section"><div><h2>Compétences</h2></div></div><div class="chips">${data.profile.skills.map(s=>`<span class="badge">${esc(s)}</span>`).join('')}</div></article><article class="card"><h2>Résumé</h2><p class="summary">${esc(data.profile.summary)}</p></article></section>`}
 function stats(){if(!data.stats.verified)return `<div class="section"><div><h2>Statistiques LinkedIn</h2><p>Le lien du profil est confirmé, mais le plugin ChatGPT ne donne pas accès aux statistiques personnelles.</p></div></div><article class="card"><span class="badge orange">Données non disponibles</span><h2 style="margin-top:14px">Aucun chiffre réel affiché</h2><p class="summary">${esc(data.stats.source)} Envoie des captures de l’onglet Statistiques LinkedIn et elles seront intégrées sans inventer de valeurs.</p><a class="btn primary" href="${esc(data.profile.url)}" target="_blank" rel="noopener noreferrer">Ouvrir mon profil</a></article>`;return `<div class="section"><div><h2>Statistiques enregistrées</h2><p>Données réelles synchronisées.</p></div></div><section class="grid g4">${metric('Abonnés',data.stats.followers,'Valeur réelle')}${metric('Visites du profil',data.stats.profileViews,'Période suivie')}${metric('Impressions',data.stats.weeklyImpressions.toLocaleString('fr-FR'),'Semaine')}${metric('Engagement',data.stats.engagement+' %','Calcul enregistré')}</section>`}
 function history(){return `<div class="section"><div><h2>Historique ChatGPT</h2><p>Dernières synchronisations et décisions.</p></div></div><article class="card">${data.history.map(h=>`<div class="list-row"><div><strong>${esc(h[1])}</strong><span>${esc(h[0])} · ${esc(h[2])}</span></div></div>`).join('')}</article>`}
 function render(){if(!data)return;nav();const map={dashboard,proposals,calendar,profile,stats,history};$('#pageTitle').textContent=routes.find(r=>r[0]===route)?.[1]||'Tableau de bord';$('#app').innerHTML=map[route]()}
-function openPost(id){current=data.posts.find(p=>p.id===id);if(!current)return;$('#dialogTitle').textContent=current.title;$('#dialogBody').innerHTML=`${visualHtml(current,true)}<div class="post-details"><span class="badge blue">${esc(current.type)}</span><span class="badge">${esc(current.angle)}</span><h3>Publication prête</h3><div class="full-post"><strong>${esc(current.hook)}</strong>\n\n${esc(current.body)}\n\n${esc(current.cta)}\n\n${current.hashtags.map(esc).join(' ')}</div><div class="reason"><strong>Objectif :</strong> ${esc(current.objective)}<br><strong>Visuel :</strong> ${esc(current.visual)}</div></div>`;$('#postDialog').showModal()}
+function populateDialog(p){$('#dialogTitle').textContent=p.title;$('#dialogBody').innerHTML=`${visualHtml(p,true)}<div class="post-details"><span class="badge blue">${esc(p.type)}</span><span class="badge">${esc(p.angle)}</span><h3>Publication prête</h3><div class="full-post"><strong>${esc(p.hook)}</strong>\n\n${esc(p.body)}\n\n${esc(p.cta)}\n\n${p.hashtags.map(esc).join(' ')}</div><div class="reason"><strong>Objectif :</strong> ${esc(p.objective)}<br><strong>Photo conseillée :</strong> ${esc(p.visual)}</div></div>`}
+function openPost(id){current=data.posts.find(p=>p.id===id);if(!current)return;populateDialog(current);$('#postDialog').showModal()}
 function findPost(el,key){return data.posts.find(p=>p.id===el.dataset[key])}
-document.addEventListener('click',e=>{const r=e.target.closest('[data-route]');if(r){route=r.dataset.route;render();return}const o=e.target.closest('[data-open]');if(o){openPost(o.dataset.open);return}const d=e.target.closest('[data-download]');if(d){downloadVisual(findPost(d,'download'));return}const s=e.target.closest('[data-share]');if(s){sharePost(findPost(s,'share'));return}});
-$('#refreshBtn').onclick=load;$('#closeDialog').onclick=()=>$('#postDialog').close();$('#copyPost').onclick=()=>current&&copyPost(current);$('#downloadVisual').onclick=()=>current&&downloadVisual(current);$('#sharePost').onclick=()=>current&&sharePost(current);$('#validatePost').onclick=()=>{if(!current)return;current.status='Validé';$('#postDialog').close();render();toast('Proposition validée dans l’application')};$('#publishPost').onclick=()=>current&&prepareLinkedIn(current);load();
+
+document.addEventListener('click',e=>{const r=e.target.closest('[data-route]');if(r){route=r.dataset.route;render();return}const o=e.target.closest('[data-open]');if(o){openPost(o.dataset.open);return}const ph=e.target.closest('[data-photo]');if(ph){choosePhoto(findPost(ph,'photo'));return}const s=e.target.closest('[data-share]');if(s){sharePost(findPost(s,'share'));return}});
+$('#refreshBtn').onclick=load;
+$('#closeDialog').onclick=()=>$('#postDialog').close();
+$('#copyPost').onclick=()=>current&&copyPost(current);
+$('#uploadPhoto').onclick=()=>current&&choosePhoto(current);
+$('#downloadVisual').onclick=()=>current&&downloadPhoto(current);
+$('#sharePost').onclick=()=>current&&sharePost(current);
+$('#validatePost').onclick=()=>{if(!current)return;current.status='Validé';$('#postDialog').close();render();toast('Proposition validée dans l’application')};
+$('#publishPost').onclick=()=>current&&prepareLinkedIn(current);
+load();
 })();
