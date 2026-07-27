@@ -9,6 +9,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="visuals.css">
+  <link rel="stylesheet" href="refresh.css">
 </head>
 <body>
   <div class="shell">
@@ -38,7 +39,37 @@
       <button class="btn primary" id="publishPost">Ouvrir LinkedIn</button>
     </div>
   </dialog>
+  <button class="hard-refresh-btn" id="hardRefreshBtn" type="button" title="Équivalent de Ctrl + F5" aria-label="Forcer l’actualisation complète du site">
+    <span class="refresh-icon" aria-hidden="true">↻</span>
+    <span class="refresh-label">Forcer l’actualisation</span>
+  </button>
   <div class="toast" id="toast"></div>
   <script src="app.js" defer></script>
+  <script>
+    (()=>{
+      const button=document.getElementById('hardRefreshBtn');
+      if(!button)return;
+      button.addEventListener('click',async()=>{
+        button.disabled=true;
+        button.classList.add('loading');
+        const label=button.querySelector('.refresh-label');
+        if(label)label.textContent='Actualisation…';
+        try{
+          if('caches' in window){
+            const names=await caches.keys();
+            await Promise.all(names.map(name=>caches.delete(name)));
+          }
+          if('serviceWorker' in navigator){
+            const registrations=await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map(registration=>registration.unregister()));
+          }
+          await fetch(location.pathname+'?cacheReload='+Date.now(),{cache:'reload',credentials:'same-origin'});
+        }catch(error){}
+        const next=new URL(window.location.href);
+        next.searchParams.set('_refresh',Date.now().toString());
+        window.location.replace(next.toString());
+      });
+    })();
+  </script>
 </body>
 </html>
