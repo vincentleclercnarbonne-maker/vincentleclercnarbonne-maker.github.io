@@ -1,7 +1,7 @@
-# TECHNIMAT Social Studio — GitHub Pages
+# TECHNIMAT Instagram Studio — GitHub Pages
 
-Application statique responsive de préparation et validation des contenus
-Instagram TECHNIMAT.
+Application statique responsive exclusivement consacrée à la préparation et
+à la validation des contenus Instagram TECHNIMAT.
 
 ## Adresse publique
 
