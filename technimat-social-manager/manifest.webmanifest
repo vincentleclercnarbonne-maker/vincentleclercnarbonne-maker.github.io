@@ -1,7 +1,7 @@
 {
-  "name": "TECHNIMAT Social Studio",
-  "short_name": "TECHNIMAT",
-  "description": "Préparation et validation des contenus réseaux sociaux TECHNIMAT.",
+  "name": "TECHNIMAT Instagram Studio",
+  "short_name": "TM Instagram",
+  "description": "Préparation et validation des contenus Instagram TECHNIMAT.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
