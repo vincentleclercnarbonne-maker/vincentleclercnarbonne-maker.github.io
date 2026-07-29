@@ -1,0 +1,179 @@
+{
+  "lastSync": "2026-07-29T08:30:00+02:00",
+  "profile": {
+    "name": "TECHNIMAT",
+    "handle": "@technimat",
+    "title": "Outillage, EPI et consommables pour les professionnels du bâtiment",
+    "description": "600 m² dédiés aux professionnels du bâtiment à Narbonne : outillage, équipements de protection, consommables et conseils terrain.",
+    "address": "2 rue Émile Levasseur · Zone Croix Sud · 11100 Narbonne",
+    "website": "www.technimat-outillage.fr",
+    "instagramUrl": "https://www.instagram.com/",
+    "skills": [
+      "Outillage professionnel",
+      "EPI",
+      "Façade",
+      "Peinture",
+      "Placo",
+      "Carrelage",
+      "Vie du magasin"
+    ]
+  },
+  "stats": {
+    "connected": false,
+    "message": "Aucune donnée privée n’est affichée tant qu’une source officielle n’est pas reliée à l’application."
+  },
+  "posts": [
+    {
+      "id": "ig-2026-07-29-magasin",
+      "network": "instagram",
+      "internalTitle": "600 m² pour avancer sur vos chantiers",
+      "theme": "Vie de TECHNIMAT",
+      "objective": "Développer les visites en magasin",
+      "audience": "Artisans et professionnels du bâtiment autour de Narbonne",
+      "format": "Publication photo",
+      "angle": "Faire découvrir la largeur de l’offre et l’ancrage local",
+      "hook": "Tout votre matériel pro, au même endroit.",
+      "caption": "À Narbonne Croix Sud, TECHNIMAT vous accueille dans un magasin de 600 m² dédié aux professionnels du bâtiment. Outillage, EPI, consommables, façade, peinture, placo ou carrelage : notre équipe vous aide à trouver le matériel adapté à vos chantiers.",
+      "shortVersion": "600 m² d’outillage, d’EPI et de consommables pour les pros du bâtiment à Narbonne.",
+      "cta": "Passez nous voir au 2 rue Émile Levasseur, Zone Croix Sud à Narbonne.",
+      "hashtags": [
+        "#TECHNIMAT",
+        "#Narbonne",
+        "#OutillagePro",
+        "#Artisan",
+        "#Bâtiment"
+      ],
+      "recommendedDate": "2026-07-29T12:15:00+02:00",
+      "recommendedTime": "12 h 15",
+      "rationale": "Un mercredi, ce contenu de notoriété locale est simple à comprendre et montre concrètement le magasin sans dépendre d’une promotion.",
+      "photoRecommendation": "Photographier l’allée centrale du véritable magasin, depuis l’entrée, avec plusieurs rayons bien visibles et un espace propre et lumineux. Aucun client reconnaissable sans accord.",
+      "checks": [
+        "La photo montre bien le magasin de Narbonne",
+        "Les rayons visibles sont rangés et actuels",
+        "Aucune personne n’est identifiable sans accord",
+        "L’adresse est exacte"
+      ],
+      "status": "proposed"
+    },
+    {
+      "id": "ig-2026-07-30-tournee",
+      "network": "instagram",
+      "internalTitle": "Dans les coulisses d’une tournée TECHNIMAT",
+      "theme": "Coulisses et terrain",
+      "objective": "Humaniser l’entreprise et valoriser le service terrain",
+      "audience": "Façadiers, peintres et clients professionnels suivis en tournée",
+      "format": "Reel",
+      "angle": "Montrer la préparation réelle avant le départ",
+      "hook": "Avant la route, chaque commande compte.",
+      "caption": "Une tournée TECHNIMAT commence bien avant le premier arrêt. Vérification des références, préparation des commandes et organisation du chargement : chaque étape compte pour arriver sur le terrain avec ce qu’il faut.",
+      "shortVersion": "Préparation, vérification, chargement : les coulisses d’une tournée TECHNIMAT.",
+      "cta": "Vous êtes un professionnel du bâtiment en Occitanie ? Échangez avec notre équipe.",
+      "hashtags": [
+        "#Chantier",
+        "#TECHNIMAT",
+        "#CommerceBtoB",
+        "#Façade",
+        "#Occitanie"
+      ],
+      "recommendedDate": "2026-07-30T07:45:00+02:00",
+      "recommendedTime": "7 h 45",
+      "rationale": "Le départ du matin donne un contexte réel au Reel. Le format court montre le service sans transformer la vidéo en publicité trop travaillée.",
+      "photoRecommendation": "Filmer verticalement trois plans réels : préparation d’une commande, chargement du véhicule puis départ du dépôt. Masquer les noms, adresses et documents clients.",
+      "checks": [
+        "Aucune donnée client n’est lisible",
+        "Le véhicule et le dépôt sont propres",
+        "Les produits filmés correspondent à la tournée",
+        "Les personnes filmées ont donné leur accord"
+      ],
+      "status": "proposed",
+      "reelPlan": {
+        "duration": "12 à 15 secondes",
+        "screenTitle": "Une tournée se prépare ici",
+        "sequences": [
+          "0–3 s : commande réelle en préparation — texte « Vérifier »",
+          "3–8 s : chargement du véhicule — texte « Organiser »",
+          "8–12 s : fermeture des portes et départ — texte « Livrer »"
+        ],
+        "finalLine": "Le terrain commence au dépôt."
+      }
+    },
+    {
+      "id": "ig-2026-07-31-epi",
+      "network": "instagram",
+      "internalTitle": "Le contrôle EPI avant le chantier",
+      "theme": "Conseil professionnel",
+      "objective": "Apporter un conseil utile et valoriser l’expertise EPI",
+      "audience": "Artisans, chefs d’équipe et professionnels exposés aux risques chantier",
+      "format": "Carrousel",
+      "angle": "Un contrôle simple avant de commencer la journée",
+      "hook": "Un EPI usé ne protège plus comme prévu.",
+      "caption": "Avant de commencer, prenez une minute pour contrôler vos équipements : état général, usure, serrage et adaptation au travail prévu. Casque, lunettes, gants, chaussures ou protection auditive : le bon équipement doit aussi être en bon état.",
+      "shortVersion": "Avant le chantier, contrôlez l’état et l’adaptation de vos EPI.",
+      "cta": "Passez en magasin pour demander conseil à l’équipe TECHNIMAT.",
+      "hashtags": [
+        "#EPI",
+        "#SécuritéChantier",
+        "#ProfessionnelsDuBâtiment",
+        "#TECHNIMAT",
+        "#Narbonne"
+      ],
+      "recommendedDate": "2026-07-31T11:45:00+02:00",
+      "recommendedTime": "11 h 45",
+      "rationale": "Le conseil sécurité apporte de la valeur sans prix ni promotion. Le carrousel permet de structurer le contrôle en étapes courtes et lisibles.",
+      "photoRecommendation": "Composer une photo réelle sur le comptoir avec un casque, une paire de lunettes, des gants et des chaussures effectivement disponibles au magasin. Utiliser quatre gros plans réels pour les autres slides.",
+      "checks": [
+        "Tous les EPI photographiés sont réellement disponibles",
+        "Les équipements sont propres et présentables",
+        "Les conseils correspondent aux notices des fabricants",
+        "Aucun prix ou niveau de stock n’est affiché sans vérification"
+      ],
+      "status": "proposed"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "daily-generation",
+      "title": "Création des contenus",
+      "schedule": "Chaque jour à 8 h 15",
+      "state": "ready",
+      "detail": "À connecter"
+    },
+    {
+      "id": "daily-sync",
+      "title": "Synchronisation du site",
+      "schedule": "Chaque jour à 8 h 30",
+      "state": "ready",
+      "detail": "À connecter"
+    },
+    {
+      "id": "weekly-trends",
+      "title": "Analyse des tendances",
+      "schedule": "Chaque lundi à 7 h 45",
+      "state": "ready",
+      "detail": "À connecter"
+    }
+  ],
+  "history": [
+    {
+      "id": "sync-2026-07-29",
+      "date": "2026-07-29T08:30:00+02:00",
+      "title": "Synchronisation terminée",
+      "detail": "Les trois propositions Instagram du jour ont été chargées dans l’application.",
+      "type": "sync"
+    },
+    {
+      "id": "create-2026-07-29",
+      "date": "2026-07-29T08:15:00+02:00",
+      "title": "Trois propositions créées",
+      "detail": "Les angles magasin, coulisses terrain et conseil EPI ont été retenus après contrôle de variété.",
+      "type": "content"
+    },
+    {
+      "id": "trend-2026-07-27",
+      "date": "2026-07-27T07:45:00+02:00",
+      "title": "Tendances hebdomadaires analysées",
+      "detail": "Priorité donnée aux formats terrain, aux accroches directes et aux vidéos courtes non surproduites.",
+      "type": "sync"
+    }
+  ]
+}
