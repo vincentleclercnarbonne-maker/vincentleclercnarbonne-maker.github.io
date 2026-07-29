@@ -1,9 +1,9 @@
-const CACHE = "technimat-social-studio-v2";
+const CACHE = "technimat-social-studio-v3";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
+  "./styles.css?v=3",
+  "./app.js?v=3",
   "./data.json",
   "./manifest.webmanifest",
   "./icon.svg"
