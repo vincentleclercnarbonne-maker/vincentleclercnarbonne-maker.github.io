@@ -1,35 +1,24 @@
-# TECHNIMAT Social Manager — GitHub Pages
+# TECHNIMAT Social Studio — GitHub Pages
 
-Version web responsive de l’application Instagram et Facebook de TECHNIMAT.
+Application statique responsive de préparation et validation des contenus
+Instagram TECHNIMAT.
 
 ## Adresse publique
 
-Après fusion dans la branche `main`, l’application sera disponible dans le dossier :
+`https://vincentleclercnarbonne-maker.github.io/technimat-social-manager/`
 
-`/technimat-social-manager/`
+## Fonctions
 
-## Fonctions disponibles sur GitHub Pages
+- trois propositions différentes alimentées par `data.json` ;
+- ajout d’une photo réelle depuis le téléphone ou l’ordinateur ;
+- recadrage automatique en 1200 × 627 pixels ;
+- modification, validation, refus, copie et ouverture d’Instagram ;
+- calendrier, profil, historique et contrôle anti-répétition ;
+- stockage local des photos et décisions ;
+- installation sur téléphone et actualisation forcée.
 
-- génération de trois idées différentes ;
-- produits et prix provenant des données TECHNIMAT vérifiées au 24 juillet 2026 ;
-- textes, formats, CTA et cinq hashtags ;
-- modification, validation et refus ;
-- calendrier éditorial ;
-- création manuelle ;
-- tendances et statistiques de référence ;
-- historique et paramètres ;
-- stockage local dans le navigateur ;
-- interface mobile et installation PWA.
+## Limites de GitHub Pages
 
-## Limites de la version statique
-
-GitHub Pages ne peut pas exécuter un serveur permanent. Les fonctions suivantes nécessitent le déploiement de la version Node/Docker sur un hébergement sécurisé :
-
-- génération automatique à 8 h lorsque l’application est fermée ;
-- connexion OAuth Meta et Canva ;
-- statistiques Instagram/Facebook en direct ;
-- publication et planification officielles ;
-- synchronisation sécurisée des stocks PrestaShop/ERP ;
-- stockage centralisé multi-utilisateur.
-
-Aucun secret, jeton ou mot de passe ne doit être ajouté à ce dépôt public.
+Le site est entièrement statique. Les automatisations ChatGPT de 8 h 15,
+8 h 30 et du lundi à 7 h 45 doivent être reliées séparément pour mettre à jour
+`data.json`. Les statistiques privées ne sont jamais inventées.
