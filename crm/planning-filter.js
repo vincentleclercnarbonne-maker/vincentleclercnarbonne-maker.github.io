@@ -8,7 +8,7 @@
     {i:'manual-etr',s:'manual-etr',c:'ENTREPRISE DE TRAVAUX ET DE RAVALEMENT',a:'6 IMPASSE ADA LOVELACE, 31830 PLAISANCE-DU-TOUCH',d:'31',t:'À relancer'}
   ];
   const existing=new Set(window.RP.map(x=>norm(x.c||x.name)));
-  required.forEach(x=>{if(!existing.has(norm(x.c))){window.RP.push(x);existing.add(norm(x.c))}});
+  if(window.CRM_USER==='vincent')required.forEach(x=>{if(!existing.has(norm(x.c))){window.RP.push(x);existing.add(norm(x.c))}});
   const canonicalize=value=>{
     let s=String(value||'');
     s=s.replace(/\b(?:m\s*[.\-]?\s*c|mc)\s*(?:project|projet|projec|projette|projé)\b/gi,'M C PROJEC')
@@ -41,8 +41,8 @@
 
   const deptFilter=document.querySelector('#planningDeptFilter');
   const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  const saved=JSON.parse(localStorage.getItem('crmTechnimat')||'{}');
-  const history=[...(window.CRM_SEED?.history||[]),...(Array.isArray(saved.history)?saved.history:[])];
+  const saved=JSON.parse(localStorage.getItem(window.CRM_STORAGE_KEY)||'{}');
+  const history=[...(window.CRM_USER==='vincent'?(window.CRM_SEED?.history||[]):[]),...(Array.isArray(saved.history)?saved.history:[])];
   const norm=s=>String(s||'').trim().toLowerCase().replace(/\s+/g,' ');
   const deptFromAddress=a=>{const m=String(a||'').match(/\b(\d{2})\d{3}\b/);return m?m[1]:''};
 
@@ -54,7 +54,7 @@
   }));
 
   const getCompanies=()=>{
-    const ps=[...(window.state?.prospects||window.RP||[]),...(saved.customProspects||[])];
+    const ps=[...(window.CRM_PROSPECTS||[]),...(saved.customProspects||[])];
     const all=ps.map(p=>({
       id:p.id||p.i||p.s||'',
       name:p.name||p.c||'Entreprise',
@@ -67,7 +67,7 @@
   };
 
   function importCompletedVisits(){
-    let events=JSON.parse(localStorage.getItem('crmPlanning')||'[]');
+    let events=JSON.parse(localStorage.getItem(window.CRM_PLANNING_KEY)||'[]');
     let added=0;
     history.forEach((v,i)=>{
       const company=v.companyName||v.company;
@@ -91,9 +91,10 @@
       added++;
     });
     if(added){
-      localStorage.setItem('crmPlanning',JSON.stringify(events));
-      if(!sessionStorage.getItem('crmPlanningImported')){
-        sessionStorage.setItem('crmPlanningImported','1');
+      localStorage.setItem(window.CRM_PLANNING_KEY,JSON.stringify(events));
+      const importedKey=`crmPlanningImported:${window.CRM_USER}`;
+      if(!sessionStorage.getItem(importedKey)){
+        sessionStorage.setItem(importedKey,'1');
         location.reload();
       }
     }
