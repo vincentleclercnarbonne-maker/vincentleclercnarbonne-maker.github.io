@@ -97,12 +97,12 @@
 
   function photoPreview(post) {
     if (post.photo) {
-      return `<img class="post-photo" src="${post.photo}" alt="Photo ajoutée pour ${esc(post.internalTitle)}">`;
+      return `<img class="post-photo" src="${esc(post.photo)}" alt="Visuel de la proposition ${esc(post.internalTitle)}">`;
     }
     return `<div class="photo-placeholder">
       <span class="camera-mark">⌁</span>
-      <strong>Votre photo réelle ici</strong>
-      <small>Recadrage automatique · 1200 × 627 px</small>
+      <strong>Visuel ChatGPT à venir</strong>
+      <small>Format Instagram · 1080 × 1350 px</small>
     </div>`;
   }
 
@@ -126,7 +126,7 @@
     const active = data.tasks.filter(task => task.state === "active").length;
     const current = posts.find(post => post.status === "proposed") || posts[0];
     return `${pageIntro(
-      "Mercredi 29 juillet",
+      new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(new Date()),
       "Bonjour Vincent.",
       "Vos contenus TECHNIMAT sont prêts à être vérifiés.",
       `<button class="primary-button" data-page="proposals">Voir les 3 propositions</button>`
@@ -168,15 +168,15 @@
 
   function proposals() {
     return `${pageIntro("Instagram · Aujourd’hui", "3 angles. Un seul choix à faire.", "Chaque proposition répond à un objectif, un format et un public différents.")}
-    <div class="quality-banner"><span>Photo réelle uniquement</span><p>Aucun prix, stock ou événement n’est inventé. Vérifiez les points indiqués avant publication.</p></div>
+    <div class="quality-banner"><span>Visuels générés par ChatGPT</span><p>Chaque proposition reçoit un visuel Instagram 1080 × 1350 px. Vous pouvez le conserver ou le remplacer avant publication.</p></div>
     <section class="proposal-grid">${posts.map((post, index) => `<article class="proposal-card">
       <div class="card-visual">${photoPreview(post)}<div class="card-number">0${index + 1}</div>${statusPill(post)}</div>
       <div class="proposal-body">
         <div class="tag-row"><span class="format-tag">${esc(post.format)}</span><span>${formatDate(post.recommendedDate)} · ${esc(post.recommendedTime)}</span></div>
         <h2>${esc(post.internalTitle)}</h2><blockquote>${esc(post.hook)}</blockquote><p class="excerpt">${esc(post.caption)}</p>
-        <div class="photo-advice"><span>Photo conseillée</span><p>${esc(post.photoRecommendation)}</p></div>
+        <div class="photo-advice"><span>Brief du visuel</span><p>${esc(post.photoRecommendation)}</p></div>
         <div class="card-actions">
-          <label class="secondary-button file-button">${post.photo ? "Remplacer la photo" : "Ajouter ma photo"}<input class="photo-file-input" type="file" accept="image/*" data-photo="${post.id}"></label>
+          <label class="secondary-button file-button">${post.photo ? "Remplacer le visuel" : "Ajouter mon visuel"}<input class="photo-file-input" type="file" accept="image/*" data-photo="${post.id}"></label>
           <button class="icon-button" data-copy="${post.id}">Copier</button>
           <button class="primary-button" data-open="${post.id}">Ouvrir</button>
         </div>
@@ -277,8 +277,8 @@
         element.onerror = reject;
         element.src = source;
       });
-      const width = 1200;
-      const height = 627;
+      const width = 1080;
+      const height = 1350;
       const ratio = width / height;
       let sx = 0, sy = 0, sw = image.width, sh = image.height;
       if (image.width / image.height > ratio) {
@@ -306,7 +306,7 @@
     try {
       post.photo = await cropImage(file);
       saveLocal();
-      addHistory(`Photo ajoutée · ${post.internalTitle}`, "Une photo réelle a été recadrée en 1200 × 627 px sur cet appareil.");
+      addHistory(`Visuel remplacé · ${post.internalTitle}`, "Un visuel a été recadré en 1080 × 1350 px sur cet appareil.");
       showToast("Photo enregistrée sur cet appareil.");
       render();
     } catch {
@@ -328,8 +328,8 @@
     $("#modalRoot").innerHTML = `<div class="modal-backdrop"><section class="post-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <header class="modal-header"><div><span class="eyebrow">${esc(post.theme)} · ${esc(post.format)}</span><h2 id="modalTitle">${esc(post.internalTitle)}</h2></div><button class="close-button" data-close type="button" aria-label="Fermer">×</button></header>
       <div class="modal-content"><aside class="modal-side">${photoPreview(post)}
-        <label class="primary-button file-button full">${post.photo ? "Remplacer la photo" : "Ajouter ma photo réelle"}<input class="photo-file-input" type="file" accept="image/*" data-photo="${post.id}"></label>
-        <div class="photo-instruction"><span>Photo à réaliser</span><p>${esc(post.photoRecommendation)}</p></div>
+        <label class="primary-button file-button full">${post.photo ? "Remplacer le visuel" : "Ajouter mon visuel"}<input class="photo-file-input" type="file" accept="image/*" data-photo="${post.id}"></label>
+        <div class="photo-instruction"><span>Brief du visuel généré</span><p>${esc(post.photoRecommendation)}</p></div>
         <div class="detail-stack"><div><span>Objectif</span><strong>${esc(post.objective)}</strong></div><div><span>Public visé</span><strong>${esc(post.audience)}</strong></div><div><span>Angle</span><strong>${esc(post.angle)}</strong></div><div><span>Publication</span><strong>${formatDate(post.recommendedDate)} à ${esc(post.recommendedTime)}</strong></div></div>
       </aside><div class="modal-main">
         <label class="edit-field"><span>Accroche</span><textarea id="editHook" rows="2">${esc(post.hook)}</textarea></label>
