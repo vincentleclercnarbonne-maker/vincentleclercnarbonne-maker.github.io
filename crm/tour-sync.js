@@ -25,7 +25,7 @@
     function sync(){
       const date=dateInput.value;
       if(!date)return alert('Choisissez d’abord la date de la tournée.');
-      const events=JSON.parse(localStorage.getItem('crmPlanning')||'[]')
+      const events=JSON.parse(localStorage.getItem(window.CRM_PLANNING_KEY)||'[]')
         .filter(e=>e.date===date&&e.address&&e.company&&!/pause|déjeuner|dejeuner/i.test(`${e.title||''} ${e.company||''}`))
         .sort((a,b)=>String(a.start||'').localeCompare(String(b.start||'')));
 
@@ -53,7 +53,7 @@
 
     update.addEventListener('click',sync);
     dateInput.addEventListener('change',()=>{
-      const count=JSON.parse(localStorage.getItem('crmPlanning')||'[]').filter(e=>e.date===dateInput.value&&e.address&&e.company).length;
+      const count=JSON.parse(localStorage.getItem(window.CRM_PLANNING_KEY)||'[]').filter(e=>e.date===dateInput.value&&e.address&&e.company).length;
       update.textContent=count?`Mettre à jour depuis le planning (${count})`:'Mettre à jour depuis le planning';
     });
   };

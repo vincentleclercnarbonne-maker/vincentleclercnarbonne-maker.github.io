@@ -9,17 +9,19 @@
   const localIso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   const parseLocal=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
   const getMonday=d=>{d=new Date(d);const day=d.getDay()||7;d.setDate(d.getDate()-day+1);d.setHours(0,0,0,0);return d};
-  const openDate=localStorage.getItem('crmPlanningOpenDate');
+  const planningKey=window.CRM_PLANNING_KEY,planningDateKey=window.CRM_PLANNING_DATE_KEY;
+  if(window.CRM_USER==='vincent'&&!localStorage.getItem(planningKey)&&localStorage.getItem('crmPlanning'))localStorage.setItem(planningKey,localStorage.getItem('crmPlanning'));
+  const openDate=localStorage.getItem(planningDateKey);
   let monday=getMonday(openDate?parseLocal(openDate):new Date());
-  localStorage.removeItem('crmPlanningOpenDate');
-  let events=JSON.parse(localStorage.getItem('crmPlanning')||'[]'),companies=[];
-  const saveP=()=>localStorage.setItem('crmPlanning',JSON.stringify(events));
+  localStorage.removeItem(planningDateKey);
+  let events=JSON.parse(localStorage.getItem(planningKey)||'[]'),companies=[];
+  const saveP=()=>localStorage.setItem(planningKey,JSON.stringify(events));
   const fmt=d=>d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'});
   const mins=t=>{const[a,b]=String(t||'00:00').split(':').map(Number);return a*60+b};
   const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
   function render(){
-    events=JSON.parse(localStorage.getItem('crmPlanning')||'[]');
+    events=JSON.parse(localStorage.getItem(planningKey)||'[]');
     const days=[0,1,2,3,4].map(i=>{const d=new Date(monday);d.setDate(d.getDate()+i);return d});
     weekLabel.textContent=`Semaine du ${fmt(days[0])} au ${fmt(days[4])}`;
     let h='<div class="week-scroll"><div class="week-grid"><div class="week-head">Heure</div>'+days.map(d=>`<div class="week-head">${d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric'})}</div>`).join('');
@@ -29,10 +31,10 @@
     }
     h+='</div></div>';weekCalendar.innerHTML=h;weekCalendar.querySelectorAll('.plan-event').forEach(x=>x.addEventListener('click',()=>openEvent(x.dataset.id)));
   }
-  function loadCompanies(){const ps=(window.state?.prospects||window.RP||[]);companies=ps.map(p=>({id:p.id||p.i||p.s,name:p.name||p.c||'Entreprise',address:p.address||p.a||''})).sort((a,b)=>a.name.localeCompare(b.name,'fr'))}
+  function loadCompanies(){const ps=(window.CRM_PROSPECTS||[]);companies=ps.map(p=>({id:p.id||p.i||p.s,name:p.name||p.c||'Entreprise',address:p.address||p.a||''})).sort((a,b)=>a.name.localeCompare(b.name,'fr'))}
   function showCompanyResults(q=''){const term=q.toLowerCase().trim(),list=companies.filter(p=>term&&p.name.toLowerCase().includes(term)).slice(0,20);planningCompanyResults.innerHTML=list.length?list.map(p=>`<button type="button" data-id="${esc(p.id)}"><strong>${esc(p.name)}</strong>${p.address?`<br><small>${esc(p.address)}</small>`:''}</button>`).join(''):(term?'<p class="mini" style="padding:10px">Aucune entreprise trouvée.</p>':'');planningCompanyResults.style.display=term?'block':'none';planningCompanyResults.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>selectCompany(b.dataset.id)))}
   function selectCompany(id){const p=companies.find(x=>String(x.id)===String(id));if(!p)return;planningCompanyId.value=p.id;planningCompanySearch.value=p.name;planningCompanySelected.textContent='Entreprise sélectionnée : '+p.name;planningAddress.value=p.address||'';planningCompanyResults.style.display='none'}
-  function openEvent(id=''){loadCompanies();events=JSON.parse(localStorage.getItem('crmPlanning')||'[]');const e=events.find(x=>String(x.id)===String(id));planningId.value=e?.id||'';planningCompanyId.value=e?.companyId||'';planningCompanySearch.value=e?.company||'';planningCompanySelected.textContent=e?.company?'Entreprise sélectionnée : '+e.company:'';planningTitle.value=e?.title||'';planningDate.value=e?.date||localIso(new Date());planningStart.value=e?.start||'09:00';planningEnd.value=e?.end||'09:30';planningAddress.value=e?.address||'';planningNotes.value=e?.notes||'';completePlanning.style.display=e&&!e.completed?'block':'none';deletePlanning.style.display=e?'block':'none';planningCompanyResults.style.display='none';dg.showModal()}
+  function openEvent(id=''){loadCompanies();events=JSON.parse(localStorage.getItem(planningKey)||'[]');const e=events.find(x=>String(x.id)===String(id));planningId.value=e?.id||'';planningCompanyId.value=e?.companyId||'';planningCompanySearch.value=e?.company||'';planningCompanySelected.textContent=e?.company?'Entreprise sélectionnée : '+e.company:'';planningTitle.value=e?.title||'';planningDate.value=e?.date||localIso(new Date());planningStart.value=e?.start||'09:00';planningEnd.value=e?.end||'09:30';planningAddress.value=e?.address||'';planningNotes.value=e?.notes||'';completePlanning.style.display=e&&!e.completed?'block':'none';deletePlanning.style.display=e?'block':'none';planningCompanyResults.style.display='none';dg.showModal()}
 
   planningCompanySearch.addEventListener('input',e=>{planningCompanyId.value='';planningCompanySelected.textContent='';showCompanyResults(e.target.value)});
   planningCompanySearch.addEventListener('focus',e=>showCompanyResults(e.target.value));
