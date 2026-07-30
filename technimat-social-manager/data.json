@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-07-30T11:30:00+02:00",
+  "lastSync": "2026-07-30T11:07:00+02:00",
   "profile": {
     "name": "TECHNIMAT",
     "handle": "@technimat",
@@ -149,7 +149,7 @@
   "history": [
     {
       "id": "test-images-2026-07-30",
-      "date": "2026-07-30T11:30:00+02:00",
+      "date": "2026-07-30T11:07:00+02:00",
       "title": "Test quotidien terminé",
       "detail": "Trois propositions et trois visuels ChatGPT au format Instagram ont été générés et synchronisés sur GitHub.",
       "type": "sync"
