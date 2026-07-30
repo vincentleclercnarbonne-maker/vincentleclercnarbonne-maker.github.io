@@ -540,7 +540,7 @@ label:focus-within {
 
 .photo-placeholder {
   align-items: center;
-  aspect-ratio: 1200 / 627;
+  aspect-ratio: 4 / 5;
   background:
     linear-gradient(145deg, rgba(225, 38, 28, 0.92), rgba(125, 12, 9, 0.97)),
     #bb1f18;
@@ -603,7 +603,7 @@ label:focus-within {
 }
 
 .post-photo {
-  aspect-ratio: 1200 / 627;
+  aspect-ratio: 4 / 5;
   border-radius: 10px;
   display: block;
   object-fit: cover;
