@@ -135,15 +135,15 @@
       "id": "daily-generation",
       "title": "Création des contenus",
       "schedule": "Chaque jour à 8 h 15",
-      "state": "ready",
-      "detail": "À connecter"
+      "state": "active",
+      "detail": "3 contenus + 3 visuels ChatGPT"
     },
     {
       "id": "daily-sync",
       "title": "Synchronisation du site",
-      "schedule": "Chaque jour à 8 h 30",
-      "state": "ready",
-      "detail": "À connecter"
+      "schedule": "Incluse chaque jour à 8 h 15",
+      "state": "active",
+      "detail": "Images et propositions envoyées sur GitHub"
     },
     {
       "id": "weekly-trends",
@@ -154,6 +154,13 @@
     }
   ],
   "history": [
+    {
+      "id": "config-images-2026-07-30",
+      "date": "2026-07-30T11:00:00+02:00",
+      "title": "Génération quotidienne des visuels activée",
+      "detail": "Chaque proposition Instagram recevra automatiquement un visuel ChatGPT vertical 1080 × 1350 px à partir du 31 juillet.",
+      "type": "sync"
+    },
     {
       "id": "sync-2026-07-29",
       "date": "2026-07-29T08:30:00+02:00",
