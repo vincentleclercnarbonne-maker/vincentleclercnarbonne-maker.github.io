@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-07-30T11:24:00+02:00",
+  "lastSync": "2026-07-30T12:40:00+02:00",
   "profile": {
     "name": "TECHNIMAT",
     "handle": "@technimat",
@@ -153,6 +153,13 @@
     }
   ],
   "history": [
+    {
+      "id": "instagram-style-guide-2026-07-30",
+      "date": "2026-07-30T12:40:00+02:00",
+      "title": "Style Instagram TECHNIMAT renforcé",
+      "detail": "Les créations suivent désormais les références fournies : affiches commerciales rouge, bleu marine et blanc, grands titres condensés, compositions diagonales, produits réels et logo officiel.",
+      "type": "sync"
+    },
     {
       "id": "instagram-backgrounds-2026-07-30",
       "date": "2026-07-30T11:24:00+02:00",
