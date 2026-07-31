@@ -23,7 +23,8 @@ Les exemples Instagram fournis par l’utilisateur sont des références de mise
 - Ne jamais inventer, redessiner ou modifier les caractéristiques du produit.
 - Le détourage, le redimensionnement, l’ombre portée et l’intégration dans un décor sont autorisés.
 - Le décor peut être généré par ChatGPT, mais aucun faux produit ni faux accessoire ne doit être créé.
-- Utiliser le fichier `assets/logo-technimat-officiel.png` sans le redessiner, le déformer, le recolorer ou modifier son texte.
+- Utiliser le fichier transparent `assets/logo-technimat-officiel.png` sans le redessiner, le déformer, le recolorer ou modifier son texte.
+- Poser le logo détouré directement sur la composition : aucun rectangle, cartouche ou fond blanc autour du logo.
 
 ## Texte
 
@@ -36,6 +37,7 @@ Les exemples Instagram fournis par l’utilisateur sont des références de mise
 ## À éviter
 
 - Les compositions génériques de banque d’images.
+- Les visuels trop rigides qui ressemblent à une fiche produit ou à un catalogue plutôt qu’à une publication de réseau social.
 - Les textes fins ou trop nombreux.
 - Les fonds plats sans contexte métier.
 - Les images de produits approximatives générées par IA.
