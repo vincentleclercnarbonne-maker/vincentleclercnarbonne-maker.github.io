@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-07-31T07:45:00+02:00",
+  "lastSync": "2026-07-31T08:00:00+02:00",
   "profile": {
     "name": "TECHNIMAT",
     "handle": "@technimat",
@@ -24,107 +24,107 @@
   },
   "posts": [
     {
-      "id": "ig-2026-07-30-lampe-makita",
+      "id": "ig-2026-07-31-payper-shine",
       "network": "instagram",
-      "internalTitle": "Éclairez vos chantiers",
-      "theme": "Produit du moment",
-      "objective": "Présenter une solution d’éclairage mobile réellement proposée sur le site TECHNIMAT",
-      "audience": "Professionnels intervenant en intérieur ou dans des zones peu éclairées",
-      "format": "Publication photo",
-      "angle": "Mettre en avant la mobilité d’une lampe intégrée à la plateforme Makita 18 V LXT",
-      "hook": "Quand la lumière manque, le chantier ne doit pas s’arrêter.",
-      "caption": "La lampe de chantier Makita 18 V LXT apporte un éclairage mobile pour les interventions en intérieur, en atelier ou dans les zones peu lumineuses. Elle est proposée sans batterie ni chargeur afin de s’intégrer dans un parc Makita 18 V LXT déjà équipé.",
-      "shortVersion": "Un éclairage mobile pour les chantiers et ateliers équipés en Makita 18 V LXT.",
-      "cta": "Retrouvez la fiche du produit sur technimat-outillage.fr ou demandez conseil à l’équipe TECHNIMAT.",
+      "internalTitle": "Visible et protégé",
+      "theme": "EPI et vêtements professionnels",
+      "objective": "Mettre en avant un vêtement haute visibilité réellement disponible chez TECHNIMAT",
+      "audience": "Professionnels du bâtiment, de la logistique et des travaux extérieurs",
+      "format": "Publication photo 4:5",
+      "angle": "Associer visibilité, confort et protection pour les interventions en extérieur",
+      "hook": "Être visible sur le chantier, ce n’est pas une option.",
+      "caption": "Être visible sur le chantier, ce n’est pas une option.\n\nLa veste softshell Payper SHINE 2.0 combine un coloris haute visibilité, une capuche intégrée et une matière conçue pour protéger du vent tout en conservant une bonne liberté de mouvement.\n\nUne solution adaptée aux professionnels qui travaillent en extérieur, sur chantier ou en logistique.",
+      "shortVersion": "Visibilité, protection et confort avec la veste softshell Payper SHINE 2.0.",
+      "cta": "Découvrez-la chez TECHNIMAT à Narbonne ou consultez sa fiche sur notre site.",
       "hashtags": [
-        "#ÉclairageChantier",
-        "#Makita",
-        "#OutillageProfessionnel",
-        "#TECHNIMAT",
-        "#Narbonne"
-      ],
-      "recommendedDate": "2026-07-30T12:15:00+02:00",
-      "recommendedTime": "12 h 15",
-      "rationale": "La photo réelle du produit est disponible publiquement sur la fiche TECHNIMAT et permet une présentation fidèle sans génération artificielle de la machine.",
-      "photoRecommendation": "Création TECHNIMAT utilisant exclusivement la photo réelle de la lampe issue de la fiche produit, avec le logo officiel fourni et la charte orange, gris clair, blanc et anthracite.",
-      "photo": "./generated/2026-07-30/post-1.jpg",
-      "productUrl": "https://www.technimat-outillage.fr/lampe-de-chantier/2695-lampe-de-chantier-sans-fil-makita-18-v-lxt-livree-sans-bat-ni-chargeur-0088381779753.html",
-      "productImageUrl": "https://www.technimat-outillage.fr/8793-large_default/lampe-de-chantier-sans-fil-makita-18-v-lxt-livree-sans-bat-ni-chargeur.webp",
-      "checks": [
-        "La photo provient directement de la fiche produit TECHNIMAT",
-        "Le logo officiel fourni est conservé sans déformation",
-        "Aucun prix ou niveau de stock n’est annoncé",
-        "Le visuel est au format 1080 × 1350 px"
-      ],
-      "status": "proposed"
-    },
-    {
-      "id": "ig-2026-07-30-malaxeur-bosch",
-      "network": "instagram",
-      "internalTitle": "Mélangez sans fil",
-      "theme": "Électroportatif professionnel",
-      "objective": "Présenter un malaxeur sans fil réellement référencé par TECHNIMAT",
-      "audience": "Maçons, carreleurs, peintres et façadiers préparant mortiers, colles ou enduits",
-      "format": "Publication photo",
-      "angle": "Valoriser la liberté de mouvement apportée par une alimentation sur batterie",
-      "hook": "Mortier, colle ou enduit : travaillez sans dépendre d’une prise à proximité.",
-      "caption": "Le malaxeur Bosch GRW 18V-160 est conçu pour la préparation de mortiers, colles et enduits. Son alimentation sur batterie 18 V facilite les interventions sur les chantiers où l’accès à une prise électrique est limité.",
-      "shortVersion": "Un malaxeur Bosch 18 V pensé pour gagner en mobilité sur le chantier.",
-      "cta": "Consultez la fiche complète sur technimat-outillage.fr ou échangez avec l’équipe TECHNIMAT.",
-      "hashtags": [
-        "#Malaxeur",
-        "#BoschProfessional",
-        "#Façade",
-        "#Chantier",
+        "#HauteVisibilité",
+        "#VêtementDeTravail",
+        "#EPI",
+        "#ProfessionnelsDuBâtiment",
         "#TECHNIMAT"
       ],
-      "recommendedDate": "2026-07-31T17:30:00+02:00",
-      "recommendedTime": "17 h 30",
-      "rationale": "Le produit est présent sur le site TECHNIMAT avec une photographie réelle et des informations techniques publiques vérifiables.",
-      "photoRecommendation": "Création TECHNIMAT utilisant exclusivement la photo réelle du malaxeur issue de la fiche produit, avec le logo officiel fourni et la charte orange, gris clair, blanc et anthracite.",
-      "photo": "./generated/2026-07-31/prototype-social.jpg",
-      "productUrl": "https://www.technimat-outillage.fr/malaxeur/2681-malaxeur-a-batterie-bosch-grw-18v-160-solo-livre-complet-avec-.html",
-      "productImageUrl": "https://www.technimat-outillage.fr/8737-large_default/malaxeur-a-batterie-bosch-grw-18v-160-solo-livre-complet-avec-.webp",
-      "checks": [
-        "La photo provient directement de la fiche produit TECHNIMAT",
-        "Le logo officiel fourni est conservé sans déformation",
-        "Aucun prix ou niveau de stock n’est annoncé",
-        "Le visuel est au format 1080 × 1350 px"
-      ],
-      "status": "proposed"
-    },
-    {
-      "id": "ig-2026-07-30-disque-bosch",
-      "network": "instagram",
-      "internalTitle": "Coupe multi-matériaux",
-      "theme": "Consommable professionnel",
-      "objective": "Présenter un disque diamant réellement référencé sur le site TECHNIMAT",
-      "audience": "Professionnels utilisant une meuleuse compatible 230 mm",
-      "format": "Publication photo",
-      "angle": "Mettre en avant un disque Bosch de diamètre 230 mm destiné à différents matériaux de construction",
-      "hook": "Un seul disque pour intervenir sur plusieurs matériaux de construction.",
-      "caption": "Le disque diamant Bosch multi-matériaux Ø 230 mm est destiné aux travaux de coupe sur différents matériaux de construction avec une meuleuse compatible. Vérifiez toujours la compatibilité, la vitesse maximale et les consignes du fabricant avant utilisation.",
-      "shortVersion": "Un disque diamant Bosch Ø 230 mm conçu pour différents matériaux de construction.",
-      "cta": "Découvrez sa fiche sur technimat-outillage.fr ou demandez conseil en magasin.",
-      "hashtags": [
-        "#DisqueDiamant",
-        "#BoschProfessional",
-        "#Découpe",
-        "#Bâtiment",
-        "#TECHNIMAT"
-      ],
-      "recommendedDate": "2026-08-03T11:45:00+02:00",
+      "recommendedDate": "2026-07-31T11:45:00+02:00",
       "recommendedTime": "11 h 45",
-      "rationale": "Cette publication s’appuie sur la photographie réelle et les caractéristiques publiques de la fiche produit TECHNIMAT.",
-      "photoRecommendation": "Création TECHNIMAT utilisant exclusivement la photo réelle du disque issue de la fiche produit, avec le logo officiel fourni et la charte orange, gris clair, blanc et anthracite.",
-      "photo": "./generated/2026-07-30/post-3.jpg",
-      "productUrl": "https://www.technimat-outillage.fr/disque-plateau-diamantes/2679-disque-a-tronconner-diamante-multimmaterial-bosch-diam230-4059952539980.html",
-      "productImageUrl": "https://www.technimat-outillage.fr/8727-large_default/disque-a-tronconner-diamante-multimmaterial-bosch-diam230.jpg",
+      "rationale": "Le sujet EPI apporte de la variété après les contenus électroportatifs et répond directement aux besoins quotidiens des professionnels travaillant en extérieur.",
+      "photoRecommendation": "Visuel Instagram utilisant la photographie réelle de la veste Payper sur un chantier extérieur humide à l’aube, avec une accroche courte et le logo TECHNIMAT transparent.",
+      "photo": "./generated/2026-07-31/post-1.jpg",
+      "productUrl": "https://www.technimat-outillage.fr/parka-et-veste-de-travail-hv/2637-veste-softshell-shine-20-avec-capuche-jaune-taille.html",
+      "productImageUrl": "https://www.technimat-outillage.fr/8538-large_default/veste-softshell-shine-20-avec-capuche-jaune-taille.jpg",
       "checks": [
-        "La photo provient directement de la fiche produit TECHNIMAT",
-        "Le logo officiel fourni est conservé sans déformation",
-        "Le texte rappelle de vérifier compatibilité et vitesse maximale",
-        "Le visuel est au format 1080 × 1350 px"
+        "Photographie réelle provenant de la fiche produit TECHNIMAT",
+        "Produit indiqué en stock lors de la vérification du 31 juillet 2026",
+        "Logo officiel transparent sans cartouche blanc",
+        "Visuel final au format 1080 × 1350 px"
+      ],
+      "status": "proposed"
+    },
+    {
+      "id": "ig-2026-07-31-makita-hs6601j",
+      "network": "instagram",
+      "internalTitle": "Coupez plus net",
+      "theme": "Électroportatif professionnel",
+      "objective": "Présenter une scie circulaire compacte réellement disponible chez TECHNIMAT",
+      "audience": "Charpentiers, menuisiers, agenceurs et professionnels réalisant des découpes de bois",
+      "format": "Publication photo 4:5",
+      "angle": "Mettre en avant la précision, la maniabilité et la capacité de coupe",
+      "hook": "Une coupe propre commence avec un outil précis.",
+      "caption": "Une coupe propre commence avec un outil précis.\n\nLa scie circulaire Makita HS6601J associe une puissance de 1 050 W à une lame de 165 mm. Compacte et maniable, elle permet d’atteindre une profondeur de coupe maximale de 54,5 mm à 90°.\n\nUn équipement pensé pour les découpes rapides et régulières sur chantier comme en atelier.",
+      "shortVersion": "Makita HS6601J : 1 050 W, lame de 165 mm et jusqu’à 54,5 mm de profondeur de coupe.",
+      "cta": "Retrouvez la scie et ses caractéristiques sur technimat-outillage.fr.",
+      "hashtags": [
+        "#ScieCirculaire",
+        "#Makita",
+        "#TravailDuBois",
+        "#OutillageProfessionnel",
+        "#TECHNIMAT"
+      ],
+      "recommendedDate": "2026-08-01T10:30:00+02:00",
+      "recommendedTime": "10 h 30",
+      "rationale": "Le décor bois met le produit en situation sans inventer son apparence et propose un angle métier différent des publications précédentes.",
+      "photoRecommendation": "Visuel Instagram utilisant la vraie photo de la scie Makita posée sur un établi de chantier en bois, avec lumière naturelle et accroche orientée précision.",
+      "photo": "./generated/2026-07-31/post-2.jpg",
+      "productUrl": "https://www.technimat-outillage.fr/scie/441-scie-circulaire-hs6601j-diametre-165-mm-1050w-makita-0088381806428.html",
+      "productImageUrl": "https://www.technimat-outillage.fr/182-large_default/scie-circulaire-hs6601j-diametre-165-mm-1050w-makita.webp",
+      "checks": [
+        "Photographie réelle provenant de la fiche produit TECHNIMAT",
+        "Puissance, diamètre et profondeur de coupe vérifiés sur la fiche officielle",
+        "Produit indiqué en stock lors de la vérification du 31 juillet 2026",
+        "Visuel final au format 1080 × 1350 px"
+      ],
+      "status": "proposed"
+    },
+    {
+      "id": "ig-2026-07-31-columbia-bazooka",
+      "network": "instagram",
+      "internalTitle": "Gagnez du temps sur les joints",
+      "theme": "Outillage jointeur",
+      "objective": "Valoriser un équipement spécialisé destiné aux professionnels de la plaque de plâtre",
+      "audience": "Plaquistes, jointeurs et entreprises de second œuvre",
+      "format": "Publication photo 4:5",
+      "angle": "Présenter le Bazooka Columbia comme un outil de productivité et de régularité",
+      "hook": "Sur les joints, chaque geste gagné compte.",
+      "caption": "Sur les joints, chaque geste gagné compte.\n\nLe Bazooka Columbia Tools applique la bande et le composé sur les joints de plaques de plâtre avec régularité. Sa conception professionnelle vise à accélérer le travail tout en conservant une application précise.\n\nUn équipement spécialisé pour les plaquistes et jointeurs qui recherchent davantage d’efficacité sur leurs chantiers.",
+      "shortVersion": "Le Bazooka Columbia Tools accompagne les professionnels dans l’application rapide et régulière des bandes à joint.",
+      "cta": "Venez le découvrir chez TECHNIMAT à Narbonne et échangez avec notre équipe.",
+      "hashtags": [
+        "#Plaquiste",
+        "#BandeÀJoint",
+        "#ColumbiaTools",
+        "#SecondŒuvre",
+        "#TECHNIMAT"
+      ],
+      "recommendedDate": "2026-08-03T17:30:00+02:00",
+      "recommendedTime": "17 h 30",
+      "rationale": "Ce contenu spécialisé positionne TECHNIMAT comme fournisseur technique pour les jointeurs et évite de rester uniquement sur les produits électroportatifs généralistes.",
+      "photoRecommendation": "Visuel Instagram utilisant les vraies photos du Bazooka Columbia dans un intérieur placo réaliste, avec un gros plan produit et le logo transparent.",
+      "photo": "./generated/2026-07-31/post-3.jpg",
+      "productUrl": "https://www.technimat-outillage.fr/applicateur-de-bande/382-bazooka-columbia-tools-8241490005058.html",
+      "productImageUrl": "https://www.technimat-outillage.fr/40-large_default/bazooka-columbia-tools.webp",
+      "checks": [
+        "Photographies réelles provenant de la fiche produit TECHNIMAT",
+        "Usage professionnel vérifié sur la fiche officielle",
+        "Produit indiqué en stock lors de la vérification du 31 juillet 2026",
+        "Visuel final au format 1080 × 1350 px"
       ],
       "status": "proposed"
     }
@@ -134,15 +134,15 @@
       "id": "daily-generation",
       "title": "Création des contenus",
       "schedule": "Chaque jour à 8 h 15",
-      "state": "active",
-      "detail": "3 contenus + 3 visuels ChatGPT"
+      "state": "completed",
+      "detail": "3 contenus + 3 visuels créés le 31 juillet"
     },
     {
       "id": "daily-sync",
       "title": "Synchronisation du site",
       "schedule": "Incluse chaque jour à 8 h 15",
-      "state": "active",
-      "detail": "Images et propositions envoyées sur GitHub"
+      "state": "completed",
+      "detail": "Synchronisation GitHub terminée le 31 juillet"
     },
     {
       "id": "weekly-trends",
@@ -153,6 +153,20 @@
     }
   ],
   "history": [
+    {
+      "id": "daily-instagram-2026-07-31",
+      "date": "2026-07-31T08:00:00+02:00",
+      "title": "Trois propositions Instagram créées",
+      "detail": "Les contenus du jour présentent la veste Payper SHINE 2.0, la scie circulaire Makita HS6601J et le Bazooka Columbia Tools avec trois visuels 1080 × 1350.",
+      "type": "content"
+    },
+    {
+      "id": "sync-instagram-2026-07-31",
+      "date": "2026-07-31T08:00:00+02:00",
+      "title": "Synchronisation du site terminée",
+      "detail": "Les trois propositions et leurs visuels ont été publiés dans l’application GitHub Pages.",
+      "type": "sync"
+    },
     {
       "id": "social-visual-direction-2026-07-31",
       "date": "2026-07-31T07:45:00+02:00",
