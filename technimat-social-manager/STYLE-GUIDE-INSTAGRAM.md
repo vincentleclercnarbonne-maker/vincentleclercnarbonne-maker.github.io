@@ -10,12 +10,15 @@ Les exemples Instagram fournis par l’utilisateur sont des références de mise
 
 - Format final : 1080 × 1350 pixels, JPG, ratio 4:5.
 - Concevoir une affiche commerciale forte, lisible instantanément sur téléphone.
+- Donner la priorité à la photographie : le décor chantier et le produit doivent occuper environ 70 % du visuel.
 - Utiliser un grand titre condensé en capitales sur deux ou trois lignes maximum.
 - Organiser le visuel avec des aplats bleu marine, rouge et blanc, des diagonales, trapèzes, bandeaux ou chevrons.
+- Utiliser les formes graphiques comme accents seulement ; elles ne doivent pas enfermer chaque information dans une carte.
 - Réserver une place dominante au produit réel, généralement à droite ou dans la moitié basse.
 - Utiliser un décor réaliste cohérent : chantier, atelier, matériaux, poussière, lumière industrielle ou contexte métier.
 - Terminer par une zone de signature claire avec le logo officiel TECHNIMAT fourni.
 - Garder des marges de sécurité et une lisibilité parfaite sans interface Instagram.
+- Varier les cadrages, la position du produit, l’éclairage et la construction du titre entre les publications.
 
 ## Produits et logo
 
@@ -29,6 +32,7 @@ Les exemples Instagram fournis par l’utilisateur sont des références de mise
 ## Texte
 
 - Titre très court, concret et orienté bénéfice.
+- Le titre principal doit idéalement tenir en trois à cinq mots et sonner comme une accroche de réseau social.
 - Une seule information secondaire utile.
 - Un appel à l’action court peut apparaître si nécessaire.
 - Vérifier manuellement chaque mot, accent et référence avant publication.
@@ -38,6 +42,7 @@ Les exemples Instagram fournis par l’utilisateur sont des références de mise
 
 - Les compositions génériques de banque d’images.
 - Les visuels trop rigides qui ressemblent à une fiche produit ou à un catalogue plutôt qu’à une publication de réseau social.
+- Les modèles répétés à l’identique avec toujours le même bandeau, la même position du produit et le même pied de page.
 - Les textes fins ou trop nombreux.
 - Les fonds plats sans contexte métier.
 - Les images de produits approximatives générées par IA.

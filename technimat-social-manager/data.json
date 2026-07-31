@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-07-30T12:40:00+02:00",
+  "lastSync": "2026-07-31T07:45:00+02:00",
   "profile": {
     "name": "TECHNIMAT",
     "handle": "@technimat",
@@ -82,7 +82,7 @@
       "recommendedTime": "17 h 30",
       "rationale": "Le produit est présent sur le site TECHNIMAT avec une photographie réelle et des informations techniques publiques vérifiables.",
       "photoRecommendation": "Création TECHNIMAT utilisant exclusivement la photo réelle du malaxeur issue de la fiche produit, avec le logo officiel fourni et la charte orange, gris clair, blanc et anthracite.",
-      "photo": "./generated/2026-07-30/post-2.jpg",
+      "photo": "./generated/2026-07-31/prototype-social.jpg",
       "productUrl": "https://www.technimat-outillage.fr/malaxeur/2681-malaxeur-a-batterie-bosch-grw-18v-160-solo-livre-complet-avec-.html",
       "productImageUrl": "https://www.technimat-outillage.fr/8737-large_default/malaxeur-a-batterie-bosch-grw-18v-160-solo-livre-complet-avec-.webp",
       "checks": [
@@ -153,6 +153,13 @@
     }
   ],
   "history": [
+    {
+      "id": "social-visual-direction-2026-07-31",
+      "date": "2026-07-31T07:45:00+02:00",
+      "title": "Direction visuelle réseaux sociaux améliorée",
+      "detail": "Les créations privilégient désormais une photographie chantier dominante, un produit réel mieux intégré, des accroches plus courtes et des éléments graphiques moins rigides.",
+      "type": "sync"
+    },
     {
       "id": "instagram-style-guide-2026-07-30",
       "date": "2026-07-30T12:40:00+02:00",
