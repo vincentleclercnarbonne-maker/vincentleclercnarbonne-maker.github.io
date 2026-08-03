@@ -109,6 +109,9 @@
     document.querySelector('#planningCompanyId').value=p.id;
     search.value=p.name;
     document.querySelector('#planningCompanySelected').textContent='Entreprise sélectionnée : '+p.name;
+    const selectedDept=String(p.dept||deptFromAddress(p.address)||'').trim();
+    document.querySelector('#planningDepartment').value=selectedDept;
+    deptFilter.value=selectedDept;
     document.querySelector('#planningAddress').value=p.address||'';
     results.style.display='none';
   }
