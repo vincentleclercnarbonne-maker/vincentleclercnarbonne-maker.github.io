@@ -45,8 +45,8 @@
   const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
   const enc=new TextEncoder();
   async function hash(user,code){const b=await crypto.subtle.digest('SHA-256',enc.encode(`TECHNIMAT-CRM|${user}|${code}`));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-  function profileUrl(id){const url=new URL(location.href);url.searchParams.set('profil',id);url.searchParams.set('v','47');return url.pathname+url.search}
-  function landingUrl(){const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','47');return url.pathname+url.search}
+  function profileUrl(id){const url=new URL(location.href);url.searchParams.set('profil',id);url.searchParams.set('v','48');return url.pathname+url.search}
+  function landingUrl(){const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','48');return url.pathname+url.search}
   function personalize(){
     document.title=`CRM TECHNIMAT — ${profiles[selected].name}`;
     const identity=document.querySelector('.brand small');if(identity)identity.textContent=profiles[selected].name;
@@ -59,7 +59,7 @@
     bar.querySelector('button').onclick=()=>{
       if(!confirm('Changer d’utilisateur ? Les données enregistrées seront conservées.'))return;
       sessionStorage.removeItem('crmUnlocked');sessionStorage.removeItem('crmUser');
-      const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','47');location.href=url.pathname+url.search;
+      const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','48');location.href=url.pathname+url.search;
     };
     header.appendChild(bar);
   }
@@ -67,9 +67,9 @@
 
   const lock=document.createElement('div');lock.id='crmLock';
   if(selected==='manager'){
-    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=47" alt="Technimat"><h1>Accès Manager</h1><p>Saisissez le code Manager pour ouvrir cet espace.</p><form id="lockForm"><input id="lockCode" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="off" placeholder="••••" required autofocus><button>Se connecter</button><div class="lock-error" id="lockError"></div></form><a class="back-link" href="${landingUrl()}">← Retour aux accès</a></div>`;
+    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=48" alt="Technimat"><h1>Accès Manager</h1><p>Saisissez le code Manager pour ouvrir cet espace.</p><form id="lockForm"><input id="lockCode" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="off" placeholder="••••" required autofocus><button>Se connecter</button><div class="lock-error" id="lockError"></div></form><a class="back-link" href="${landingUrl()}">← Retour aux accès</a></div>`;
   }else{
-    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=47" alt="Technimat"><h1>Accès au CRM</h1><p>Choisissez le lien personnel à ouvrir. Aucun code n’est demandé pour les espaces commerciaux.</p><div class="direct-access"><a class="direct-link" href="${profileUrl('vincent')}">Vincent</a><a class="direct-link" href="${profileUrl('cedric')}">Cédric</a><a class="direct-link" href="${profileUrl('zavier')}">Zavier</a></div><a class="direct-link manager-link" href="${profileUrl('manager')}">Accès Manager avec code</a></div>`;
+    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=48" alt="Technimat"><h1>Accès au CRM</h1><p>Choisissez le lien personnel à ouvrir. Aucun code n’est demandé pour les espaces commerciaux.</p><div class="direct-access"><a class="direct-link" href="${profileUrl('vincent')}">Vincent</a><a class="direct-link" href="${profileUrl('cedric')}">Cédric</a><a class="direct-link" href="${profileUrl('zavier')}">Zavier</a></div><a class="direct-link manager-link" href="${profileUrl('manager')}">Accès Manager avec code</a></div>`;
   }
   document.body.appendChild(lock);document.body.style.overflow='hidden';
   if(selected!=='manager')return;
