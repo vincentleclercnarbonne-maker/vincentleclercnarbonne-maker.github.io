@@ -21,7 +21,7 @@
   const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
   function eventCard(e,floating=false){
-    const label=e.flexibleTime?'Sans heure':e.start;
+    const label=e.flexibleTime?'Sans horaire fixe':e.start;
     return `<div class="plan-event${e.flexibleTime?' flexible':''}${floating?' floating-event':''}${e.completed?' completed':''}" data-id="${esc(e.id)}"${floating?'':` style="height:${Math.max(36,(mins(e.end)-mins(e.start))*.8)}px"`}><b>${e.completed?'✓ Fait — ':''}${esc(label)} ${esc(e.title)}</b>${esc(e.company||'')}</div>`;
   }
 
