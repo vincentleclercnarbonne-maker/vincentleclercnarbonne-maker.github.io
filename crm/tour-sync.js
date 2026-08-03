@@ -152,9 +152,9 @@
     function propose(){
       const date=dateInput.value;
       if(!date)return alert('Choisissez d’abord la date de la tournée.');
-      const all=planningEvents().filter(e=>e.date===date&&!e.tourProspect);
-      const blockers=all.filter(e=>e.start&&e.end&&!e.flexibleTime&&!e.completed);
-      const anchors=blockers.filter(e=>e.address&&e.company&&!/pause|déjeuner|dejeuner/i.test(`${e.title||''} ${e.company||''}`));
+      const all=planningEvents().filter(e=>e.date===date);
+      const blockers=all.filter(e=>e.start&&e.end&&!e.flexibleTime);
+      const anchors=blockers.filter(e=>!e.tourProspect&&!e.completed&&e.address&&e.company&&!/pause|déjeuner|dejeuner/i.test(`${e.title||''} ${e.company||''}`));
       const candidates=availableCandidates(all,anchors);
       const plan=buildPlan(candidates,blockers,startInput.value||'TECHNIMAT, Narbonne');
       const appointmentIds=[];
@@ -185,10 +185,11 @@
       let events=planningEvents();
       const planIds=new Set(plans.map(x=>`tour-${date}-${x.id}`));
       events=events.filter(e=>!planIds.has(String(e.id)));
-      plans.forEach(x=>{
+      const additions=[];
+      for(const x of plans){
         const p=state.prospects.find(item=>String(item.id)===String(x.id));
-        if(!p)return;
-        events.push({
+        if(!p)continue;
+        const candidate={
           id:`tour-${date}-${p.id}`,
           companyId:p.id,
           company:p.name,
@@ -202,8 +203,18 @@
           notes:'Prospect proposé depuis la tournée — visite prévue 10 minutes hors trajet.',
           completed:false,
           tourProspect:true
-        });
-      });
+        };
+        const conflict=typeof window.CRM_PLANNING_FIND_CONFLICT==='function'
+          ?window.CRM_PLANNING_FIND_CONFLICT(candidate,[...events,...additions],candidate.id)
+          :[...events,...additions].find(e=>e.date===candidate.date&&!e.flexibleTime&&e.start&&e.end&&mins(candidate.start)<mins(e.end)&&mins(candidate.end)>mins(e.start));
+        if(conflict){
+          proposal.validated=false;
+          localStorage.setItem(proposalKey,JSON.stringify(proposal));
+          return alert(`Le créneau ${candidate.start}–${candidate.end} est désormais occupé${conflict.company?` par ${conflict.company}`:''}. Relancez « Proposer 6 prospects » pour recalculer la tournée sans chevauchement.`);
+        }
+        additions.push(candidate);
+      }
+      events.push(...additions);
       localStorage.setItem(window.CRM_PLANNING_KEY,JSON.stringify(events));
       proposal.validated=true;
       localStorage.setItem(proposalKey,JSON.stringify(proposal));
