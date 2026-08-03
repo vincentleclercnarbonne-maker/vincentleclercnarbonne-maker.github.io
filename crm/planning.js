@@ -36,7 +36,14 @@
   function selectCompany(id){const p=companies.find(x=>String(x.id)===String(id));if(!p)return;planningCompanyId.value=p.id;planningCompanySearch.value=p.name;planningCompanySelected.textContent='Entreprise sélectionnée : '+p.name;planningAddress.value=p.address||'';planningCompanyResults.style.display='none'}
   function openEvent(id=''){loadCompanies();events=JSON.parse(localStorage.getItem(planningKey)||'[]');const e=events.find(x=>String(x.id)===String(id));planningId.value=e?.id||'';planningCompanyId.value=e?.companyId||'';planningCompanySearch.value=e?.company||'';planningCompanySelected.textContent=e?.company?'Entreprise sélectionnée : '+e.company:'';planningTitle.value=e?.title||'';planningDate.value=e?.date||localIso(new Date());planningStart.value=e?.start||'09:00';planningEnd.value=e?.end||'09:30';planningAddress.value=e?.address||'';planningNotes.value=e?.notes||'';completePlanning.style.display=e&&!e.completed?'block':'none';deletePlanning.style.display=e?'block':'none';planningCompanyResults.style.display='none';dg.showModal()}
 
-  planningStart.addEventListener('input',()=>{\n    if(!planningStart.value)return;\n    const [hours,minutes]=planningStart.value.split(':').map(Number);\n    const endMinutes=(hours*60+minutes+30)%(24*60);\n    planningEnd.value=`${String(Math.floor(endMinutes/60)).padStart(2,'0')}:${String(endMinutes%60).padStart(2,'0')}`;\n  });\n\n  planningCompanySearch.addEventListener('input',e=>{planningCompanyId.value='';planningCompanySelected.textContent='';showCompanyResults(e.target.value)});
+  planningStart.addEventListener('input',()=>{
+    if(!planningStart.value)return;
+    const [hours,minutes]=planningStart.value.split(':').map(Number);
+    const endMinutes=(hours*60+minutes+30)%(24*60);
+    planningEnd.value=`${String(Math.floor(endMinutes/60)).padStart(2,'0')}:${String(endMinutes%60).padStart(2,'0')}`;
+  });
+
+  planningCompanySearch.addEventListener('input',e=>{planningCompanyId.value='';planningCompanySelected.textContent='';showCompanyResults(e.target.value)});
   planningCompanySearch.addEventListener('focus',e=>showCompanyResults(e.target.value));
   document.addEventListener('click',e=>{if(!e.target.closest('.company-search-wrap'))planningCompanyResults.style.display='none'});
   planningForm.addEventListener('submit',e=>{e.preventDefault();const id=planningId.value||Date.now().toString(),old=events.find(x=>String(x.id)===String(id)),rec={id,companyId:planningCompanyId.value,company:planningCompanySearch.value.trim(),title:planningTitle.value||'Rendez-vous',date:planningDate.value,start:planningStart.value,end:planningEnd.value,address:planningAddress.value,notes:planningNotes.value,completed:old?.completed||false};events=events.filter(x=>String(x.id)!==String(id));events.push(rec);saveP();monday=getMonday(parseLocal(rec.date));dg.close();render()});
