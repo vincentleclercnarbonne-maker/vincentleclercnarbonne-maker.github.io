@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-08-04T08:24:00+02:00",
-  "syncMessage": "Trois propositions LinkedIn 100 % golf du 4 août 2026 avec trois visuels associés",
+  "lastSync": "2026-08-04T08:34:00+02:00",
+  "syncMessage": "Trois propositions LinkedIn golf du 4 août 2026 reliées à trois visuels présents dans le dépôt",
   "profile": {
     "score": 82,
     "url": "https://www.linkedin.com/in/vincent-leclerc-14a3492bb/",
@@ -34,8 +34,8 @@
       "short": "Au golf comme dans le travail, quelques minutes d’observation peuvent éviter beaucoup d’actions inutiles.",
       "cta": "Dans votre métier, quel élément prenez-vous toujours le temps d’observer avant de décider ?",
       "hashtags": ["#Golf", "#Préparation", "#PriseDeDécision", "#Observation", "#Commerce"],
-      "visual": "Visuel réaliste fourni : golfeur vu de dos étudiant le parcours au lever du jour. Il peut être remplacé par une vraie photo de Vincent observant un trou depuis le départ, cadrée de dos ou de trois quarts, sans texte ni pose forcée.",
-      "image": "./generated/2026-08-04/post-1.jpg",
+      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur observant le fairway au coucher du soleil.",
+      "image": "generated/2026-08-04/golf-regularite.svg",
       "imageAlt": "Golfeur observant un parcours avant de choisir son coup",
       "reason": "L’angle de la préparation est concret, professionnel et différent des sujets déjà utilisés sur la régularité, l’échec et la concentration.",
       "sources": ["Demande de contenus 100 % golf", "Activité commerciale de terrain", "Historique anti-répétition du site"]
@@ -55,9 +55,9 @@
       "short": "Une solution adaptée vaut souvent mieux qu’une solution plus puissante mais mal choisie.",
       "cta": "Vous êtes plutôt du genre à forcer le coup ou à changer de stratégie ?",
       "hashtags": ["#GolfBusiness", "#Adaptation", "#Conseil", "#Choix", "#Efficacité"],
-      "visual": "Visuel éditorial fourni avec un sac et plusieurs clubs sur fond bleu nuit, accompagné du titre « LE BON CHOIX AVANT LA FORCE ». Une vraie photo alternative peut montrer plusieurs clubs posés près d’une balle, sans marque mise en avant.",
-      "image": "./generated/2026-08-04/post-2.jpg",
-      "imageAlt": "Visuel golf sur le choix du bon club avant la puissance",
+      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur concentré avant son coup.",
+      "image": "generated/2026-08-04/golf-concentration.svg",
+      "imageAlt": "Golfeur concentré avant de jouer",
       "reason": "Cette publication crée un lien naturel avec le conseil commercial et l’outillage, sans présenter de produit ni transformer le post en promotion.",
       "sources": ["Univers du golf", "Expérience dans le conseil et l’outillage", "Règle de style mixte validée"]
     },
@@ -76,9 +76,9 @@
       "short": "Les relations professionnelles les plus solides commencent parfois par une conversation sans objectif commercial immédiat.",
       "cta": "Dans quel contexte avez-vous créé vos relations professionnelles les plus naturelles ?",
       "hashtags": ["#RéseauProfessionnel", "#Golf", "#RelationsHumaines", "#Confiance", "#Narbonne"],
-      "visual": "Visuel réaliste fourni : deux golfeurs non identifiables marchant et discutant sur un fairway méditerranéen. Pour une photo réelle, cadrer Vincent et un partenaire uniquement de dos après accord, sans poignée de main, logo ni mise en scène commerciale.",
-      "image": "./generated/2026-08-04/post-3.jpg",
-      "imageAlt": "Deux golfeurs discutant naturellement entre deux coups",
+      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur marchant seul sur le parcours dans une ambiance calme.",
+      "image": "generated/2026-08-04/golf-apprentissage.svg",
+      "imageAlt": "Golfeur marchant sur le parcours entre deux coups",
       "reason": "Le sujet du réseau local est traité par les relations humaines et non par une approche promotionnelle ou élitiste du golf.",
       "sources": ["Intérêt pour le golf", "Développement du réseau local", "Ton naturel et accessible demandé"]
     }
@@ -89,7 +89,8 @@
     {"title": "Tendances LinkedIn", "schedule": "Chaque lundi à 7 h 45", "status": "Active"}
   ],
   "history": [
-    ["04/08/2026 08:24", "Trois propositions golf avec visuels", "Lecture du parcours, choix du club et conversations professionnelles ; trois images 1200 × 627 intégrées"],
+    ["04/08/2026 08:34", "Visuels reliés au site", "Les trois fichiers image ont été ajoutés au dépôt puis reliés aux trois propositions"],
+    ["04/08/2026 08:24", "Trois propositions golf avec visuels", "Lecture du parcours, choix du club et conversations professionnelles"],
     ["01/08/2026 18:13", "Synchronisation golf terminée", "Trois propositions 100 % golf intégrées sans image"],
     ["31/07/2026 08:20", "Importation manuelle terminée", "Trois propositions ajoutées avec recommandations de photos réelles"],
     ["29/07/2026 08:30", "Synchronisation quotidienne terminée", "Trois propositions intégrées avec recommandations de photos réelles"],
