@@ -1,13 +1,22 @@
 {
-  "lastSync": "2026-08-04T08:34:00+02:00",
-  "syncMessage": "Trois propositions LinkedIn golf du 4 août 2026 reliées à trois visuels présents dans le dépôt",
+  "lastSync": "2026-08-04T08:37:00+02:00",
+  "syncMessage": "Synchronisation vérifiée : trois propositions LinkedIn 100 % golf et trois visuels JPG 1200 × 627 accessibles",
   "profile": {
     "score": 82,
     "url": "https://www.linkedin.com/in/vincent-leclerc-14a3492bb/",
     "verifiedLink": true,
     "title": "Commercial terrain chez TECHNIMAT | Développement commercial BtoB | Digital et intelligence artificielle | Narbonne & Occitanie",
     "summary": "J’évolue dans le commerce BtoB et le secteur du bâtiment chez TECHNIMAT à Narbonne. Mon quotidien se partage entre la prospection terrain, les visites clients, le suivi commercial et le développement d’outils numériques.\n\nÀ 20 ans, je construis mon expérience directement sur le terrain : comprendre les besoins, créer une relation de confiance et progresser à chaque échange. Je m’intéresse aussi à l’intelligence artificielle appliquée au commerce, à l’e-commerce et à la communication.\n\nIci, je partage des retours de tournées, des apprentissages commerciaux et les coulisses de mon évolution professionnelle, sans prétendre tout savoir.",
-    "skills": ["Prospection commerciale", "Développement commercial BtoB", "Relation client", "Vente terrain", "CRM commercial", "E-commerce", "Canva", "IA appliquée au commerce"]
+    "skills": [
+      "Prospection commerciale",
+      "Développement commercial BtoB",
+      "Relation client",
+      "Vente terrain",
+      "CRM commercial",
+      "E-commerce",
+      "Canva",
+      "IA appliquée au commerce"
+    ]
   },
   "stats": {
     "verified": false,
@@ -33,12 +42,22 @@
       "body": "Au golf, le drapeau attire immédiatement le regard.\n\nPourtant, avant de choisir son coup, il faut aussi observer tout ce qu’il y a autour : la distance, le vent, la pente, les obstacles et l’endroit où l’on veut vraiment placer la balle.\n\nCette phase de lecture est moins visible que le swing, mais elle influence souvent davantage le résultat.\n\nJ’y retrouve une logique utile dans le travail : avant d’agir, prendre quelques minutes pour comprendre la situation évite de répondre trop vite ou de partir dans la mauvaise direction.\n\nBien préparer ne garantit pas que tout sera parfait. Mais cela permet de décider avec plus de justesse.",
       "short": "Au golf comme dans le travail, quelques minutes d’observation peuvent éviter beaucoup d’actions inutiles.",
       "cta": "Dans votre métier, quel élément prenez-vous toujours le temps d’observer avant de décider ?",
-      "hashtags": ["#Golf", "#Préparation", "#PriseDeDécision", "#Observation", "#Commerce"],
-      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur observant le fairway au coucher du soleil.",
-      "image": "generated/2026-08-04/golf-regularite.svg",
+      "hashtags": [
+        "#Golf",
+        "#Préparation",
+        "#PriseDeDécision",
+        "#Observation",
+        "#Commerce"
+      ],
+      "visual": "Visuel réaliste fourni : golfeur vu de dos étudiant le parcours au lever du jour. Il peut être remplacé par une vraie photo de Vincent observant un trou depuis le départ, sans texte ni pose forcée.",
+      "image": "./generated/2026-08-04/post-1.jpg",
       "imageAlt": "Golfeur observant un parcours avant de choisir son coup",
       "reason": "L’angle de la préparation est concret, professionnel et différent des sujets déjà utilisés sur la régularité, l’échec et la concentration.",
-      "sources": ["Demande de contenus 100 % golf", "Activité commerciale de terrain", "Historique anti-répétition du site"]
+      "sources": [
+        "Demande de contenus 100 % golf",
+        "Activité commerciale de terrain",
+        "Historique anti-répétition du site"
+      ]
     },
     {
       "id": "2026-08-04-golf-bon-club",
@@ -54,12 +73,22 @@
       "body": "Face à un coup difficile, le premier réflexe peut être de vouloir mettre plus de puissance.\n\nMais le résultat dépend souvent davantage du choix du club, de la trajectoire et du risque que l’on accepte de prendre.\n\nUn coup plus simple, joué avec le bon outil, peut être beaucoup plus efficace qu’un coup forcé.\n\nC’est une idée que je retrouve aussi dans le commerce et sur le terrain : une solution n’est pas meilleure parce qu’elle est plus importante, plus technique ou plus impressionnante.\n\nElle est meilleure lorsqu’elle correspond réellement au besoin.\n\nLe bon choix avant la force : au golf comme dans le travail, cette logique évite bien des complications.",
       "short": "Une solution adaptée vaut souvent mieux qu’une solution plus puissante mais mal choisie.",
       "cta": "Vous êtes plutôt du genre à forcer le coup ou à changer de stratégie ?",
-      "hashtags": ["#GolfBusiness", "#Adaptation", "#Conseil", "#Choix", "#Efficacité"],
-      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur concentré avant son coup.",
-      "image": "generated/2026-08-04/golf-concentration.svg",
-      "imageAlt": "Golfeur concentré avant de jouer",
+      "hashtags": [
+        "#GolfBusiness",
+        "#Adaptation",
+        "#Conseil",
+        "#Choix",
+        "#Efficacité"
+      ],
+      "visual": "Visuel éditorial fourni avec un sac et plusieurs clubs sur fond bleu nuit, accompagné du titre « LE BON CHOIX AVANT LA FORCE ».",
+      "image": "./generated/2026-08-04/post-2.jpg",
+      "imageAlt": "Visuel golf sur le choix du bon club avant la puissance",
       "reason": "Cette publication crée un lien naturel avec le conseil commercial et l’outillage, sans présenter de produit ni transformer le post en promotion.",
-      "sources": ["Univers du golf", "Expérience dans le conseil et l’outillage", "Règle de style mixte validée"]
+      "sources": [
+        "Univers du golf",
+        "Expérience dans le conseil et l’outillage",
+        "Règle de style mixte validée"
+      ]
     },
     {
       "id": "2026-08-04-golf-conversations",
@@ -75,26 +104,81 @@
       "body": "Une partie de golf laisse du temps entre les coups.\n\nOn marche, on observe le parcours et surtout, on échange sans avoir besoin de suivre un discours préparé.\n\nC’est souvent dans ces moments simples que l’on découvre vraiment le parcours d’une personne, sa façon de travailler ou les projets qui l’animent.\n\nLe golf peut créer des rencontres professionnelles, mais ce n’est pas ce qui m’intéresse le plus.\n\nCe que j’apprécie surtout, c’est la qualité des conversations lorsqu’il n’y a rien à vendre immédiatement.\n\nLa confiance se construit parfois plus naturellement en marchant vers le coup suivant qu’autour d’une table de réunion.",
       "short": "Les relations professionnelles les plus solides commencent parfois par une conversation sans objectif commercial immédiat.",
       "cta": "Dans quel contexte avez-vous créé vos relations professionnelles les plus naturelles ?",
-      "hashtags": ["#RéseauProfessionnel", "#Golf", "#RelationsHumaines", "#Confiance", "#Narbonne"],
-      "visual": "Visuel golf créé et hébergé dans le dépôt : golfeur marchant seul sur le parcours dans une ambiance calme.",
-      "image": "generated/2026-08-04/golf-apprentissage.svg",
-      "imageAlt": "Golfeur marchant sur le parcours entre deux coups",
+      "hashtags": [
+        "#RéseauProfessionnel",
+        "#Golf",
+        "#RelationsHumaines",
+        "#Confiance",
+        "#Narbonne"
+      ],
+      "visual": "Visuel réaliste fourni : deux golfeurs non identifiables marchant et discutant sur un fairway méditerranéen.",
+      "image": "./generated/2026-08-04/post-3.jpg",
+      "imageAlt": "Deux golfeurs discutant naturellement entre deux coups",
       "reason": "Le sujet du réseau local est traité par les relations humaines et non par une approche promotionnelle ou élitiste du golf.",
-      "sources": ["Intérêt pour le golf", "Développement du réseau local", "Ton naturel et accessible demandé"]
+      "sources": [
+        "Intérêt pour le golf",
+        "Développement du réseau local",
+        "Ton naturel et accessible demandé"
+      ]
     }
   ],
   "tasks": [
-    {"title": "Création des 3 posts et visuels LinkedIn", "schedule": "Chaque jour à 8 h 15", "status": "Active"},
-    {"title": "Synchronisation du site", "schedule": "Chaque jour à 8 h 30", "status": "Active"},
-    {"title": "Tendances LinkedIn", "schedule": "Chaque lundi à 7 h 45", "status": "Active"}
+    {
+      "title": "Création des 3 posts et visuels LinkedIn",
+      "schedule": "Chaque jour à 8 h 15",
+      "status": "Active"
+    },
+    {
+      "title": "Synchronisation du site",
+      "schedule": "Chaque jour à 8 h 30",
+      "status": "Active"
+    },
+    {
+      "title": "Tendances LinkedIn",
+      "schedule": "Chaque lundi à 7 h 45",
+      "status": "Active"
+    }
   ],
   "history": [
-    ["04/08/2026 08:34", "Visuels reliés au site", "Les trois fichiers image ont été ajoutés au dépôt puis reliés aux trois propositions"],
-    ["04/08/2026 08:24", "Trois propositions golf avec visuels", "Lecture du parcours, choix du club et conversations professionnelles"],
-    ["01/08/2026 18:13", "Synchronisation golf terminée", "Trois propositions 100 % golf intégrées sans image"],
-    ["31/07/2026 08:20", "Importation manuelle terminée", "Trois propositions ajoutées avec recommandations de photos réelles"],
-    ["29/07/2026 08:30", "Synchronisation quotidienne terminée", "Trois propositions intégrées avec recommandations de photos réelles"],
-    ["27/07/2026 15:48", "Photos personnelles activées", "Ajout et remplacement des photos depuis le navigateur"],
-    ["27/07/2026 15:03", "Profil LinkedIn confirmé", "Lien exact intégré : vincent-leclerc-14a3492bb"]
+    [
+      "04/08/2026 08:37",
+      "Synchronisation JPG vérifiée",
+      "Trois propositions complètes et trois images JPG 1200 × 627 accessibles publiquement"
+    ],
+    [
+      "04/08/2026 08:34",
+      "Visuels reliés au site",
+      "Les trois fichiers image ont été ajoutés au dépôt puis reliés aux trois propositions"
+    ],
+    [
+      "04/08/2026 08:24",
+      "Trois propositions golf avec visuels",
+      "Lecture du parcours, choix du club et conversations professionnelles"
+    ],
+    [
+      "01/08/2026 18:13",
+      "Synchronisation golf terminée",
+      "Trois propositions 100 % golf intégrées sans image"
+    ],
+    [
+      "31/07/2026 08:20",
+      "Importation manuelle terminée",
+      "Trois propositions ajoutées avec recommandations de photos réelles"
+    ],
+    [
+      "29/07/2026 08:30",
+      "Synchronisation quotidienne terminée",
+      "Trois propositions intégrées avec recommandations de photos réelles"
+    ],
+    [
+      "27/07/2026 15:48",
+      "Photos personnelles activées",
+      "Ajout et remplacement des photos depuis le navigateur"
+    ],
+    [
+      "27/07/2026 15:03",
+      "Profil LinkedIn confirmé",
+      "Lien exact intégré : vincent-leclerc-14a3492bb"
+    ]
   ]
 }
