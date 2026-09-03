@@ -2,7 +2,7 @@ const activeUser=window.CRM_USER||'locked';
 const storageKey=window.CRM_STORAGE_KEY||`crmTechnimat:${activeUser}`;
 if(activeUser==='vincent'&&!localStorage.getItem(storageKey)&&localStorage.getItem('crmTechnimat'))localStorage.setItem(storageKey,localStorage.getItem('crmTechnimat'));
 const representativeProspects=window.CRM_REPRESENTATIVE_CLIENTS?.[activeUser]||[];
-const rawProspects=activeUser==='vincent'?(window.RP||[]):representativeProspects;
+const rawProspects=representativeProspects;
 const prospects=rawProspects.map((p,n)=>({id:p.i||p.s||String(n+1),name:p.c||'Entreprise sans nom',siret:p.s||'',address:p.a||'',dept:p.d||'',manager:p.m&&p.m!=='x'?p.m:'',email:p.e&&p.e!=='x'&&!/^\d/.test(p.e)?p.e:'',phone:p.p&&p.p!=='x'?p.p:'',status:p.t||'Non visité'}));
 const seedHistory=(activeUser==='vincent'?(window.CRM_SEED?.history||[]):[]).map((v,n)=>({id:'seed-'+n,companyId:v.siret||v.company,companyName:v.company,date:v.date,person:v.person,role:v.function,summary:v.summary,needs:v.needs,next:v.nextAction,followup:v.followupDate}));
 const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');
