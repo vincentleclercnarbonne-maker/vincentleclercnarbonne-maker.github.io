@@ -1,4 +1,4 @@
-const CACHE='crm-technimat-v53';
+const CACHE='crm-technimat-v54';
 const ASSETS=['./','index.html','style.css','security.js','representative-clients.js','app.js','app-plus.js','planning.js','planning-filter.js','tour-sync.js','sheets-sync.js','manager-settings.js','logo-technimat.svg','icon.svg','manifest.webmanifest'];
 self.addEventListener('install',event=>{
   self.skipWaiting();
