@@ -4,6 +4,7 @@
   const ALLOWED_USERS=new Set(['vincent','cedric']);
   const user=window.CRM_USER||'';
   if(!ALLOWED_USERS.has(user))return;
+  try{if(JSON.parse(localStorage.getItem('crmTechnimat:managerSettings')||'{}').syncEnabled===false)return}catch{}
 
   const userName=window.CRM_USER_NAME||({vincent:'Vincent',cedric:'Cédric'}[user]);
   const cacheKey=`crmSheetsSyncCache:${user}`;
