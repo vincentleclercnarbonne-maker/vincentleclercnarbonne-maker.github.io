@@ -9,14 +9,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CRM TECHNIMAT">
-<link rel="manifest" href="manifest.webmanifest?v=48">
-<link rel="icon" href="logo-technimat.svg?v=48" type="image/svg+xml">
-<link rel="apple-touch-icon" href="logo-technimat.svg?v=48">
+<link rel="manifest" href="manifest.webmanifest?v=53">
+<link rel="icon" href="logo-technimat.svg?v=53" type="image/svg+xml">
+<link rel="apple-touch-icon" href="logo-technimat.svg?v=53">
 <title>CRM TECHNIMAT — Vincent Leclerc</title>
-<link rel="stylesheet" href="style.css?v=50">
+<link rel="stylesheet" href="style.css?v=53">
 </head>
 <body>
-<script src="security.js?v=48">
+<script src="security.js?v=53">
 </script>
 <header>
 <div class="brand">
@@ -139,6 +139,10 @@
 <div id="historyList" class="list">
 </div>
 </section>
+<section id="parametres" class="page manager-only" hidden>
+<div class="page-head"><h1>Paramètres Manager</h1><p>Administration du CRM TECHNIMAT.</p></div>
+<div id="managerSettings"></div>
+</section>
 </main>
 <nav class="bottom">
 <button class="active" data-page="dashboard">⌂<span>Accueil</span>
@@ -151,6 +155,7 @@
 </button>
 <button data-page="historique">☷<span>Historique</span>
 </button>
+<button class="manager-only" data-page="parametres" hidden>⚙<span>Paramètres</span></button>
 </nav>
 <dialog id="companyDialog">
 <div class="dialog-head">
@@ -221,5 +226,6 @@
 </script>
 <script src="sheets-sync.js?v=48">
 </script>
+<script src="manager-settings.js?v=53"></script>
 </body>
 </html>
