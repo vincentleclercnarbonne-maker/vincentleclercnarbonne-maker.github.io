@@ -5,12 +5,15 @@
     zavier:{name:'Zavier',protected:false},
     manager:{name:'Manager',protected:true,hash:'1308c6e49df0293673fd10564ee4794098e83b3053db3e0d6ecf4e42bdc6b9e3'}
   };
+  let managerSettings={users:{vincent:true,cedric:true,zavier:true}};
+  try{managerSettings={...managerSettings,...JSON.parse(localStorage.getItem('crmTechnimat:managerSettings')||'{}')}}catch{}
   const params=new URLSearchParams(location.search);
   const requested=params.get('profil');
   const stored=sessionStorage.getItem('crmUser');
-  const selected=profiles[requested]?requested:(profiles[stored]?stored:null);
+  const isAllowed=id=>id==='manager'||managerSettings.users?.[id]!==false;
+  const selected=profiles[requested]&&isAllowed(requested)?requested:(profiles[stored]&&isAllowed(stored)?stored:null);
 
-  if(profiles[requested]){
+  if(profiles[requested]&&isAllowed(requested)){
     const isNewProfile=requested!==stored;
     sessionStorage.setItem('crmUser',requested);
     if(profiles[requested].protected){
@@ -45,8 +48,8 @@
   const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
   const enc=new TextEncoder();
   async function hash(user,code){const b=await crypto.subtle.digest('SHA-256',enc.encode(`TECHNIMAT-CRM|${user}|${code}`));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-  function profileUrl(id){const url=new URL(location.href);url.searchParams.set('profil',id);url.searchParams.set('v','48');return url.pathname+url.search}
-  function landingUrl(){const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','48');return url.pathname+url.search}
+  function profileUrl(id){const url=new URL(location.href);url.searchParams.set('profil',id);url.searchParams.set('v','53');return url.pathname+url.search}
+  function landingUrl(){const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','53');return url.pathname+url.search}
   function personalize(){
     document.title=`CRM TECHNIMAT — ${profiles[selected].name}`;
     const identity=document.querySelector('.brand small');if(identity)identity.textContent=profiles[selected].name;
@@ -59,7 +62,7 @@
     bar.querySelector('button').onclick=()=>{
       if(!confirm('Changer d’utilisateur ? Les données enregistrées seront conservées.'))return;
       sessionStorage.removeItem('crmUnlocked');sessionStorage.removeItem('crmUser');
-      const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','48');location.href=url.pathname+url.search;
+      const url=new URL(location.href);url.searchParams.delete('profil');url.searchParams.set('v','53');location.href=url.pathname+url.search;
     };
     header.appendChild(bar);
   }
@@ -69,7 +72,8 @@
   if(selected==='manager'){
     lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=48" alt="Technimat"><h1>Accès Manager</h1><p>Saisissez le code Manager pour ouvrir cet espace.</p><form id="lockForm"><input id="lockCode" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="off" placeholder="••••" required autofocus><button>Se connecter</button><div class="lock-error" id="lockError"></div></form><a class="back-link" href="${landingUrl()}">← Retour aux accès</a></div>`;
   }else{
-    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=48" alt="Technimat"><h1>Accès au CRM</h1><p>Choisissez le lien personnel à ouvrir. Aucun code n’est demandé pour les espaces commerciaux.</p><div class="direct-access"><a class="direct-link" href="${profileUrl('vincent')}">Vincent</a><a class="direct-link" href="${profileUrl('cedric')}">Cédric</a><a class="direct-link" href="${profileUrl('zavier')}">Zavier</a></div><a class="direct-link manager-link" href="${profileUrl('manager')}">Accès Manager avec code</a></div>`;
+    const commercialLinks=['vincent','cedric','zavier'].filter(isAllowed).map(id=>`<a class="direct-link" href="${profileUrl(id)}">${profiles[id].name}</a>`).join('');
+    lock.innerHTML=`<div class="lock-card"><img src="logo-technimat.svg?v=53" alt="Technimat"><h1>Accès au CRM</h1><p>Choisissez le lien personnel à ouvrir. Aucun code n’est demandé pour les espaces commerciaux.</p><div class="direct-access">${commercialLinks||'<p>Aucun espace commercial actif.</p>'}</div><a class="direct-link manager-link" href="${profileUrl('manager')}">Accès Manager avec code</a></div>`;
   }
   document.body.appendChild(lock);document.body.style.overflow='hidden';
   if(selected!=='manager')return;
